@@ -1,0 +1,110 @@
+const FIREBASE = {
+	STORAGE: {
+		PROFILE_IMG_FOLDER: 'profile-images',
+		BASE_URL: 'https://storage.googleapis.com/images.weedrater.com',
+	},
+}
+
+const PROFILE_IMAGE_TYPES = ['.jpg', '.png', '.jpeg', '.gif']
+const PROFILE_IMAGE_SIZE = 150
+const DISPENSARY_PROFILE_IMAGE_SIZE = 80
+const DISPENSARY_PROFILE_IMAGE_SIZE_MEDIUM = 175
+const DISPENSARY_PROFILE_IMAGE_SIZE_LARGE = 200
+const PROFILE_IMAGE_THUMB_SIZE = 55
+const DEFAULT_AVATAR_SIZE = '9rem'
+const DEFAULT_AVATAR_THUMB_SIZE = '50px'
+const STRAIN_IMAGE_SIZE = 80
+const STRAIN_IMAGE_SIZE_MEDIUM = 175
+const STRAIN_IMAGE_SIZE_LARGE = 200
+const STRAIN_IMAGE_SIZE_THUMB = 200
+const STRAIN_FINDER_IMAGE_SIZE = 100
+const EVENT_TYPES = {
+	WR_PAGEVIEW: 'wrPageView',
+	WR_NODERATED: 'wrNodeRated',
+	WR_LOGIN: 'wrLogin',
+	WR_SEARCH_SELECT: 'wrSearchSelect',
+	WR_REGISTER: 'wrRegister',
+	WR_DISPENSARY_MAP_SELECT: 'wrDispensaryMapSelect',
+	WR_DISPENSARY_DIRECTIONS: 'wrDispensaryDirections',
+	WR_DISPENSARY_REVIEWS_VIEW: 'wrDispensaryReviewsView',
+	WR_DISPENSARY_MENU_VIEW: 'wrDispensaryMenuView',
+	WR_DISPENSARY_VIEW: 'wrDispensaryView',
+	WR_DISPENSARY_CALL: 'wrDispensaryCall',
+	WR_STRAIN_VIEW: 'wrStrainView',
+	WR_STRAIN_FINDER_SELECT: 'wrStrainFinderSelect',
+	WR_STRAIN_PRODUCT_SELECT: 'wrStrainProductSelect',
+	WR_TOP_RATED_STRAIN_SELECT: 'wrTopRatedStrainSelect',
+	WR_FEATURED_DISPENSARY_SELECT: 'wrFeaturedDispensarySelect',
+}
+
+const TRACKING_ACTIONS = {
+	CALL_ACTION: 'call',
+	DIRECTIONS_ACTION: 'getDirections',
+	FEATURED_DISPENSARY_SELECT_ACTION: 'featuredDispensarySelect',
+	LOGIN_ACTION: 'login',
+	RATING_ACTION: 'rate',
+	REGISTER_ACTION: 'register',
+	MAP_FOCUS_ACTION: 'mapFocus',
+	// MAP_SELECT_ACTION: 'mapSelect',
+	// SEARCH_SELECT_ACTION: 'searchSelect',
+	// STRAIN_FINDER_SELECT_ACTION: 'strainFinderSelect',
+	// STRAIN_PRODUCT_SELECT_ACTION: 'strainProductSelect',
+	// TOP_RATED_PRODUCT_SELECT_ACTION: 'topRatedProductSelect',
+	USER_SELECT: 'userSelect',
+	VIEW_ACTION: 'view',
+	VIEW_INVENTORY_MENU: 'inventoryMenuView',
+	VIEW_REVIEWS: 'reviewsView',
+}
+
+const LOGIN_FLAG_STORAGE = 'isLogginIn'
+const PATH_HISTORY_STORAGE = 'previousPath'
+const NODE_TYPES = {
+	DISPENSARIES: 'dispensaries',
+	EMPLOYEES: 'employees',
+	INVENTORY: 'inventory',
+	STRAINS: 'strains',
+	CONCENTRATE: 'concentrate',
+	EDIBLE: 'edible',
+	FLOWER: 'flower',
+}
+const USER_ROLES = {
+	ADMIN: 'admin',
+	REVIEWER: 'reviewer',
+	USER: 'user',
+}
+const STRAIN_SCORES_TYPES = {
+	EFFECTS: 'effects',
+	MEDICAL: 'medical',
+	NEGATIVE_EFFECTS: 'negative_effects',
+}
+
+const DISPENSARY_TABS = {
+	ABOUT: 0,
+	REVIEWS: 1,
+	MENU: 2,
+}
+
+module.exports = {
+	DEFAULT_AVATAR_SIZE,
+	DEFAULT_AVATAR_THUMB_SIZE,
+	DISPENSARY_PROFILE_IMAGE_SIZE,
+	DISPENSARY_PROFILE_IMAGE_SIZE_MEDIUM,
+	DISPENSARY_PROFILE_IMAGE_SIZE_LARGE,
+	DISPENSARY_TABS,
+	STRAIN_IMAGE_SIZE,
+	STRAIN_IMAGE_SIZE_LARGE,
+	STRAIN_IMAGE_SIZE_MEDIUM,
+	STRAIN_IMAGE_SIZE_THUMB,
+	STRAIN_FINDER_IMAGE_SIZE,
+	STRAIN_SCORES_TYPES,
+	EVENT_TYPES,
+	FIREBASE,
+	LOGIN_FLAG_STORAGE,
+	PATH_HISTORY_STORAGE,
+	NODE_TYPES,
+	PROFILE_IMAGE_SIZE,
+	PROFILE_IMAGE_THUMB_SIZE,
+	PROFILE_IMAGE_TYPES,
+	TRACKING_ACTIONS,
+	USER_ROLES,
+}
