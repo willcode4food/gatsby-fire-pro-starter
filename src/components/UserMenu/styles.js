@@ -6,7 +6,8 @@ export const NavWrapper = styled.div`
 	${MQ.L} {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+		justify-content: center;
+		padding-left: ${SPACERS.M};
 	}
 `
 export const NavBox = styled.div`

@@ -9,11 +9,18 @@ import Breadcrumbs from 'components/Breadcrumbs'
 import HamburgerArrow from './HamburgerArrow'
 import ThemeToggle from 'components/ThemeToggle'
 import { SessionContext } from 'components/AuthContext'
-import { StickyNav, HeaderBar, BreadcrumbsWrapper, LogoWrapper, HeaderBox, HeaderIconBox } from './styles'
+import { StickyNav,
+	HeaderBar,
+	BreadcrumbsWrapper,
+	LogoWrapper,
+	HeaderBox,
+	HeaderIconBoxCentered,
+	HeaderIconBox
+} from './styles'
+
 const Header = ({
 	resetDrawer,
 	location,
-	isDisplayingSearch = true,
 	isShowingBreadcrumbs = true,
 	isShowingAccountLink = false,
 	toggleNav,
@@ -43,15 +50,10 @@ const Header = ({
 								align-items: center;
 								flex-direction: row;
 							`}>
-								{isDisplayingSearch && (
-									<HeaderIconBox>
-										
-									</HeaderIconBox>
-								)}
 								{isShowingAccountLink && (
-									<HeaderIconBox alignSelf={`center`}>
+									<HeaderIconBoxCentered>
 										<AccountLink />
-									</HeaderIconBox>
+									</HeaderIconBoxCentered>
 								)}
 								<HeaderIconBox>
 									<ThemeToggle />

@@ -50,3 +50,7 @@ export const HeaderBox = styled.div`
 export const HeaderIconBox = styled.div`
 	padding: ${SPACERS.S};
 `
+export const HeaderIconBoxCentered = styled.div`
+	padding: ${SPACERS.S};
+	align-self: center;
+`
