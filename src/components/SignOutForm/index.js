@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, navigate } from 'gatsby'
 import { unsetLoginFlag } from 'utils/formHelpers'
 import { authActions } from 'firebaseActions'
+import { css } from '@emotion/core'
 
 const handleClick = async e => {
 	e.preventDefault()
@@ -12,7 +13,9 @@ const handleClick = async e => {
 
 const SignOutButton = () => {
 	return (
-		<Link onClick={handleClick} to="/login">
+		<Link css={css`
+			text-transform: uppercase;
+		`} onClick={handleClick} to="/login">
 			Sign Out
 		</Link>
 	)

@@ -6,6 +6,7 @@ import { BreakpointProvider } from 'react-socks'
 import { SessionHandler } from 'components/Session'
 import WithAuthentication from 'components/Session/WithAuthentication'
 import WithCookies from 'components/Session/WithCookies'
+import 'typeface-fjalla-one'
 
 setDefaultBreakpoints(Object.keys(BREAKPOINTS_VALUES).map((value) => ({ [value]: BREAKPOINTS_VALUES[value] })))
 

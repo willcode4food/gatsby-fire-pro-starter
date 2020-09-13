@@ -16,12 +16,14 @@ export default function HTML(props) {
 				<Global
 					styles={css`
 						body {
+							font-family: 'Fjalla One';
 							background-color: ${COLORS.WHITE};
 							transition: all 0.5s;
 							margin: 0px;
 						}
 
 						body.dark {
+							font-family: 'Fjalla One';
 							background-color: ${COLORS.BLACK};
 							color: #fff;
 							margin: 0px;
