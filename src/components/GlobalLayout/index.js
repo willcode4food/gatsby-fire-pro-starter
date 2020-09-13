@@ -7,7 +7,6 @@ import { css, Global } from '@emotion/core'
 import { BREAKPOINTS_VALUES, COLORS, MQ } from 'utils/styleHelpers'
 import Header from 'components/Header'
 import NavDrawer from 'components/NavDrawer'
-import VerifyAgeModal from 'components/VerifyAgeModal'
 import Footer from 'components/Footer'
 import SEO from 'components/SEO'
 
@@ -108,7 +107,6 @@ function GlobalLayout({
                 toggleSearch={toggleSearch}
             />
             <SEO pathname={pathname} title={pageTitle} />
-            <VerifyAgeModal hasAgeVerified={isAgeModalOverriden} />
             <Body
                 backgroundColor={backgroundColor}
                 isDisplayingSearch={isDisplayingSearch}
