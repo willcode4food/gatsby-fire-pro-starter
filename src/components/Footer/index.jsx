@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { COLORS, SPACERS, FONT_SIZES, MQ } from 'utils/styleHelpers'
 import SocialLinks from 'components/SocialLinks'
-import WeedraterLogo from 'components/Header/WeedRaterLogo'
+import Logo from 'components/Header/Logo'
 import { Breakpoint } from 'react-socks'
 import { FooterHeader, LogoWrapper, CopyrightText } from './styles'
 
@@ -75,7 +75,7 @@ const Footer = () => {
 						`}
 					>
 						<LogoWrapper>
-							<WeedraterLogo color={COLORS.WHITE} textColor={COLORS.WHITE} />
+							<Logo color={COLORS.WHITE} textColor={COLORS.WHITE} />
 						</LogoWrapper>
 					</div>
 

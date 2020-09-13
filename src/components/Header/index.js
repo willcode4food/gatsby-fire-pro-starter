@@ -3,7 +3,7 @@ import { func, bool, object } from 'prop-types'
 import { Link } from 'gatsby'
 import UserMenu from 'components/UserMenu'
 import { css } from '@emotion/core'
-import WeedRaterLogo from './WeedRaterLogo'
+import Logo from './Logo'
 import AccountLink from 'components/AccountLink'
 import Breadcrumbs from 'components/Breadcrumbs'
 import HamburgerArrow from './HamburgerArrow'
@@ -17,7 +17,6 @@ const Header = ({
 	isShowingBreadcrumbs = true,
 	isShowingAccountLink = false,
 	toggleNav,
-	toggleSearch,
 }) => {
 	const { uid, sessionID } = useContext(SessionContext)
 	return (
@@ -32,13 +31,14 @@ const Header = ({
 					<HeaderBox onClick={resetDrawer}>
 						<LogoWrapper>
 							<Link to="/">
-								<WeedRaterLogo />
+								<Logo />
 							</Link>
 						</LogoWrapper>
 					</HeaderBox>
 					<HeaderBox>
-						<span>
+						<div>
 							<div css={css`
+								display: flex;
 								justify-content: flex-end;
 								align-items: center;
 								flex-direction: row;
@@ -57,12 +57,12 @@ const Header = ({
 									<ThemeToggle />
 								</HeaderIconBox>
 								{sessionID && (
-									<div>
+									<HeaderIconBox>
 										<UserMenu sessionID={sessionID} uid={uid} pathname={location.pathname} />
-									</div>
+									</HeaderIconBox>
 								)}
 							</div>
-						</span>
+						</div>
 					</HeaderBox>
 				</HeaderBar>
 			</div>

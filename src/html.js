@@ -18,11 +18,13 @@ export default function HTML(props) {
 						body {
 							background-color: ${COLORS.WHITE};
 							transition: all 0.5s;
+							margin: 0px;
 						}
 
 						body.dark {
 							background-color: ${COLORS.BLACK};
 							color: #fff;
+							margin: 0px;
 						}
 					`}
 				/>

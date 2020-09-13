@@ -16,6 +16,7 @@ export const StickyNav = styled.div`
 
 export const HeaderBar = styled.header`
 	display: flex;
+	justify-content: space-between;
 	padding: 15px;
 	${MQ.L} {
 		padding: 15px;
@@ -32,16 +33,12 @@ export const BreadcrumbsWrapper = styled.div`
 	}
 `
 
-export const LogoWrapper = styled.span`
-	height: 80px;
-	width: 160px;
+export const LogoWrapper = styled.div`
 `
 // https://stackoverflow.com/questions/32378953/keep-the-middle-item-centered-when-side-items-have-different-widths
 export const HeaderBox = styled.div`
 	align-items: center;
 	display: flex;
-	flex: 1;
-	height: 40px;
 	justify-content: center;
 	:first-of-type > span {
 		margin-right: auto;

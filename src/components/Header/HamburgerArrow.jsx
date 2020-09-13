@@ -48,7 +48,6 @@ const hamburgerRow = css`
 	transition-property: transform;
 	transition-timing-function: ease;
 	width: 20px;
-
 	.dark & {
 		background-color: ${COLORS.WHITE};
 		transition: background-color 0.5s;
@@ -72,7 +71,7 @@ const HamburgerInner = styled.span`
 		${hamburgerRow};
 		content: '';
 		display: block;
-		bottom: -5px;
+		bottom: -6px;
 	}
 `
 

@@ -9,15 +9,16 @@ module.exports = {
 			resolve: `gatsby-plugin-alias-imports`,
 			options: {
 				alias: {
-					'components': 'src/components',
-					'utils': 'src/utils',
-					'hooks': 'src/hooks',
-					'firebaseActions': 'src/firebase'
+					components: 'src/components',
+					utils: 'src/utils',
+					hooks: 'src/hooks',
+					firebaseActions: 'src/firebase',
 				},
 				extensions: ['js'],
 			},
 		},
 		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-emotion`,
 		// {
 		//   resolve: `gatsby-source-filesystem`,
 		//   options: {
