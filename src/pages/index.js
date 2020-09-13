@@ -208,8 +208,8 @@ function IndexPage({ data, location }) {
 							css={css`
 								display: flex;
 								padding-bottom: ${SPACERS.M};
+								justify-content: space-around;
 							`}
-							justifyContent="space-around"
 						>
                             temp
 						</div>
