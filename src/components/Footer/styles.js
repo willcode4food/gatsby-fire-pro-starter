@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { COLORS, SPACERS, FONT_SIZES, MQ } from 'utils/styleHelpers'
+import { COLORS, SPACERS, FONT_SIZES } from 'utils/styleHelpers'
 import { Link } from 'gatsby'
 
 export const FooterHeader = styled.div`

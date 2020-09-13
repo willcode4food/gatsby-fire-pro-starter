@@ -58,15 +58,7 @@ const TRACKING_ACTIONS = {
 
 const LOGIN_FLAG_STORAGE = 'isLogginIn'
 const PATH_HISTORY_STORAGE = 'previousPath'
-const NODE_TYPES = {
-	DISPENSARIES: 'dispensaries',
-	EMPLOYEES: 'employees',
-	INVENTORY: 'inventory',
-	STRAINS: 'strains',
-	CONCENTRATE: 'concentrate',
-	EDIBLE: 'edible',
-	FLOWER: 'flower',
-}
+
 const USER_ROLES = {
 	ADMIN: 'admin',
 	REVIEWER: 'reviewer',
@@ -101,7 +93,6 @@ module.exports = {
 	FIREBASE,
 	LOGIN_FLAG_STORAGE,
 	PATH_HISTORY_STORAGE,
-	NODE_TYPES,
 	PROFILE_IMAGE_SIZE,
 	PROFILE_IMAGE_THUMB_SIZE,
 	PROFILE_IMAGE_TYPES,

@@ -12,18 +12,16 @@ function SessionHandler({ children }) {
 	return (
 		<SessionContext.Provider
 			value={{
+				addCookie,
+				ageVerified,
 				authUser,
-				ageVerified,
-				sessionID: !isLoading ? sessionID : null,
-				addCookie,
-				uid: authUser.uid,
-				userIp: ip,
-				version,
 				roles,
-				ageVerified,
-				addCookie,
-				userLocation: userLocation.length > 0 ? userLocation.toString() : null,
+				sessionID: !isLoading ? sessionID : null,
 				setUserLocation,
+				version,
+				uid: authUser.uid,
+				userLocation: userLocation.length > 0 ? userLocation.toString() : null,
+				userIp: ip,
 			}}
 		>
 			{children}
