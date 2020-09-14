@@ -13,6 +13,7 @@ module.exports = {
 					utils: 'src/utils',
 					hooks: 'src/hooks',
 					firebaseActions: 'src/firebase',
+					templates: "src/templates"
 				},
 				extensions: ['js'],
 			},
