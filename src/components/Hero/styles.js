@@ -21,18 +21,17 @@ export const HeroWrapper = styled.div`
 export const SearchPositionCentered = styled.div`
 	width: 100%;
 `
-
-export const WelcomeMessage = styled.div`
+export const WelcomeMessageWrapper = styled.div`
 	color: #fff;
-	margin-bottom: 20px;
-
-	h1 {
-		border: none;
-		font-size: ${FONT_SIZES.H1};
-		margin-top: 0px;
-	}
-
-	h3 {
-		font-size: ${FONT_SIZES.H3};
-	}
+    margin-bottom: 20px;
+`
+export const WelcomeMessageTitle = styled.h1`
+	border: none;
+	font-size: 5rem;
+	margin-top: 0px;
+`
+export const WelcomeMessageSubTitle = styled.h3`
+	border: none;
+	font-size: 3rem;
+	margin-top: 0px;
 `

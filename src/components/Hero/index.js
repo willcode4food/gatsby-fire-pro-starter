@@ -2,19 +2,20 @@ import React from 'react'
 import { Breakpoint } from 'react-socks'
 import {
 	HeroWrapper,
-	SearchPositionCentered,
-	WelcomeMessage
+	WelcomeMessageWrapper,
+	WelcomeMessageTitle,
+	WelcomeMessageSubTitle,
 } from './styles'
 
 function Hero() {
 	return (
 		<HeroWrapper>
-			<WelcomeMessage>
-				<h1>Welcome</h1>
-				<h3>
-					<p>Discover New Products</p>
-				</h3>
-			</WelcomeMessage>
+			<WelcomeMessageWrapper>
+				<WelcomeMessageTitle>Welcome</WelcomeMessageTitle>
+				<WelcomeMessageSubTitle>
+					We're going to change the world!
+				</WelcomeMessageSubTitle>
+			</WelcomeMessageWrapper>
 		</HeroWrapper>
 	)
 }
