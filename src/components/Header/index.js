@@ -14,7 +14,6 @@ import { StickyNav,
 	BreadcrumbsWrapper,
 	LogoWrapper,
 	HeaderBox,
-	HeaderBoxUserMenu,
 	HeaderIconBoxCentered,
 	HeaderIconBox
 } from './styles'

@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import GlobalLayout from 'components/GlobalLayout'
-import { PrimaryButtonLink, PrimaryButtonAnchor } from 'components/PrimaryButton'
 import { COLORS } from 'utils/styleHelpers'
 import FrontDoor from 'templates/FrontDoor'
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Breakpoint } from 'react-socks'
 import {
 	HeroWrapper,
 	WelcomeMessageWrapper,

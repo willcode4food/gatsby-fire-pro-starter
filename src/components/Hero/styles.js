@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { COLORS, FONT_SIZES, MQ } from 'utils/styleHelpers'
+import { COLORS, MQ } from 'utils/styleHelpers'
 
 export const HeroWrapper = styled.div`
     align-items: center;
