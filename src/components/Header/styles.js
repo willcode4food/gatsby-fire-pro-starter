@@ -16,12 +16,33 @@ export const StickyNav = styled.div`
 
 export const HeaderBar = styled.header`
 	display: flex;
-	justify-content: space-between;
 	padding: 15px;
 	${MQ.L} {
 		padding: 15px;
 	}
 `
+// https://stackoverflow.com/questions/32378953/keep-the-middle-item-centered-when-side-items-have-different-widths
+export const HeaderBox = styled.div`
+	align-self: center;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	:first-of-type > span {
+		margin-right: auto;
+	}
+	:last-of-type > span {
+		margin-left: auto;
+	}
+`
+
+export const HeaderIconBox = styled.div`
+	padding: ${SPACERS.S};
+`
+export const HeaderIconBoxCentered = styled.div`
+	padding: ${SPACERS.S};
+	align-self: center;
+`
+
 
 export const BreadcrumbsWrapper = styled.div`
 	background: ${COLORS.WHITE};
@@ -34,23 +55,4 @@ export const BreadcrumbsWrapper = styled.div`
 `
 
 export const LogoWrapper = styled.div`
-`
-// https://stackoverflow.com/questions/32378953/keep-the-middle-item-centered-when-side-items-have-different-widths
-export const HeaderBox = styled.div`
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	:first-of-type > span {
-		margin-right: auto;
-	}
-	:last-of-type > span {
-		margin-left: auto;
-	}
-`
-export const HeaderIconBox = styled.div`
-	padding: ${SPACERS.S};
-`
-export const HeaderIconBoxCentered = styled.div`
-	padding: ${SPACERS.S};
-	align-self: center;
 `

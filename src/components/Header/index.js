@@ -14,6 +14,7 @@ import { StickyNav,
 	BreadcrumbsWrapper,
 	LogoWrapper,
 	HeaderBox,
+	HeaderBoxUserMenu,
 	HeaderIconBoxCentered,
 	HeaderIconBox
 } from './styles'
@@ -43,13 +44,15 @@ const Header = ({
 						</LogoWrapper>
 					</HeaderBox>
 					<HeaderBox>
-						<div>
-							<div css={css`
-								display: flex;
-								justify-content: flex-end;
-								align-items: center;
-								flex-direction: row;
-							`}>
+						<span>
+							<div
+								css={css`
+									display: flex;
+									justify-content: flex-end;
+									align-items: center;
+									flex-direction: row;
+								`}
+							>
 								{isShowingAccountLink && (
 									<HeaderIconBoxCentered>
 										<AccountLink />
@@ -64,15 +67,17 @@ const Header = ({
 									</HeaderIconBox>
 								)}
 							</div>
-						</div>
+						</span>
 					</HeaderBox>
 				</HeaderBar>
 			</div>
 			{isShowingBreadcrumbs && (
 				<div>
-					<div css={css`
-						display: flex;
-					`}>
+					<div
+						css={css`
+							display: flex;
+						`}
+					>
 						<BreadcrumbsWrapper>
 							<Breadcrumbs location={location} />
 						</BreadcrumbsWrapper>
