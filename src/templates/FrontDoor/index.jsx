@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Hero from 'components/Hero'
-import { css } from '@emotion/core'
 import {
 	FrontDoorWrapper,
 	ContentBoxCta,
@@ -18,8 +17,7 @@ import {
 	CarouselHeader,
 	ContentValuePropContent,
 } from './styles'
-import { Breakpoint } from 'react-socks'
-import { MQ, SPACERS, COLORS, FONT_SIZES } from 'utils/styleHelpers'
+import { COLORS, FONT_SIZES } from 'utils/styleHelpers'
 import { PrimaryButtonLink, PrimaryButtonAnchor } from 'components/PrimaryButton'
 
 function FrontDoor({ data, location }) {
