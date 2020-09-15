@@ -5,15 +5,15 @@ import {
 	FrontDoorWrapper,
 	ContentBoxCta,
 	ContentBanner,
-	ContentBannerWrapper,
 	ContentBannerBox,
-	ContentBannerButtonWrapper,
 	ContentBannerButtonBox,
+	ContentBannerButtonWrapper,
 	ContentBannerMessage,
+	ContentBannerWrapper,
 	ContentValueProp,
 	ContentValuePropBox,
-	ContentValuePropHeader,
 	ContentValuePropContent,
+	ContentValuePropHeader,
 } from './styles'
 import { COLORS, FONT_SIZES } from 'utils/styleHelpers'
 import { PrimaryButtonLink, PrimaryButtonAnchor } from 'components/PrimaryButton'
