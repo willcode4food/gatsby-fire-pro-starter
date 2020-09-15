@@ -12,9 +12,7 @@ import {
 	ContentBannerMessage,
 	ContentValueProp,
 	ContentValuePropBox,
-	IconBox,
 	ContentValuePropHeader,
-	CarouselHeader,
 	ContentValuePropContent,
 } from './styles'
 import { COLORS, FONT_SIZES } from 'utils/styleHelpers'
