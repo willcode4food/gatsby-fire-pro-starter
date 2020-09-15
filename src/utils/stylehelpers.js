@@ -9,7 +9,7 @@ const COLORS = {
 	PALE_GREEN: '#edfff7',
 	// green decided by this article https://www.wealthsimple.com/en-us/magazine/money-diary-weed-entrepreneur
 	LIGHT_GRAY: '#F3F3F3',
-	SUPER_LIGHT_GRAY: '#fcfcfc',
+	SUPER_LIGHT_GRAY: '#ededed',
 	MEDIUM_LIGHT_GRAY: '#C4C8D8',
 	PURPLE: '#32023e',
 	RED: '#FF1647',

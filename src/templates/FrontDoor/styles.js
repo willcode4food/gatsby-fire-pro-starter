@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { MQ, SPACERS, COLORS, FONT_SIZES } from 'utils/styleHelpers'
 
 
-export const ContentWrapper = styled.div`
+export const FrontDoorWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -12,10 +12,13 @@ export const ContentWrapper = styled.div`
 		flex-wrap: nowrap;
 	}
 `
-export const ContentBoxCTA = styled.div`
+
+export const ContentBoxCta = styled.div`
 	display: ${({ isHidden }) => (isHidden.length > 1 && isHidden[0] ? 'none' : 'inline')};
 	background-color: ${({ color }) => color || COLORS.SUPER_LIGHT_GRAY};
 	box-shadow: ${({ boxShadow }) => (boxShadow ? '-1px 9px 18px - 7px rgba(0, 0, 0, 0.75)' : 'none')};
+	flex-grow: auto;
+	flex-basis: auto;
 	transition: background-color 0.5s, box-shadow 0.5s;
 	padding-top: ${SPACERS.XL};
 	padding-right: ${SPACERS.L};
@@ -28,6 +31,8 @@ export const ContentBoxCTA = styled.div`
 			padding-top: ${SPACERS.L};
 			padding-bottom: ${SPACERS.L};
 			box-shadow: none;
+			flex-grow: 1;
+			flex-basis: 0;
 		}
 	}
 	${MQ.L} {
@@ -35,7 +40,46 @@ export const ContentBoxCTA = styled.div`
 		padding-bottom: ${SPACERS.L};
 		display: ${({ isHidden }) => (isHidden.length > 1 && isHidden[1] ? 'none' : 'inline')};
 		box-shadow: none;
+		flex-grow: 1;
+		flex-basis: 0;
 	}
+`
+export const ContentBanner = styled.div`
+	background: ${COLORS.GREEN};
+	padding: ${SPACERS.L};
+`
+export const ContentBannerWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	${MQ.L} {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+`
+export const ContentBannerBox = styled.div`
+	padding-bottom: ${SPACERS.M};
+	padding-right: ${SPACERS.M};
+	padding-left: ${SPACERS.M};
+`
+
+export const ContentBannerMessage = styled.span`
+	font-size: ${FONT_SIZES.H3};
+	color: ${COLORS.WHITE};
+	${MQ.L} {
+		font-size: ${FONT_SIZES.H1};
+		font-weight: 600;
+	}
+`
+
+export const ContentBannerButtonWrapper = styled.div`
+	display: flex;
+	justify-content: space-around;
+`
+
+export const ContentBannerButtonBox = styled.div`
+	margin: ${SPACERS.S};
 `
 
 export const ContentValueProp = styled.div`
@@ -49,7 +93,6 @@ export const ContentValueProp = styled.div`
 		justify-content: flex-start;
 		align-items: space-between;
 		margin: auto;
-		height: 300px;
 	}
 `
 export const ContentValuePropBox = styled.div`

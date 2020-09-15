@@ -14,7 +14,7 @@ const PathThemeAware = styled.path`
 `
 
 const Logo = ({ width = `100%`, height = `100%`, color = COLORS.GREEN, textColor = '#231f20' }) => (
-	<svg width={width} height={height} viewBox="0 0 320 45.28847776143346" class="css-1j8o68f">
+	<svg width={width} height={height} viewBox="0 0 320 45.28847776143346" className="css-1j8o68f">
 		<defs id="SvgjsDefs1404"></defs>
 		<g
 			id="SvgjsG1405"
