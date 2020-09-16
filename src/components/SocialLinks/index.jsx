@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const SocialLink = styled.a`
 	color: #fff;
-	font-size: 30px;
+	font-size: 35px;
 	transition: 0.3s;
 	margin-right: ${SPACERS.M};
 	&:hover {

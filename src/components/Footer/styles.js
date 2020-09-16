@@ -28,6 +28,7 @@ export const FooterWrapperBox = styled.div`
 export const FooterContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 `
 
 export const FooterContentBoxLogo = styled.div`
@@ -40,7 +41,6 @@ export const FooterContentBoxLogo = styled.div`
 `
 
 export const FooterContentBoxTermsAndPolicy = styled.div`
-	margin-left: ${SPACERS.M};
 	font-size: ${FONT_SIZES.H7};
 	color: ${COLORS.GREEN};
 `
@@ -49,6 +49,10 @@ export const FooterContentCopyrightWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	margin: ${SPACERS.M};
+`
+
+export const FooterSocialLinksWrapper = styled.div`
 	margin: ${SPACERS.M};
 `
 
@@ -64,7 +68,7 @@ export const FooterLink = styled(Link)`
 	font-size: ${FONT_SIZES.H5};
 `
 export const CopyrightText = styled.p`
-	color: ${COLORS.MEDIUM_GRAY};
+	color: ${COLORS.MEDIUM_LIGHT_GRAY};
 	font-size: ${FONT_SIZES.H8};
 	margin: 0;
 `
