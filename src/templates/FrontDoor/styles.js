@@ -83,15 +83,16 @@ export const ContentBannerButtonBox = styled.div`
 `
 
 export const ContentValueProp = styled.div`
-	display: flex;
-	width: 100%;
-	padding: ${SPACERS.S};
-	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	display: flex;
+	flex-direction: column;
+	padding: ${SPACERS.S};
+	justify-content: center;
+	height: 400px;
+	width: 100%;
 	${MQ.L} {
-		justify-content: flex-start;
-		align-items: space-between;
+		align-items: center;
+		justify-content: center;
 		margin: auto;
 	}
 `
