@@ -25,42 +25,46 @@ export default function HTML(props) {
 						body.dark {
 							font-family: 'Fjalla One';
 							background-color: ${COLORS.BLACK};
-							color: #fff;
+							color: ${COLORS.WHITE};
 							margin: 0px;
+						}
+						a {
+							color: ${COLORS.GREEN};
+							text-decoration: none;
 						}
 					`}
 				/>
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `
-              (function() {
-                window.__onThemeChange = function() {};
-                function setTheme(newTheme) {
-                  window.__theme = newTheme;
-                  preferredTheme = newTheme;
-                  document.body.className = newTheme;
-                  window.__onThemeChange(newTheme);
-                }
+								(function() {
+									window.__onThemeChange = function() {};
+									function setTheme(newTheme) {
+									window.__theme = newTheme;
+									preferredTheme = newTheme;
+									document.body.className = newTheme;
+									window.__onThemeChange(newTheme);
+									}
 
-                var preferredTheme;
-                try {
-                  preferredTheme = localStorage.getItem('theme');
-                } catch (err) { }
+									var preferredTheme;
+									try {
+									preferredTheme = localStorage.getItem('theme');
+									} catch (err) { }
 
-                window.__setPreferredTheme = function(newTheme) {
-                  setTheme(newTheme);
-                  try {
-                    localStorage.setItem('theme', newTheme);
-                  } catch (err) {}
-                }
+									window.__setPreferredTheme = function(newTheme) {
+									setTheme(newTheme);
+									try {
+										localStorage.setItem('theme', newTheme);
+									} catch (err) {}
+									}
 
-                var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                darkQuery.addListener(function(e) {
-                  window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-                });
+									var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+									darkQuery.addListener(function(e) {
+									window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+									});
 
-                setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-              })();
+									setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+								})();
             `,
 					}}
 				/>
