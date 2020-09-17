@@ -23,9 +23,10 @@ export const FooterLogoWrapper = styled.div`
 `
 
 export const FooterWrapperBox = styled.div`
-	width: 20%;
+	width: 15%;
 `
 export const FooterContentWrapper = styled.div`
+	justify-content: flex-start;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
