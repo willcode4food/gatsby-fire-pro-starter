@@ -71,7 +71,7 @@ const HamburgerInner = styled.span`
 		${hamburgerRow};
 		content: '';
 		display: block;
-		bottom: -6px;
+		bottom: -5px;
 	}
 `
 
