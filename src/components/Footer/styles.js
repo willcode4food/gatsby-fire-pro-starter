@@ -23,7 +23,9 @@ export const FooterLogoWrapper = styled.div`
 `
 
 export const FooterWrapperBox = styled.div`
-	width: 15%;
+	${MQ.L} {
+		width: 15%;
+	}
 `
 export const FooterContentWrapper = styled.div`
 	justify-content: flex-start;
@@ -48,13 +50,19 @@ export const FooterContentBoxTermsAndPolicy = styled.div`
 
 export const FooterContentCopyrightWrapper = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 	margin: ${SPACERS.M};
+	${MQ.L} {
+		flex-direction: row;
+	}
 `
 
 export const FooterSocialLinksWrapper = styled.div`
 	margin: ${SPACERS.M};
+`
+export const FooterSocialLinksMobileWrapper = styled.div`
+	margin-bottom: ${SPACERS.M};
 `
 
 export const FooterLinkBox = styled.div`

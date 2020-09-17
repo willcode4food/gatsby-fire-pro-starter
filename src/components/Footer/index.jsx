@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { COLORS } from 'utils/styleHelpers'
 import SocialLinks from 'components/SocialLinks'
-import { css } from '@emotion/core'
 import Logo from 'components/Header/Logo'
 import { Breakpoint } from 'react-socks'
 import {
@@ -12,6 +11,7 @@ import {
 	FooterContentBoxTermsAndPolicy,
 	FooterContentCopyrightWrapper,
 	FooterLogoWrapper,
+	FooterSocialLinksMobileWrapper,
 	FooterSocialLinksWrapper,
 	FooterWrapper,
 	FooterWrapperBox,
@@ -38,14 +38,14 @@ const Footer = () => {
 					</FooterContentBoxTermsAndPolicy>
 					<div>
 						<FooterContentCopyrightWrapper>
+							<Breakpoint S down>
+								<FooterSocialLinksMobileWrapper>
+									<SocialLinks />
+								</FooterSocialLinksMobileWrapper>
+							</Breakpoint>
 							<div>
 								<CopyrightText>Copyright 2020 All Rights Researved</CopyrightText>
 							</div>
-							<Breakpoint S down>
-								<div>
-									<SocialLinks />
-								</div>
-							</Breakpoint>
 						</FooterContentCopyrightWrapper>
 					</div>
 				</FooterContentWrapper>
