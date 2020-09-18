@@ -1,34 +1,8 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { Link } from 'gatsby'
-import styled from '@emotion/styled'
-import { css } from '@emotion/core'
-import { SPACERS, FONT_SIZES, MQ } from 'utils/styleHelpers'
+import { BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbItemPadding } from './styles'
 
-const BreadcrumbList = styled.ul`
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-`
-const BreadcrumbItem = styled.li`
-	float: left;
-	font-size: ${FONT_SIZES.H7};
-	text-transform: uppercase;
-	text-align: center;
-	text-decoration: none;
-	${MQ.L} {
-		font-size: ${FONT_SIZES.H5};
-	}
-	${MQ.M} {
-		font-size: ${FONT_SIZES.H5};
-	}
-`
-const BreadcrumbLink = styled(Link)`
-	padding-left: ${SPACERS.M};
-	padding-right: ${SPACERS.M};
-`
 
 const Breadcrumbs = ({ location }) => {
 	const { pathname, origin } = location
@@ -82,14 +56,7 @@ const Breadcrumbs = ({ location }) => {
 				{isNaN(crumb) && (
 					// eslint-disable-next-line react/no-array-index-key
 					<BreadcrumbItem>
-						<span
-							css={css`
-								padding-left: ${SPACERS.M};
-								padding-right: ${SPACERS.M};
-							`}
-						>
-							{crumb.replace(/-/g, ' ')}
-						</span>
+						<BreadcrumbItemPadding>{crumb.replace(/-/g, ' ')}</BreadcrumbItemPadding>
 					</BreadcrumbItem>
 				)}
 			</React.Fragment>

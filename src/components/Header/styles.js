@@ -56,3 +56,26 @@ export const BreadcrumbsWrapper = styled.div`
 
 export const LogoWrapper = styled.div`
 `
+
+export const PathThemeAware = styled.path`
+	fill: ${({ textColor }) => textColor};
+	transition: fill 1.5s;
+	.dark & {
+		fill: #fff;
+	}
+`
+
+export const SearchWrapper = styled.div`
+	height: auto;
+	padding: 0px;
+	width: 40px;
+	svg {
+		fill: ${COLORS.MEDIUM_LIGHT_GRAY};
+		transition: fill 0.5s;
+	}
+	.dark & {
+		svg {
+			fill: ${COLORS.MEDIUM_LIGHT_GRAY};
+		}
+	}
+`

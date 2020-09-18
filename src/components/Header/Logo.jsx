@@ -2,16 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { COLORS } from 'utils/styleHelpers'
-import styled from '@emotion/styled'
-
-// OMG I CAN'T EVEN BELIEVE THIS WORKS!!! SO DOOOOOOPE #emotion #react #svg FTMFW
-const PathThemeAware = styled.path`
-	fill: ${({ textColor }) => textColor};
-	transition: fill 1.5s;
-	.dark & {
-		fill: #fff;
-	}
-`
+import { PathThemeAware } from './styles'
 
 const Logo = ({ width = `100%`, height = `100%`, color = COLORS.GREEN, textColor = '#231f20' }) => (
 	<svg width={width} height={height} viewBox="0 0 320 45.28847776143346" className="css-1j8o68f">

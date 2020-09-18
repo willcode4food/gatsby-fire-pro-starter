@@ -1,34 +1,14 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-// @todo replace with SEO header
 import { Helmet } from 'react-helmet'
-import styled from '@emotion/styled'
 import { css, Global } from '@emotion/core'
-import { BREAKPOINTS_VALUES, COLORS, MQ } from 'utils/styleHelpers'
+import { COLORS } from 'utils/styleHelpers'
 import Header from 'components/Header'
 import NavDrawer from 'components/NavDrawer'
 import Footer from 'components/Footer'
 import SEO from 'components/SEO'
+import { Body } from './styles'
 
-const mainColumn = css`
-	margin: 0 auto;
-	max-width: ${BREAKPOINTS_VALUES.L};
-	${MQ.XL} {
-		max-width: ${BREAKPOINTS_VALUES.XL};
-	}
-`
-const fixedHeight = css`
-	min-height: 500px;
-
-	${MQ.M} {
-		min-height: 900px;
-	}
-`
-
-const Body = styled.main`
-	${({ isDisplayingSearch }) => (isDisplayingSearch ? mainColumn : '')}
-	${({ isShowingFooter }) => isShowingFooter && fixedHeight}
-`
 
 function GlobalLayout({
     backgroundColor,

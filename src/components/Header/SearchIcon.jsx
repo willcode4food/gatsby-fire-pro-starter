@@ -1,22 +1,6 @@
 /* eslint max-len:0 */
 import React from 'react'
-import styled from '@emotion/styled'
-import { COLORS } from 'utils/styleHelpers'
-
-const SearchWrapper = styled.div`
-	height: auto;
-	padding: 0px;
-	width: 40px;
-	svg {
-		fill: ${COLORS.MEDIUM_LIGHT_GRAY};
-		transition: fill 0.5s;
-	}
-	.dark & {
-		svg {
-			fill: ${COLORS.MEDIUM_LIGHT_GRAY};
-		}
-	}
-`
+import { SearchWrapper } from './styles'
 
 const SearchIcon = props => (
 	<SearchWrapper {...props}>

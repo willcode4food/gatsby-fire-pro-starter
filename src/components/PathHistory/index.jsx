@@ -3,17 +3,8 @@ import PropTypes from 'prop-types'
 import { PATH_HISTORY_STORAGE } from 'utils/constants'
 import { Link, navigate } from 'gatsby'
 
-export class PathHistoryLink extends React.PureComponent {
-	static propTypes = {
-		previousUrl: PropTypes.string,
-		to: PropTypes.string,
-		text: PropTypes.string,
-	}
-	static defaultProps = {
-		to: '/login',
-		text: 'Login',
-	}
-	setPreviousPage = () => {
+export const PathHistoryLink = ({ previousUrl,  to = '/login', text = 'Login' }) => {
+	const setPreviousPage = () => {
 		const { previousUrl } = this.props
 		try {
 			if (typeof window !== 'undefined') {
@@ -23,15 +14,20 @@ export class PathHistoryLink extends React.PureComponent {
 			console.log(ex.message)
 		}
 	}
-	render() {
-		const { to, text } = this.props
-		return (
-			<Link to={to} onClick={this.setPreviousPage}>
-				{text}
-			</Link>
-		)
-	}
+	return (
+		<Link to={to} onClick={setPreviousPage}>
+			{text}
+		</Link>
+	)
 }
+
+
+PathHistoryLink.propTypes = {
+	previousUrl: PropTypes.string,
+	to: PropTypes.string,
+	text: PropTypes.string,
+}
+
 export function navigateToPathHistory() {
 	if (typeof window !== 'undefined') {
 		if (typeof window.localStorage !== 'undefined') {
