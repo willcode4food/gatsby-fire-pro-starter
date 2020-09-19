@@ -7,13 +7,13 @@ import { COLORS } from 'utils/styleHelpers'
 import FrontDoor from 'templates/FrontDoor'
 
 function IndexPage({ data, location }) {
-	
 	return (
 		<GlobalLayout
 			isDisplayingSearch={false}
 			location={location}
 			isShowingBreadcrumbs={false}
 			isShowingAccountLink={true}
+			isVerifyAgeModalOverriden={true}
 			backgroundColor={COLORS.LIGHT_GRAY}
 		>
 			<Helmet>
@@ -29,7 +29,7 @@ function IndexPage({ data, location }) {
 				</script>
 			</Helmet>
 			<FrontDoor data={data} location={location} />
-			</GlobalLayout>
+		</GlobalLayout>
 	)
 }
 

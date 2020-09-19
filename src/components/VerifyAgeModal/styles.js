@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { COLORS, SPACERS, MQ } from 'utils/styleHelpers'
+import { COLORS, FONT_SIZES, MQ, SPACERS } from 'utils/styleHelpers'
 
 export const StyledOverlay = styled.div`
 	background: ${COLORS.WHITE};
@@ -36,6 +36,9 @@ export const ModalVerificationBox = styled.div`
 
 export const ModalContentWrapperBox = styled.div`
 	flex-grow: 4;
+`
+export const ModalMessageText = styled.span`
+	font-size: ${FONT_SIZES.H3};
 `
 
 export const ModalMessageWrapper = styled.div`

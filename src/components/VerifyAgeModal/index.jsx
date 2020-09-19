@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { CookieContext } from 'components/AuthContext'
 import propTypes from 'prop-types'
-import { css } from '@emotion/core'
 import moment from 'moment'
 import { PrimaryButton } from 'components/PrimaryButton'
 import {
@@ -11,6 +10,7 @@ import {
 	ModalContentWrapper,
 	ModalContentWrapperBox,
 	ModalMessageWrapper,
+	ModalMessageText,
 	ModalVerificationBox,
 } from './styles'
 import { COLORS } from 'utils/styleHelpers'
@@ -62,14 +62,17 @@ function VerifyAgeModal({ hasAgeVerified }) {
 					<ModalContentWrapperBox>
 						<ModalMessageWrapper>
 							<ModalVerificationBox>
-								<input onChange={onVerifyCheck} type="checkbox" /> I am at least 21 years old and I
-								agree to the&nbsp;
+								<input onChange={onVerifyCheck} type="checkbox" />
+								&nbsp;&nbsp;
+								<ModalMessageText>
+									I am at least 21 years old and I agree to the &nbsp;
+								</ModalMessageText>
 								<a href="/privacy-policy" target="_blank">
-									Privacy Policy
+									<ModalMessageText>Privacy Policy</ModalMessageText>
 								</a>
-								&nbsp;and{' '}
+								<ModalMessageText>&nbsp;and </ModalMessageText>
 								<a href="/terms-of-use" target="_blank">
-									Terms of Use.
+									<ModalMessageText>Terms of Use.</ModalMessageText>
 								</a>
 							</ModalVerificationBox>
 							<ModalVerificationBox>
@@ -78,12 +81,14 @@ function VerifyAgeModal({ hasAgeVerified }) {
 								</PrimaryButton>
 							</ModalVerificationBox>
 							<ModalVerificationBox>
-								We also use cookies to help us deliver a personalized experience and display relevant
-								promotions. By using this website, you agree to our use of cookies. Please take a moment
-								to review our{' '}
-								<a href="/cookie-policy" target="_blank">
-									cookie policy
-								</a>
+								<ModalMessageText>
+									We also use cookies to help us deliver a personalized experience and display
+									relevant promotions. By using this website, you agree to our use of cookies. Please
+									take a moment to review our{' '}
+									<a href="/cookie-policy" target="_blank">
+										cookie policy
+									</a>
+								</ModalMessageText>
 							</ModalVerificationBox>
 						</ModalMessageWrapper>
 					</ModalContentWrapperBox>

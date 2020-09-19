@@ -1,92 +1,42 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
+import { css } from '@emotion/core'
 import { SPACERS, FONT_SIZES, MQ } from 'utils/styleHelpers'
+import { COLORS } from '../../utils/stylehelpers'
 
-export const PrimaryButton = styled.button`
-	border: 1px solid ${({ color }) => color};
-	border-radius: 1px;
-	background: ${({ color }) => color};
-	color: ${({ textColor }) => textColor};
-	font-size: ${({ fontSize = FONT_SIZES.H4 }) => fontSize};
-	padding-top: ${SPACERS.S};
-	padding-bottom: ${SPACERS.S};
+const primaryButtonStyles = ({
+	color = COLORS.RED,
+	fontSize = FONT_SIZES.H4,
+	textColor = COLORS.WHITE,
+	textColorDark = COLORS.WHITE,
+}) => css`
+	border: 1px solid ${color};
+	border-radius: 2px;
+	background: ${color};
+	color: ${textColor};
+	font-size: ${fontSize};
+	font-family: 'Fjalla One';
+	padding-top: ${SPACERS.M};
+	padding-bottom: ${SPACERS.M};
 	padding-right: ${SPACERS.L};
 	padding-left: ${SPACERS.L};
 	width: 100%;
 	&:hover {
-		${({ color }) => color};
+		${color};
 	}
 	.dark & {
-		color: ${({ textColor, textColorDark }) => textColorDark || textColor};
-		background: ${({ color }) => color};
-		border: 1px solid ${({ color }) => color};
-	}
-	${MQ.L} {
-		font-size: ${FONT_SIZES.H7};
-		padding-right: ${SPACERS.L};
-		padding-left: ${SPACERS.L};
+		color: ${textColorDark || textColor};
+		background: ${color};
+		border: 1px solid ${color};
 	}
 `
 
+export const PrimaryButton = styled.button`
+	${({ color, fontSize, textColor, textColorDark }) => primaryButtonStyles({ color, textColor })}
+`
 export const PrimaryButtonLink = styled(Link)`
-			border: 1px solid ${({ color }) => color};
-			border-radius: 3px;
-			background: ${({ color }) => color};
-			color: ${({ textcolor }) => textcolor};
-			font-size: ${({ fontSize = FONT_SIZES.H4 }) => fontSize};
-			padding-top: ${SPACERS.M};
-			padding-bottom: ${SPACERS.M};
-			padding-right: ${({ paddingx = SPACERS.L }) => paddingx};
-			padding-left: ${({ paddingx = SPACERS.L }) => paddingx};
-			width: 100%;
-			text-decoration: none;
-			&:hover {
-				${({ color }) => color};
-			}
-			.dark & {
-				color: ${({ textcolor, textcolorDark }) => textcolorDark || textcolor};
-				background: ${({ color }) => color};
-				border: 1px solid ${({ bordercolordark, color }) => bordercolordark || color};
-			}
-			${MQ.L} {
-				font-size: ${FONT_SIZES.H7};
-				padding-right: ${SPACERS.L};
-				padding-left: ${SPACERS.L};
-			}
-			${MQ.M} {
-				font-size: ${FONT_SIZES.H6};
-				padding-right: ${SPACERS.S};
-				padding-left: ${SPACERS.S};
-			}
-		`
+	${({ color, fontSize, textColor, textColorDark }) => primaryButtonStyles({ color, textColor })}
+`
 export const PrimaryButtonAnchor = styled.a`
-			border: 1px solid ${({ color }) => color};
-			border-radius: 3px;
-			background: ${({ color }) => color};
-			color: ${({ textcolor }) => textcolor};
-			font-size: ${({ fontSize = FONT_SIZES.H4 }) => fontSize};
-			padding-top: ${SPACERS.M};
-			padding-bottom: ${SPACERS.M};
-			padding-right: ${({ paddingx = SPACERS.L }) => paddingx};
-			padding-left: ${({ paddingx = SPACERS.L }) => paddingx};
-			width: 100%;
-			text-decoration: none;
-			&:hover {
-				${({ color }) => color};
-			}
-			.dark & {
-				color: ${({ textcolor, textcolorDark }) => textcolorDark || textcolor};
-				background: ${({ color }) => color};
-				border: 1px solid ${({ color, bordercolordark }) => bordercolordark || color};
-			}
-			${MQ.L} {
-				font-size: ${FONT_SIZES.H1};
-				padding-right: ${SPACERS.L};
-				padding-left: ${SPACERS.L};
-			}
-			${MQ.M} {
-				font-size: ${FONT_SIZES.H6};
-				padding-right: ${SPACERS.S};
-				padding-left: ${SPACERS.S};
-			}
-		`
+	${({ color, fontSize, textColor, textColorDark }) => primaryButtonStyles({ color, textColor })}
+`
