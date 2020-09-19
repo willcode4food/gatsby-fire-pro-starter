@@ -3,8 +3,17 @@ import { CookieContext } from 'components/AuthContext'
 import propTypes from 'prop-types'
 import { css } from '@emotion/core'
 import moment from 'moment'
-
-import { StyledOverlay, OverlayTitle, Blocker } from './styles'
+import { PrimaryButton } from 'components/PrimaryButton'
+import {
+	StyledOverlay,
+	OverlayTitle,
+	Blocker,
+	ModalContentWrapper,
+	ModalContentWrapperBox,
+	ModalMessageWrapper,
+	ModalVerificationBox,
+} from './styles'
+import { COLORS } from 'utils/styleHelpers'
 
 function VerifyAgeModal({ hasAgeVerified }) {
 	const [hasVerified, setHasVerified] = useState(false)
@@ -26,6 +35,7 @@ function VerifyAgeModal({ hasAgeVerified }) {
 	}
 
 	const onVerifySubmit = () => {
+		console.log('onVerifySubmit -> hasVerified', hasVerified)
 		if (!hasVerified) {
 			setError(`Please check the checkbox verifying you agree to the terms.`)
 			return
@@ -45,30 +55,13 @@ function VerifyAgeModal({ hasAgeVerified }) {
 	return (
 		<Blocker>
 			<StyledOverlay onClick={onCancelClick}>
-				<div
-					css={css`
-						display: flex;
-						align-items: center;
-						flex-direction: column;
-						justify-content: center;
-					`}
-				>
+				<ModalContentWrapper>
 					<div>
 						<OverlayTitle>Welcome!</OverlayTitle>
 					</div>
-					<div>
-						<div
-							css={css`
-								display: flex;
-								flex-direction: column;
-								justify-content: center;
-							`}
-						>
-							<div
-								css={css`
-									align-self: center;
-								`}
-							>
+					<ModalContentWrapperBox>
+						<ModalMessageWrapper>
+							<ModalVerificationBox>
 								<input onChange={onVerifyCheck} type="checkbox" /> I am at least 21 years old and I
 								agree to the&nbsp;
 								<a href="/privacy-policy" target="_blank">
@@ -78,36 +71,23 @@ function VerifyAgeModal({ hasAgeVerified }) {
 								<a href="/terms-of-use" target="_blank">
 									Terms of Use.
 								</a>
-							</div>
-							<div
-								css={css`
-									align-self: center;
-								`}
-							>
-								<div
-									css={css`
-										display: flex;
-										justify-content: center;
-									`}
-								>
-									<div alignSelf="center"></div>
-								</div>
-							</div>
-							<div
-								css={css`
-									align-self: center;
-								`}
-							>
+							</ModalVerificationBox>
+							<ModalVerificationBox>
+								<PrimaryButton onClick={onVerifySubmit} color={COLORS.RED} textColor={COLORS.WHITE}>
+									I am of Age
+								</PrimaryButton>
+							</ModalVerificationBox>
+							<ModalVerificationBox>
 								We also use cookies to help us deliver a personalized experience and display relevant
 								promotions. By using this website, you agree to our use of cookies. Please take a moment
 								to review our{' '}
 								<a href="/cookie-policy" target="_blank">
 									cookie policy
 								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+							</ModalVerificationBox>
+						</ModalMessageWrapper>
+					</ModalContentWrapperBox>
+				</ModalContentWrapper>
 			</StyledOverlay>
 		</Blocker>
 	)

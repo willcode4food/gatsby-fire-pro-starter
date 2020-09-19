@@ -7,6 +7,7 @@ import Header from 'components/Header'
 import NavDrawer from 'components/NavDrawer'
 import Footer from 'components/Footer'
 import SEO from 'components/SEO'
+import VerifyAgeModal from 'components/VerifyAgeModal'
 import { Body } from './styles'
 
 
@@ -44,65 +45,66 @@ function GlobalLayout({
         setIsSearchOpen(!isSearchOpen)
     }
     return (
-        <>
-            <Global
-                styles={css`
+		<>
+			<Global
+				styles={css`
 					body {
 						background: ${backgroundColor};
 						transition: background 0.5s;
 					}
 				`}
-            />
-            <Helmet
-                meta={[
-                    {
-                        name: 'viewport',
-                        content: `width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no`,
-                    },
-                    { name: 'description', content: 'Sample' },
-                    { name: 'keywords', content: 'sample, something' },
-                    { name: 'robots', content: 'noindex, nofollow' },
-                    { name: 'theme-color', content: `${COLORS.GREEN}` },
-                    { name: 'google', content: 'notranslate' },
-                    { httpEquiv: 'Content-Language', content: 'en' },
-                    { name: 'apple-mobile-web-app-capable', content: 'yes' },
-                ]}
-                title="WeedRater"
-            >
-                {/* inline style elements */}
-                <style type="text/css">{`
+			/>
+			<Helmet
+				meta={[
+					{
+						name: 'viewport',
+						content: `width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no`,
+					},
+					{ name: 'description', content: 'Sample' },
+					{ name: 'keywords', content: 'sample, something' },
+					{ name: 'robots', content: 'noindex, nofollow' },
+					{ name: 'theme-color', content: `${COLORS.GREEN}` },
+					{ name: 'google', content: 'notranslate' },
+					{ httpEquiv: 'Content-Language', content: 'en' },
+					{ name: 'apple-mobile-web-app-capable', content: 'yes' },
+				]}
+				title="WeedRater"
+			>
+				{/* inline style elements */}
+				<style type="text/css">{`
 							:focus {
 								outline: 0;
 							}
 						`}</style>
-            </Helmet>
-            <Header
-                isDisplayingSearch={isDisplayingSearch}
-                isShowingBreadcrumbs={isShowingBreadcrumbs}
-                isShowingAccountLink={isShowingAccountLink}
-                pathname={pathname}
-                location={location}
-                resetDrawer={resetState}
-                toggleNav={toggleNav}
-                toggleSearch={toggleSearch}
-            />
-            <SEO pathname={pathname} title={pageTitle} />
-            <Body
-                backgroundColor={backgroundColor}
-                isDisplayingSearch={isDisplayingSearch}
-                isShowingFooter={isShowingFooter}
-            >
-                {children}
-            </Body>
-            {isShowingFooter && <Footer />}
-            <NavDrawer
-                isNavOpen={isNavOpen}
-                resetState={resetState}
-                pathname={pathname}
-                isShowingBreadcrumb={isShowingBreadcrumbs}
-            />
-        </>
-    )
+			</Helmet>
+			<Header
+				isDisplayingSearch={isDisplayingSearch}
+				isShowingBreadcrumbs={isShowingBreadcrumbs}
+				isShowingAccountLink={isShowingAccountLink}
+				pathname={pathname}
+				location={location}
+				resetDrawer={resetState}
+				toggleNav={toggleNav}
+				toggleSearch={toggleSearch}
+			/>
+			<SEO pathname={pathname} title={pageTitle} />
+			<VerifyAgeModal hasAgeVerified={isAgeModalOverriden} />
+			<Body
+				backgroundColor={backgroundColor}
+				isDisplayingSearch={isDisplayingSearch}
+				isShowingFooter={isShowingFooter}
+			>
+				{children}
+			</Body>
+			{isShowingFooter && <Footer />}
+			<NavDrawer
+				isNavOpen={isNavOpen}
+				resetState={resetState}
+				pathname={pathname}
+				isShowingBreadcrumb={isShowingBreadcrumbs}
+			/>
+		</>
+	)
 }
 
 GlobalLayout.propTypes = {

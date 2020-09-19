@@ -14,14 +14,42 @@ export const StyledOverlay = styled.div`
 	top: 50%;
 	transform: translate(-50%, -50%);
 	height: calc(80vh - ${SPACERS.HEADER});
-	width: 55vw;
+	width: 70vw;
 	.dark & {
 		background: ${COLORS.MEDIUM_GRAY};
 	}
 	${MQ.L} {
 		height: calc(70vh - ${SPACERS.HEADER});
+		width: 40vw;
 	}
 `
+export const ModalContentWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 80%;
+`
+export const ModalVerificationBox = styled.div`
+	align-self: center;
+`
+
+export const ModalContentWrapperBox = styled.div`
+	flex-grow: 4;
+`
+
+export const ModalMessageWrapper = styled.div`
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
+	${MQ.L} {
+		padding-left: ${SPACERS.L};
+		padding-right: ${SPACERS.L};
+	}
+`
+
 export const OverlayTitle = styled('h2')`
 	text-align: left;
 	text-transform: uppercase;
