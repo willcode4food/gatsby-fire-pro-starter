@@ -10,41 +10,40 @@ import SEO from 'components/SEO'
 import VerifyAgeModal from 'components/VerifyAgeModal'
 import { Body } from './styles'
 
-
 function GlobalLayout({
-    backgroundColor,
-    children,
-    isDisplayingSearch,
-    isShowingFooter = true,
-    isShowingBreadcrumbs = true,
-    isShowingAccountLink = true,
-    isAgeModalOverriden = false,
-    pageTitle,
-    location,
+	backgroundColor,
+	children,
+	isDisplayingSearch,
+	isShowingFooter = true,
+	isShowingBreadcrumbs = true,
+	isShowingAccountLink = true,
+	isVerifyAgeModalOverriden = false,
+	pageTitle,
+	location,
 }) {
-    const [isNavOpen, setIsNavOpen] = useState(false)
-    const [isSearchOpen, setIsSearchOpen] = useState(isDisplayingSearch)
+	const [isNavOpen, setIsNavOpen] = useState(false)
+	const [isSearchOpen, setIsSearchOpen] = useState(isDisplayingSearch)
 
-    const { pathname } = location
-    const resetState = () => {
-        setIsNavOpen(false)
-        setIsSearchOpen(false)
-    }
+	const { pathname } = location
+	const resetState = () => {
+		setIsNavOpen(false)
+		setIsSearchOpen(false)
+	}
 
-    const toggleNav = () => {
-        setIsNavOpen(!isNavOpen)
-        setIsSearchOpen(false)
-    }
+	const toggleNav = () => {
+		setIsNavOpen(!isNavOpen)
+		setIsSearchOpen(false)
+	}
 
-    const toggleSearch = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        })
-        setIsNavOpen(false)
-        setIsSearchOpen(!isSearchOpen)
-    }
-    return (
+	const toggleSearch = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+		setIsNavOpen(false)
+		setIsSearchOpen(!isSearchOpen)
+	}
+	return (
 		<>
 			<Global
 				styles={css`
@@ -68,7 +67,7 @@ function GlobalLayout({
 					{ httpEquiv: 'Content-Language', content: 'en' },
 					{ name: 'apple-mobile-web-app-capable', content: 'yes' },
 				]}
-				title="WeedRater"
+				title="Pond Street Software"
 			>
 				{/* inline style elements */}
 				<style type="text/css">{`
@@ -88,7 +87,7 @@ function GlobalLayout({
 				toggleSearch={toggleSearch}
 			/>
 			<SEO pathname={pathname} title={pageTitle} />
-			<VerifyAgeModal hasAgeVerified={isAgeModalOverriden} />
+			<VerifyAgeModal hasAgeVerified={isVerifyAgeModalOverriden} />
 			<Body
 				backgroundColor={backgroundColor}
 				isDisplayingSearch={isDisplayingSearch}
@@ -108,15 +107,15 @@ function GlobalLayout({
 }
 
 GlobalLayout.propTypes = {
-    backgroundColor: PropTypes.string,
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-    isAgeModalOverriden: PropTypes.bool,
-    isDisplayingSearch: PropTypes.bool,
-    isShowingAccountLink: PropTypes.bool,
-    isShowingBreadcrumbs: PropTypes.bool,
-    isShowingFooter: PropTypes.bool,
-    pageTitle: PropTypes.string,
-    location: PropTypes.object,
+	backgroundColor: PropTypes.string,
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+	isVerifyAgeModalOverriden: PropTypes.bool,
+	isDisplayingSearch: PropTypes.bool,
+	isShowingAccountLink: PropTypes.bool,
+	isShowingBreadcrumbs: PropTypes.bool,
+	isShowingFooter: PropTypes.bool,
+	pageTitle: PropTypes.string,
+	location: PropTypes.object,
 }
 
 export default GlobalLayout
