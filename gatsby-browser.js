@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BREAKPOINTS_VALUES } from 'utils/stylehelpers'
+import { BREAKPOINTS_VALUES } from 'utils/styleHelpers'
 import { setDefaultBreakpoints } from 'react-socks'
 import { BreakpointProvider } from 'react-socks'
 import { SessionHandler } from 'components/Session'
