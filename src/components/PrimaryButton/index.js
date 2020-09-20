@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
-import { SPACERS, FONT_SIZES, MQ } from 'utils/styleHelpers'
-import { COLORS } from '../../utils/stylehelpers'
+import { COLORS, SPACERS, FONT_SIZES } from 'utils/styleHelpers.js'
 
 const primaryButtonStyles = ({
 	color = COLORS.RED,
