@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { COLORS } from 'utils/styleHelpers'
 import { PathThemeAware } from './styles'
 
-const Logo = ({ width = `100%`, height = `100%`, color = COLORS.GREEN, textColor = '#231f20' }) => (
+const Logo = ({ width = `100%`, height = `100%`, color = COLORS.SECONDARY, textColor = '#231f20' }) => (
 	<svg width={width} height={height} viewBox="0 0 320 45.28847776143346" className="css-1j8o68f">
 		<defs id="SvgjsDefs1404"></defs>
 		<g

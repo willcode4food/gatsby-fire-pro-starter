@@ -90,7 +90,7 @@ export const MoonOrSun = styled.div`
 `
 
 export const MoonMask = styled.div`
-	background: ${COLORS.WHITE};
+	background: ${COLORS.PRIMARY};
 	border-radius: 50%;
 	border: 0;
 	height: 19px;
@@ -102,6 +102,6 @@ export const MoonMask = styled.div`
 	transition: background 0.5s ease, transform 0.5s ease;
 	width: 19px;
 	.dark & {
-		background: ${COLORS.BLACK};
+		background: ${COLORS.SECONDARY_DARK};
 	}
 `

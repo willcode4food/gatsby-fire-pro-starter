@@ -1,20 +1,20 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
-import { COLORS, SPACERS, FONT_SIZES } from 'utils/styleHelpers.js'
+import { COLORS, SPACERS, FONT_FAMILY, FONT_SIZES } from 'utils/styleHelpers.js'
 
 const primaryButtonStyles = ({
-	color = COLORS.RED,
+	color = COLORS.PRIMARY_BUTTON,
 	fontSize = FONT_SIZES.H4,
-	textColor = COLORS.WHITE,
-	textColorDark = COLORS.WHITE,
+	textColor = COLORS.PRIMARY,
+	textColorDark = COLORS.PRIMARY,
 }) => css`
 	border: 1px solid ${color};
 	border-radius: 4px;
 	background: ${color};
 	color: ${textColor};
 	font-size: ${fontSize};
-	font-family: 'Fjalla One';
+	font-family: ${FONT_FAMILY};
 	padding-top: ${SPACERS.M};
 	padding-bottom: ${SPACERS.M};
 	padding-right: ${SPACERS.L};
@@ -31,11 +31,14 @@ const primaryButtonStyles = ({
 `
 
 export const PrimaryButton = styled.button`
-	${({ color, fontSize, textColor, textColorDark }) => primaryButtonStyles({ color, textColor })}
+	${({ color, fontSize, textColor, textColorDark }) =>
+		primaryButtonStyles({ color, fontSize, textColorDark, textColor })}
 `
 export const PrimaryButtonLink = styled(Link)`
-	${({ color, fontSize, textColor, textColorDark }) => primaryButtonStyles({ color, textColor })}
+	${({ color, fontSize, textColor, textColorDark }) =>
+		primaryButtonStyles({ color, fontSize, textColorDark, textColor })}
 `
 export const PrimaryButtonAnchor = styled.a`
-	${({ color, fontSize, textColor, textColorDark }) => primaryButtonStyles({ color, textColor })}
+	${({ color, fontSize, textColor, textColorDark }) =>
+		primaryButtonStyles({ color, fontSize, textColorDark, textColor })}
 `

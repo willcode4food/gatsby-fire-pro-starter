@@ -19,7 +19,7 @@ export const Drawer = styled.div`
 	width: 100%;
 	z-index: 2;
 	${MQ.L} {
-		box-shadow: 4px 1px 10px -5px rgba(0,0,0,0.75);
+		box-shadow: 4px 1px 10px -5px rgba(0, 0, 0, 0.75);
 		left: ${({ open }) => (open ? `0` : `-33%`)};
 		width: 30%;
 	}
@@ -35,12 +35,12 @@ export const NavWrapper = styled.nav`
 	justify-content: center;
 	transition: background 0.5s;
 	a {
-		color: ${COLORS.BLACK};
+		color: ${COLORS.SECONDARY_DARK};
 		margin: ${SPACERS.L} 0;
 	}
 
 	.dark & {
-		background: ${COLORS.DARK_BLACK};
+		background: ${COLORS.PRIMARY_DARK};
 		color: #fff;
 
 		a {

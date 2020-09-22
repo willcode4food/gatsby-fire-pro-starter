@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/core'
-import { COLORS } from 'utils/styleHelpers'
+import { COLORS, FONT_FAMILY } from 'utils/styleHelpers'
 
 export default function HTML(props) {
 	return (
@@ -16,20 +16,20 @@ export default function HTML(props) {
 				<Global
 					styles={css`
 						body {
-							font-family: 'Fjalla One';
-							background-color: ${COLORS.WHITE};
+							font-family: ${FONT_FAMILY};
+							background-color: ${COLORS.PRIMARY};
 							transition: all 0.5s;
 							margin: 0px;
 						}
 
 						body.dark {
-							font-family: 'Fjalla One';
-							background-color: ${COLORS.BLACK};
-							color: ${COLORS.WHITE};
+							font-family: ${FONT_FAMILY};
+							background-color: ${COLORS.SECONDARY_DARK};
+							color: ${COLORS.PRIMARY};
 							margin: 0px;
 						}
 						a {
-							color: ${COLORS.GREEN};
+							color: ${COLORS.SECONDARY};
 							text-decoration: none;
 						}
 					`}

@@ -71,7 +71,11 @@ function VerifyAgeModal({ hasAgeVerified }) {
 								</a>
 							</ModalVerificationBox>
 							<ModalVerificationBox>
-								<PrimaryButton onClick={onVerifySubmit} color={COLORS.RED} textColor={COLORS.WHITE}>
+								<PrimaryButton
+									onClick={onVerifySubmit}
+									color={COLORS.PRIMARY_BUTTON}
+									textColor={COLORS.PRIMARY}
+								>
 									I am of Age
 								</PrimaryButton>
 							</ModalVerificationBox>

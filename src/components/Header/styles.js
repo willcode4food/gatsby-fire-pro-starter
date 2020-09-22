@@ -10,7 +10,7 @@ export const StickyNav = styled.div`
 	box-shadow: 0px 4px 2px -2px rgba(0, 0, 0, 0.12);
 	z-index: 3;
 	.dark & {
-		background: ${COLORS.DARK_BLACK};
+		background: ${COLORS.PRIMARY_DARK};
 	}
 `
 
@@ -43,19 +43,17 @@ export const HeaderIconBoxCentered = styled.div`
 	align-self: center;
 `
 
-
 export const BreadcrumbsWrapper = styled.div`
-	background: ${COLORS.WHITE};
+	background: ${COLORS.PRIMARY};
 	transition: background 0.5s;
 	width: 100vw;
 	z-index: 1;
 	.dark & {
-		background: ${COLORS.BLACK};
+		background: ${COLORS.SECONDARY_DARK};
 	}
 `
 
-export const LogoWrapper = styled.div`
-`
+export const LogoWrapper = styled.div``
 
 export const PathThemeAware = styled.path`
 	fill: ${({ textColor }) => textColor};

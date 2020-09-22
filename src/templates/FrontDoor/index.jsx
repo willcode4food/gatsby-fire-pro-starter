@@ -23,14 +23,18 @@ function FrontDoor({ data, location }) {
 		<>
 			<Hero />
 			<FrontDoorWrapper>
-				<ContentBoxCta color={COLORS.WHITE} isHidden={[false, false]}>
+				<ContentBoxCta color={COLORS.PRIMARY} isHidden={[false, false]}>
 					<ContentValueProp>
 						<ContentValuePropHeader>Ready to board the rocketship?</ContentValuePropHeader>
 						<ContentValuePropContent>
 							We're about to show the world they are ready for us!
 						</ContentValuePropContent>
 						<ContentValuePropBox>
-							<PrimaryButtonLink color={COLORS.RED} textcolor={COLORS.WHITE} to="/dispensaries">
+							<PrimaryButtonLink
+								color={COLORS.PRIMARY_BUTTON}
+								textcolor={COLORS.PRIMARY}
+								to="/dispensaries"
+							>
 								Blastoff!
 							</PrimaryButtonLink>
 						</ContentValuePropBox>
@@ -41,7 +45,11 @@ function FrontDoor({ data, location }) {
 						<ContentValuePropHeader>Do you like being awesome?</ContentValuePropHeader>
 						<ContentValuePropContent>Let's be awesome together</ContentValuePropContent>
 						<ContentValuePropBox>
-							<PrimaryButtonLink color={COLORS.RED} textcolor={COLORS.WHITE} to="/dispensaries">
+							<PrimaryButtonLink
+								color={COLORS.PRIMARY_BUTTON}
+								textcolor={COLORS.PRIMARY}
+								to="/dispensaries"
+							>
 								Step into Awesomeness
 							</PrimaryButtonLink>
 						</ContentValuePropBox>
@@ -56,8 +64,8 @@ function FrontDoor({ data, location }) {
 							<ContentBannerButtonWrapper>
 								<ContentBannerButtonBox>
 									<PrimaryButtonLink
-										color={COLORS.RED}
-										textcolor={COLORS.WHITE}
+										color={COLORS.PRIMARY_BUTTON}
+										textcolor={COLORS.PRIMARY}
 										to={'/register'}
 										state={{ activeTabIndex: 2 }}
 										fontSize={FONT_SIZES.H4}
@@ -68,8 +76,8 @@ function FrontDoor({ data, location }) {
 								</ContentBannerButtonBox>
 								<ContentBannerButtonBox>
 									<PrimaryButtonAnchor
-										color={COLORS.BLACK}
-										textcolor={COLORS.WHITE}
+										color={COLORS.SECONDARY_DARK}
+										textcolor={COLORS.PRIMARY}
 										href={'mailto:sales@weedrater.com'}
 										state={{ activeTabIndex: 2 }}
 										fontSize={FONT_SIZES.H4}

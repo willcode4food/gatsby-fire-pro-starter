@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { COLORS, FONT_SIZES, MQ, SPACERS } from 'utils/styleHelpers'
 
 export const StyledOverlay = styled.div`
-	background: ${COLORS.WHITE};
+	background: ${COLORS.PRIMARY};
 	border-radius: 4px;
 	box-shadow: 0 0 0 60vmax rgba(0, 0, 0, 0.25), 0 0 32px rgba(0, 0, 0, 0.25);
 	left: 50%;

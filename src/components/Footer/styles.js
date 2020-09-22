@@ -2,15 +2,14 @@ import styled from '@emotion/styled'
 import { COLORS, SPACERS, FONT_SIZES, MQ } from 'utils/styleHelpers'
 import { Link } from 'gatsby'
 
-
 export const FooterWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	background: ${COLORS.BLACK};
+	background: ${COLORS.SECONDARY_DARK};
 	transition: background 0.5s;
 	.dark & {
-		background: ${COLORS.DARK_BLACK};
+		background: ${COLORS.PRIMARY_DARK};
 	}
 	${MQ.L} {
 		flex-direction: column;
@@ -45,7 +44,7 @@ export const FooterContentBoxLogo = styled.div`
 
 export const FooterContentBoxTermsAndPolicy = styled.div`
 	font-size: ${FONT_SIZES.H7};
-	color: ${COLORS.GREEN};
+	color: ${COLORS.SECONDARY};
 `
 
 export const FooterContentCopyrightWrapper = styled.div`

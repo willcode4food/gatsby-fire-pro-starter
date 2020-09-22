@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { MQ, SPACERS, COLORS, FONT_SIZES } from 'utils/styleHelpers'
 
-
 export const FrontDoorWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -25,7 +24,7 @@ export const ContentBoxCta = styled.div`
 	padding-left: ${SPACERS.L};
 	padding-bottom: ${SPACERS.XL};
 	.dark & {
-		background-color: ${({ darkColor }) => darkColor || COLORS.BLACK};
+		background-color: ${({ darkColor }) => darkColor || COLORS.SECONDARY_DARK};
 		box-shadow: ${({ boxShadow }) => (boxShadow ? '-1px 9px 18px - 7px rgba(0, 0, 0, 0.75)' : 'none')};
 		${MQ.L} {
 			padding-top: ${SPACERS.L};
@@ -45,7 +44,7 @@ export const ContentBoxCta = styled.div`
 	}
 `
 export const ContentBanner = styled.div`
-	background: ${COLORS.GREEN};
+	background: ${COLORS.SECONDARY};
 	padding: ${SPACERS.L};
 `
 export const ContentBannerWrapper = styled.div`
@@ -66,7 +65,7 @@ export const ContentBannerBox = styled.div`
 
 export const ContentBannerMessage = styled.span`
 	font-size: ${FONT_SIZES.H3};
-	color: ${COLORS.WHITE};
+	color: ${COLORS.PRIMARY};
 	${MQ.L} {
 		font-size: ${FONT_SIZES.H1};
 		font-weight: 600;
@@ -106,34 +105,34 @@ export const IconBox = styled.div`
 	margin-left: ${SPACERS.M};
 `
 export const ContentValuePropHeader = styled.h2`
-	color: ${COLORS.BLACK};
+	color: ${COLORS.SECONDARY_DARK};
 	font-size: ${FONT_SIZES.H3};
 	text-align: center;
 	font-weight: 600;
 	transition: color 0.5s;
 	.dark & {
-		color: ${COLORS.WHITE};
+		color: ${COLORS.PRIMARY};
 	}
 	${MQ.M} {
 		font-size: 2rem;
 	}
 `
 export const CarouselHeader = styled.h2`
-	color: ${COLORS.BLACK};
+	color: ${COLORS.SECONDARY_DARK};
 	margin-bottom: ${SPACERS.M};
 	font-size: ${FONT_SIZES.H2};
 	text-align: center;
 	font-weight: 600;
 	transition: color 0.5s;
 	.dark & {
-		color: ${COLORS.WHITE};
+		color: ${COLORS.PRIMARY};
 	}
 	${MQ.M} {
 		font-size: 2rem;
 	}
 `
 export const ContentValuePropContent = styled.div`
-	color: ${COLORS.BLACK};
+	color: ${COLORS.SECONDARY_DARK};
 	font-size: ${FONT_SIZES.H4};
 	text-align: center;
 	padding-top: ${SPACERS.M};
@@ -141,7 +140,7 @@ export const ContentValuePropContent = styled.div`
 	width: 90%;
 	transition: color 0.5s;
 	.dark & {
-		color: ${COLORS.WHITE};
+		color: ${COLORS.PRIMARY};
 	}
 	${MQ.M} {
 		font-size: ${FONT_SIZES.H4};

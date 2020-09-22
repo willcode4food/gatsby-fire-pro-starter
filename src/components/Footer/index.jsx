@@ -18,14 +18,13 @@ import {
 } from './styles'
 
 const Footer = () => {
-
 	return (
 		<FooterWrapper>
 			<FooterWrapperBox>
 				<FooterContentWrapper>
 					<FooterContentBoxLogo>
 						<FooterLogoWrapper>
-							<Logo color={COLORS.WHITE} textColor={COLORS.WHITE} />
+							<Logo color={COLORS.PRIMARY} textColor={COLORS.PRIMARY} />
 						</FooterLogoWrapper>
 					</FooterContentBoxLogo>
 					<FooterSocialLinksWrapper>

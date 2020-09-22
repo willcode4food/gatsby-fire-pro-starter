@@ -62,7 +62,7 @@ function GlobalLayout({
 					{ name: 'description', content: 'Sample' },
 					{ name: 'keywords', content: 'sample, something' },
 					{ name: 'robots', content: 'noindex, nofollow' },
-					{ name: 'theme-color', content: `${COLORS.GREEN}` },
+					{ name: 'theme-color', content: `${COLORS.SECONDARY}` },
 					{ name: 'google', content: 'notranslate' },
 					{ httpEquiv: 'Content-Language', content: 'en' },
 					{ name: 'apple-mobile-web-app-capable', content: 'yes' },

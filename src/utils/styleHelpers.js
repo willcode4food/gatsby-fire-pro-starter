@@ -1,42 +1,42 @@
 const COLORS = {
-	BLACK: '#263238',
-	DARK_BLACK: '#1e2427',
+	SECONDARY_DARK: '#263238',
+	PRIMARY_DARK: '#1e2427',
 	DARK_GRAY: '#4c6672',
 	MEDIUM_GRAY: '#495358',
 	GRAY: '#959595',
 	SUPER_MEDIUM_GRAY: '#F3F3F3',
-	GREEN: '#00AF66',
+	SECONDARY: '#c60028',
 	PALE_GREEN: '#edfff7',
 	// green decided by this article https://www.wealthsimple.com/en-us/magazine/money-diary-weed-entrepreneur
 	LIGHT_GRAY: '#F3F3F3',
 	SUPER_LIGHT_GRAY: '#ededed',
-	MEDIUM_LIGHT_GRAY: '#C4C8D8',
+	TOGGLE: '#C4C8D8',
 	PURPLE: '#32023e',
-	RED: '#FF1647',
-	WHITE: '#FFF',
+	PRIMARY_BUTTON: '#FF1647',
+	PRIMARY: '#FFF',
 	YELLOW: '#ffad23',
 }
 
 const DEFAULT_AVATAR_THEMES = [
 	{
-		foreground: COLORS.WHITE,
-		background: COLORS.GREEN,
-		border: COLORS.GREEN,
+		foreground: COLORS.PRIMARY,
+		background: COLORS.SECONDARY,
+		border: COLORS.SECONDARY,
 	},
 	{
-		foreground: COLORS.WHITE,
-		background: COLORS.BLACK,
-		border: COLORS.BLACK,
+		foreground: COLORS.PRIMARY,
+		background: COLORS.SECONDARY_DARK,
+		border: COLORS.SECONDARY_DARK,
 	},
 	{
-		foreground: COLORS.BLACK,
-		background: COLORS.WHITE,
-		border: COLORS.BLACK,
+		foreground: COLORS.SECONDARY_DARK,
+		background: COLORS.PRIMARY,
+		border: COLORS.SECONDARY_DARK,
 	},
 	{
-		foreground: COLORS.GREEN,
-		background: COLORS.WHITE,
-		border: COLORS.GREEN,
+		foreground: COLORS.SECONDARY,
+		background: COLORS.PRIMARY,
+		border: COLORS.SECONDARY,
 	},
 ]
 const MAX_WIDTH = {
@@ -100,8 +100,10 @@ const FONT_SIZES = {
 	H9: '0.5rem',
 }
 
+const FONT_FAMILY = 'Fjalla One'
+
 const EFFECT_COLORS = {
-	effects: COLORS.GREEN,
+	effects: COLORS.SECONDARY,
 	negative_effects: '#e02e00',
 	medical: '#1977a7',
 }
@@ -133,6 +135,7 @@ module.exports = {
 	SPACERS,
 	BREAKPOINTS_VALUES,
 	MQ,
+	FONT_FAMILY,
 	FONT_SIZES,
 	EFFECT_COLORS,
 	matchMedia,

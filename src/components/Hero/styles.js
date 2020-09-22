@@ -2,14 +2,14 @@ import styled from '@emotion/styled'
 import { COLORS, MQ } from 'utils/styleHelpers'
 
 export const HeroWrapper = styled.div`
-    align-items: center;
+	align-items: center;
 	display: flex;
-	background-color: ${COLORS.GREEN};
+	background-color: ${COLORS.SECONDARY};
 	background-image: url(/images/front-door-bg.jpg);
 	background-repeat: no-repeat;
-    background-size: cover;
-    flex-direction: column;
-    justify-content: center;
+	background-size: cover;
+	flex-direction: column;
+	justify-content: center;
 	padding: 50px 15px;
 	position: relative;
 	text-align: center;
@@ -23,7 +23,7 @@ export const SearchPositionCentered = styled.div`
 `
 export const WelcomeMessageWrapper = styled.div`
 	color: #fff;
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 `
 export const WelcomeMessageTitle = styled.h1`
 	border: none;

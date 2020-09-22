@@ -40,7 +40,7 @@ const HamburgerBox = styled.div`
 `
 
 const hamburgerRow = css`
-	background-color: ${COLORS.MEDIUM_LIGHT_GRAY};
+	background-color: ${COLORS.TOGGLE};
 	border-radius: 2px;
 	height: 2px;
 	position: absolute;
@@ -49,7 +49,7 @@ const hamburgerRow = css`
 	transition-timing-function: ease;
 	width: 20px;
 	.dark & {
-		background-color: ${COLORS.WHITE};
+		background-color: ${COLORS.PRIMARY};
 		transition: background-color 0.5s;
 	}
 `
@@ -75,7 +75,7 @@ const HamburgerInner = styled.span`
 	}
 `
 
-const Hamburger = props => (
+const Hamburger = (props) => (
 	<HamburgerArrow {...props}>
 		<HamburgerBox>
 			<HamburgerInner />
