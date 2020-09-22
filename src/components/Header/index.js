@@ -8,23 +8,18 @@ import AccountLink from 'components/AccountLink'
 import Breadcrumbs from 'components/Breadcrumbs'
 import HamburgerArrow from './HamburgerArrow'
 import ThemeToggle from 'components/ThemeToggle'
-import { SessionContext } from 'components/AuthContext'
-import { StickyNav,
+import { SessionContext } from 'components/Session/AuthContext'
+import {
+	StickyNav,
 	HeaderBar,
 	BreadcrumbsWrapper,
 	LogoWrapper,
 	HeaderBox,
 	HeaderIconBoxCentered,
-	HeaderIconBox
+	HeaderIconBox,
 } from './styles'
 
-const Header = ({
-	resetDrawer,
-	location,
-	isShowingBreadcrumbs = true,
-	isShowingAccountLink = false,
-	toggleNav,
-}) => {
+const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingAccountLink = false, toggleNav }) => {
 	const { uid, sessionID } = useContext(SessionContext)
 	return (
 		<StickyNav id="headerBar">

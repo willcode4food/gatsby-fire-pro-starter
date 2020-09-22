@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { CookieContext } from 'components/AuthContext'
 import propTypes from 'prop-types'
 import moment from 'moment'
 import { PrimaryButton } from 'components/PrimaryButton'
@@ -19,7 +18,6 @@ function VerifyAgeModal({ hasAgeVerified }) {
 	const [hasVerified, setHasVerified] = useState(false)
 	const [showOverlay, setShowOverlay] = useState(false)
 	const [error, setError] = useState(null)
-	const { addCookie, ageVerified } = useContext(CookieContext)
 
 	useEffect(() => {
 		setShowOverlay(!hasAgeVerified)
@@ -38,17 +36,15 @@ function VerifyAgeModal({ hasAgeVerified }) {
 		console.log('onVerifySubmit -> hasVerified', hasVerified)
 		if (!hasVerified) {
 			setError(`Please check the checkbox verifying you agree to the terms.`)
+			console.log(error)
 			return
 		}
-		addCookie('ageVerified', hasVerified, {
-			path: '/',
-			expires: new Date(moment().add(5, 'y').format()),
-		})
+
 		setHasVerified(hasVerified)
 		return
 	}
 
-	if (!showOverlay || ageVerified) {
+	if (!showOverlay) {
 		return null
 	}
 

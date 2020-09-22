@@ -1,6 +1,4 @@
-import SessionHandler from './SessionHandler'
-import UnauthorizedPage from './UnauthorizedPage'
-import WithAuthentication from './WithAuthentication'
-import WithCookies from './WithCookies'
+import WithSession from './WithSession'
+import WithFirebaseAuthentication from './WithFirebaseAuthentication'
 
-export { SessionHandler, UnauthorizedPage, WithAuthentication, WithCookies }
+export { WithSession, WithFirebaseAuthentication }

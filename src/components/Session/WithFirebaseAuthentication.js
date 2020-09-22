@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as firebase from 'firebase/app'
 import PropTypes from 'prop-types'
-import { AuthContext } from 'components/AuthContext'
+import { AuthContext } from 'components/Session/AuthContext'
 import { userActions } from '../../firebase'
 const { getUserRoles } = userActions
 
-function WithAuthentication({ children }) {
+function WithFirebaseAuthentication({ children }) {
 	const hasMounted = useRef(false)
 	const [authUser, setAuthUser] = useState({ uid: null })
 	const [isLoading, setIsLoading] = useState(true)
@@ -14,7 +14,7 @@ function WithAuthentication({ children }) {
 	useEffect(() => {
 		async function getAuth() {
 			hasMounted.current = true
-			firebase.auth().onAuthStateChanged(async authUser => {
+			firebase.auth().onAuthStateChanged(async (authUser) => {
 				if (hasMounted.current) {
 					setIsLoading(true)
 					if (authUser) {
@@ -32,11 +32,8 @@ function WithAuthentication({ children }) {
 	return <AuthContext.Provider value={{ authUser, isLoading, roles }}>{children}</AuthContext.Provider>
 }
 
-WithAuthentication.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.node),
-		PropTypes.node
-	])
+WithFirebaseAuthentication.propTypes = {
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 }
 
-export default WithAuthentication
+export default WithFirebaseAuthentication

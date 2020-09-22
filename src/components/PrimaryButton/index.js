@@ -10,7 +10,7 @@ const primaryButtonStyles = ({
 	textColorDark = COLORS.WHITE,
 }) => css`
 	border: 1px solid ${color};
-	border-radius: 2px;
+	border-radius: 4px;
 	background: ${color};
 	color: ${textColor};
 	font-size: ${fontSize};
