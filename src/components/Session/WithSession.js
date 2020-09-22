@@ -27,6 +27,7 @@ function WithSession({ children }) {
 		<SessionContext.Provider
 			value={{
 				authUser,
+				isLoading,
 				roles,
 				setUserLocation,
 				sessionId,
