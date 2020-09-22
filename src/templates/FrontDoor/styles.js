@@ -14,7 +14,7 @@ export const FrontDoorWrapper = styled.div`
 
 export const ContentBoxCta = styled.div`
 	display: ${({ isHidden }) => (isHidden.length > 1 && isHidden[0] ? 'none' : 'inline')};
-	background-color: ${({ color }) => color || COLORS.SUPER_LIGHT_GRAY};
+	background-color: ${({ color }) => color || COLORS.TERNARY};
 	box-shadow: ${({ boxShadow }) => (boxShadow ? '-1px 9px 18px - 7px rgba(0, 0, 0, 0.75)' : 'none')};
 	flex-grow: auto;
 	flex-basis: auto;

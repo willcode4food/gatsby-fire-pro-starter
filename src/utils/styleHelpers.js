@@ -1,20 +1,13 @@
 const COLORS = {
-	SECONDARY_DARK: '#263238',
-	PRIMARY_DARK: '#1e2427',
-	DARK_GRAY: '#4c6672',
-	MEDIUM_GRAY: '#495358',
-	GRAY: '#959595',
-	SUPER_MEDIUM_GRAY: '#F3F3F3',
-	SECONDARY: '#c60028',
-	PALE_GREEN: '#edfff7',
-	// green decided by this article https://www.wealthsimple.com/en-us/magazine/money-diary-weed-entrepreneur
 	LIGHT_GRAY: '#F3F3F3',
-	SUPER_LIGHT_GRAY: '#ededed',
-	TOGGLE: '#C4C8D8',
-	PURPLE: '#32023e',
-	PRIMARY_BUTTON: '#FF1647',
 	PRIMARY: '#FFF',
-	YELLOW: '#ffad23',
+	PRIMARY_BUTTON: '#FF1647',
+	PRIMARY_DARK: '#1e2427',
+	TERNARY_DARK: '#495358',
+	SECONDARY: '#c60028',
+	SECONDARY_DARK: '#263238',
+	TERNARY: '#ededed',
+	TOGGLE: '#C4C8D8',
 }
 
 const DEFAULT_AVATAR_THEMES = [

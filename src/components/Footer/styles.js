@@ -72,7 +72,7 @@ export const FooterLinkBox = styled.div`
 	line-height: 20px;
 `
 export const FooterLink = styled(Link)`
-	color: ${COLORS.LIGHT_GRAY};
+	color: ${COLORS.TERNARY};
 	font-size: ${FONT_SIZES.H5};
 `
 export const CopyrightText = styled.p`

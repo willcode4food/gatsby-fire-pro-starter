@@ -16,7 +16,7 @@ export const StyledOverlay = styled.div`
 	height: calc(80vh - ${SPACERS.HEADER});
 	width: 70vw;
 	.dark & {
-		background: ${COLORS.MEDIUM_GRAY};
+		background: ${COLORS.TERNARY_DARK};
 	}
 	${MQ.L} {
 		height: calc(70vh - ${SPACERS.HEADER});

@@ -40,7 +40,7 @@ function FrontDoor({ data, location }) {
 						</ContentValuePropBox>
 					</ContentValueProp>
 				</ContentBoxCta>
-				<ContentBoxCta color={COLORS.SUPER_LIGHT_GRAY} darkColor={COLORS.MEDIUM_GRAY} isHidden={[false, false]}>
+				<ContentBoxCta color={COLORS.TERNARY} darkColor={COLORS.TERNARY_DARK} isHidden={[false, false]}>
 					<ContentValueProp>
 						<ContentValuePropHeader>Do you like being awesome?</ContentValuePropHeader>
 						<ContentValuePropContent>Let's be awesome together</ContentValuePropContent>

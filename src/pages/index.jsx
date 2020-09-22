@@ -14,7 +14,7 @@ function IndexPage({ data, location }) {
 			isShowingBreadcrumbs={false}
 			isShowingAccountLink={true}
 			isVerifyAgeModalOverriden={true}
-			backgroundColor={COLORS.LIGHT_GRAY}
+			backgroundColor={COLORS.TERNARY}
 		>
 			<Helmet>
 				{/* Schema.org tags */}
@@ -22,8 +22,8 @@ function IndexPage({ data, location }) {
 					{JSON.stringify({
 						'@context': 'http://schema.org',
 						'@type': 'WebSite',
-						url: 'http://ninozfantasysports.com/',
-						name: 'Ninoz Fantasy Sports',
+						url: 'http://pondstreetsoftware.com/',
+						name: 'Pond Street Software - Now with Lasers',
 						description: '',
 					})}
 				</script>
