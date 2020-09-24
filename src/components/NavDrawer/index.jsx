@@ -11,7 +11,6 @@ import { Drawer, NavWrapper } from './styles'
 
 function NavDrawer({ isNavOpen, pathname, resetState, tracking, isShowingBreadcrumbs = true }) {
 	const { sessionId, uid } = useContext(SessionContext)
-	console.log('NavDrawer -> sessionId', sessionId)
 	return (
 		<Drawer open={isNavOpen}>
 			{sessionId && (
