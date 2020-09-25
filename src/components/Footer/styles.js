@@ -22,6 +22,10 @@ export const FooterLogoWrapper = styled.div`
 `
 
 export const FooterWrapperBox = styled.div`
+	padding-top: ${SPACERS.L};
+	padding-bottom: ${SPACERS.L};
+	margin-top: ${SPACERS.M};
+	margin-bottom: ${SPACERS.M};
 	${MQ.L} {
 		width: 15%;
 	}

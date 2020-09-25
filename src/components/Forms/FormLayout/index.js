@@ -27,8 +27,9 @@ export const FormFlexInner = styled.div`
 `
 
 export const FormFlexInnerBox = styled.div`
-	padding-left: ${SPACERS.S};
-	padding-right: ${SPACERS.S};
+	padding-top: ${SPACERS.S};
+	padding-bottom: ${SPACERS.S};
+	width: 100%;
 `
 export const FormFlexInnerColumn = styled.div`
 	display: flex;
@@ -38,6 +39,7 @@ export const FormFlexInnerColumn = styled.div`
 `
 
 export const FormBox = styled.div`
+	box-sizing: border-box;
 	width: 100%;
 	margin: ${SPACERS.S};
 `

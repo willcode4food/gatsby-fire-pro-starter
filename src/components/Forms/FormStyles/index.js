@@ -20,7 +20,7 @@ export const FormButton = styled.button`
 	width: 100%;
 	transition: background 0.5s;
 	.dark & {
-		background: ${({ bg }) => (bg === COLORS.PRIMARY_DARK ? COLORS.SECONDARY_DARK : bg)};
+		background: ${({ bg }) => (bg === COLORS.SECONDARY_DARK ? COLORS.SECONDARY_DARK : bg)};
 	}
 `
 export const FormHeader = styled.h2`
@@ -48,7 +48,7 @@ export const StyledLink = styled(Link)`
 	}
 	transition: color 0.5s;
 	.dark & {
-		color: ${COLORS.WHITE};
+		color: ${COLORS.SECONDARY};
 	}
 `
 export const ReviewsListWrapper = styled.div``

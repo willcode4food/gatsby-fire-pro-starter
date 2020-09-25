@@ -9,9 +9,14 @@ export const InputFieldStyle = styled.input`
 	box-shadow: rgb(238, 238, 238) 0px 0px 0px 1px inset;
 	padding-left: 10px;
 	padding-right: 4px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	background: ${COLORS.WHITE};
+	padding-top: 13px;
+	padding-bottom: 13px;
+	background: ${COLORS.PRIMARY};
+	box-sizing:border-box;
+	overflow-wrap:break-word;
+	overflow-x:visible;
+	overflow-y:visible;
+	text-size-adjust:100%;
 	font-family: inherit;
 	display: inline-block;
 	vertical-align: middle;
@@ -24,7 +29,7 @@ export const InputFieldStyle = styled.input`
 	border-image: initial;
 	transition: background 0.5s, color 0.5s;
 	.dark & {
-		background: ${COLORS.BLACK};
-		color ${COLORS.WHITE};
+		background: ${COLORS.SECONDARY_DARK};
+		color ${COLORS.PRIMARY};
 	}
 `
