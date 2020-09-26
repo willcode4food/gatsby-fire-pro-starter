@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { BREAKPOINTS_VALUES, MQ } from 'utils/styleHelpers'
+import { BREAKPOINTS_VALUES, COLORS, MQ, SPACERS } from 'utils/styleHelpers'
 
 const mainColumn = css`
 	margin: 0 auto;
@@ -20,4 +20,16 @@ const fixedHeight = css`
 export const Body = styled.main`
 	${({ isDisplayingSearch }) => (isDisplayingSearch ? mainColumn : '')}
 	${({ isShowingFooter }) => isShowingFooter && fixedHeight}
+`
+
+export const BreadcrumbsWrapper = styled.div`
+	display: flex;
+	background: ${COLORS.PRIMARY};
+	transition: background 0.5s;
+	padding-top: ${SPACERS.S};
+	width: 100vw;
+	z-index: 1;
+	.dark & {
+		background: ${COLORS.SECONDARY_DARK};
+	}
 `

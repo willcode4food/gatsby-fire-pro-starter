@@ -5,14 +5,12 @@ import UserMenu from 'components/UserMenu'
 import { css } from '@emotion/core'
 import Logo from './Logo'
 import AccountLink from 'components/AccountLink'
-import Breadcrumbs from 'components/Breadcrumbs'
 import HamburgerArrow from './HamburgerArrow'
 import ThemeToggle from 'components/ThemeToggle'
 import { SessionContext } from 'components/Session/AuthContext'
 import {
 	StickyNav,
 	HeaderBar,
-	BreadcrumbsWrapper,
 	LogoWrapper,
 	HeaderBox,
 	HeaderCenterWrapper,
@@ -20,7 +18,7 @@ import {
 	HeaderIconBox,
 } from './styles'
 
-const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingAccountLink = false, toggleNav }) => {
+const Header = ({ resetDrawer, location, isShowingAccountLink = false, toggleNav }) => {
 	const { uid, sessionID } = useContext(SessionContext)
 	return (
 		<StickyNav id="headerBar">
@@ -59,19 +57,6 @@ const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingA
 					</HeaderBox>
 				</HeaderBar>
 			</div>
-			{isShowingBreadcrumbs && (
-				<div>
-					<div
-						css={css`
-							display: flex;
-						`}
-					>
-						<BreadcrumbsWrapper>
-							<Breadcrumbs location={location} />
-						</BreadcrumbsWrapper>
-					</div>
-				</div>
-			)}
 		</StickyNav>
 	)
 }
@@ -79,7 +64,6 @@ const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingA
 Header.propTypes = {
 	isDisplayingSearch: bool,
 	isShowingAccountLink: bool,
-	isShowingBreadcrumbs: bool,
 	location: object,
 	resetDrawer: func,
 	toggleNav: func,

@@ -55,16 +55,6 @@ export const HeaderIconBoxCentered = styled.div`
 	align-self: center;
 `
 
-export const BreadcrumbsWrapper = styled.div`
-	background: ${COLORS.PRIMARY};
-	transition: background 0.5s;
-	width: 100vw;
-	z-index: 1;
-	.dark & {
-		background: ${COLORS.SECONDARY_DARK};
-	}
-`
-
 export const LogoWrapper = styled.div``
 
 export const PathThemeAware = styled.path`

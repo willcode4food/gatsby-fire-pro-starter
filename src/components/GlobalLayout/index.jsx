@@ -8,7 +8,8 @@ import NavDrawer from 'components/NavDrawer'
 import Footer from 'components/Footer'
 import SEO from 'components/SEO'
 import VerifyAgeModal from 'components/VerifyAgeModal'
-import { Body } from './styles'
+import { Body, BreadcrumbsWrapper } from './styles'
+import Breadcrumbs from 'components/Breadcrumbs'
 
 function GlobalLayout({
 	backgroundColor,
@@ -86,6 +87,11 @@ function GlobalLayout({
 				toggleNav={toggleNav}
 				toggleSearch={toggleSearch}
 			/>
+			{isShowingBreadcrumbs && (
+				<BreadcrumbsWrapper>
+					<Breadcrumbs location={location} />
+				</BreadcrumbsWrapper>
+			)}
 			<SEO pathname={pathname} title={pageTitle} />
 			<VerifyAgeModal hasAgeVerified={isVerifyAgeModalOverriden} />
 			<Body
