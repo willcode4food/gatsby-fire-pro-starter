@@ -13,6 +13,10 @@ export const StickyNav = styled.div`
 	}
 `
 
+export const StickyNavInner = styled.div`
+	z-index: 3;
+`
+
 export const HeaderBar = styled.header`
 	display: flex;
 	padding: 15px;
@@ -21,6 +25,13 @@ export const HeaderBar = styled.header`
 		padding: 15px;
 	}
 `
+export const HeaderCenterWrapper = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: row;
+`
+
 // https://stackoverflow.com/questions/32378953/keep-the-middle-item-centered-when-side-items-have-different-widths
 export const HeaderBox = styled.div`
 	align-self: center;

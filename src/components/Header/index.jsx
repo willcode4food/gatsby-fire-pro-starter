@@ -15,11 +15,13 @@ import {
 	BreadcrumbsWrapper,
 	LogoWrapper,
 	HeaderBox,
+	HeaderCenterWrapper,
 	HeaderIconBoxCentered,
 	HeaderIconBox,
 } from './styles'
 
 const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingAccountLink = false, toggleNav }) => {
+	console.log('Header -> location', location)
 	const { uid, sessionID } = useContext(SessionContext)
 	return (
 		<StickyNav id="headerBar">
@@ -39,14 +41,7 @@ const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingA
 					</HeaderBox>
 					<HeaderBox>
 						<span>
-							<div
-								css={css`
-									display: flex;
-									justify-content: flex-end;
-									align-items: center;
-									flex-direction: row;
-								`}
-							>
+							<HeaderCenterWrapper>
 								{isShowingAccountLink && (
 									<HeaderIconBoxCentered>
 										<AccountLink />
@@ -60,7 +55,7 @@ const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingA
 										<UserMenu sessionID={sessionID} uid={uid} pathname={location.pathname} />
 									</HeaderIconBox>
 								)}
-							</div>
+							</HeaderCenterWrapper>
 						</span>
 					</HeaderBox>
 				</HeaderBar>
