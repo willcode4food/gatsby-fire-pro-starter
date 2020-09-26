@@ -30,3 +30,5 @@ export const BreadcrumbLink = styled(Link)`
 	padding-left: ${SPACERS.M};
 	padding-right: ${SPACERS.M};
 `
+
+export const BreadcrumbNav = styled.nav``

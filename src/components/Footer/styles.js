@@ -80,7 +80,7 @@ export const FooterLink = styled(Link)`
 	font-size: ${FONT_SIZES.H5};
 `
 export const CopyrightText = styled.p`
-	color: ${COLORS.MEDIUM_LIGHT_GRAY};
+	color: ${COLORS.TERNARY};
 	font-size: ${FONT_SIZES.H8};
 	margin: 0;
 `

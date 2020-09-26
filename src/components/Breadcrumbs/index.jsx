@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbItemPadding } from './styles'
-
+import { BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbItemPadding, BreadcrumbNav } from './styles'
 
 const Breadcrumbs = ({ location }) => {
 	const { pathname, origin } = location
@@ -68,7 +67,7 @@ const Breadcrumbs = ({ location }) => {
 	}, [navRef.current.clientHeight])
 
 	return (
-		<nav ref={navRef} aria-label="Breadcrumbs">
+		<BreadcrumbNav ref={navRef} aria-label="Breadcrumbs">
 			<Helmet>
 				{/* Schema.org tags */}
 				<script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
@@ -82,7 +81,7 @@ const Breadcrumbs = ({ location }) => {
 				</BreadcrumbItem>
 				{breadcrumbComponents}
 			</BreadcrumbList>
-		</nav>
+		</BreadcrumbNav>
 	)
 }
 
