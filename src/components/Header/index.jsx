@@ -21,7 +21,6 @@ import {
 } from './styles'
 
 const Header = ({ resetDrawer, location, isShowingBreadcrumbs = true, isShowingAccountLink = false, toggleNav }) => {
-	console.log('Header -> location', location)
 	const { uid, sessionID } = useContext(SessionContext)
 	return (
 		<StickyNav id="headerBar">
