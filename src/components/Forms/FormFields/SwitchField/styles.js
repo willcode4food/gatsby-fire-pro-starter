@@ -24,8 +24,8 @@ export const SwitchSlider = styled.span`
 	-webkit-transition: 0.4s;
 	transition: 0.4s;
 	.dark & {
-		background: ${COLORS.BLACK};
-		border: solid 1px ${COLORS.WHITE};
+		background: ${COLORS.PRIMARY_DARK};
+		border: solid 1px ${COLORS.PRIMARY};
 	}
 	&:before {
 		position: absolute;
@@ -34,7 +34,7 @@ export const SwitchSlider = styled.span`
 		width: 16px;
 		left: 4px;
 		bottom: 4px;
-		background: ${COLORS.WHITE};
+		background: ${COLORS.PRIMARY};
 		border-radius: 50%;
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
@@ -48,9 +48,9 @@ export const SwitchInput = styled.input`
 	width: 0;
 	height: 0;
 	&:checked + span {
-		background: ${COLORS.GREEN};
+		background: ${COLORS.SECONDARY};
 		.dark & {
-			border: 1px solid ${COLORS.GREEN};
+			border: 1px solid ${COLORS.SECONDARY};
 		}
 	}
 	&:focus + span {
