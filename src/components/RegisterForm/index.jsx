@@ -61,7 +61,7 @@ function RegisterForm() {
 										width={INPUT_WIDTH}
 									/>
 								</FormBox>
-								{errors.firstName && (
+								{errors.firstName && errors.firstName.type === 'required' && (
 									<FormBox>
 										<ErrorMessage>* First Name is required</ErrorMessage>
 									</FormBox>
@@ -80,7 +80,7 @@ function RegisterForm() {
 										width={INPUT_WIDTH}
 									/>
 								</FormBox>
-								{errors.lastName && (
+								{errors.lastName && errors.lastName.type === 'required' && (
 									<FormBox>
 										<ErrorMessage>* Last Name is required</ErrorMessage>
 									</FormBox>
@@ -102,7 +102,7 @@ function RegisterForm() {
 										width={INPUT_WIDTH}
 									/>
 								</FormBox>
-								{errors.email && (
+								{errors.email && errors.email.type === 'required' && (
 									<FormBox>
 										<ErrorMessage>* Email is required</ErrorMessage>
 									</FormBox>
@@ -124,7 +124,7 @@ function RegisterForm() {
 										width={INPUT_WIDTH}
 									/>
 								</FormBox>
-								{errors.password && (
+								{errors.password && errors.password.type === 'required' && (
 									<FormBox>
 										<ErrorMessage>* A Password is required</ErrorMessage>
 									</FormBox>
