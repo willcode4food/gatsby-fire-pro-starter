@@ -7,6 +7,7 @@ const COLORS = {
 	SECONDARY_DARK: '#263238',
 	TERNARY: '#ededed',
 	TOGGLE: '#C4C8D8',
+	ERROR: '#c60028',
 }
 
 const DEFAULT_AVATAR_THEMES = [

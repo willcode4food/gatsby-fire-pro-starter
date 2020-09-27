@@ -2,11 +2,28 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { COLORS, MQ, SPACERS } from 'utils/styleHelpers'
 
-export const ErrorMessage = styled.div`
-	color: ${COLORS.SECONDARY};
+export const ErrorMessage = styled.span`
+	color: ${COLORS.ERROR};
 	padding-top: 5px;
 `
 export const FormButton = styled.button`
+	color: ${COLORS.PRIMARY};
+	background: ${({ bg }) => {
+		return bg || COLORS.PRIMARY_DARK
+	}};
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 14px 28px;
+	text-align: center;
+	width: 100%;
+	transition: background 0.5s;
+	.dark & {
+		background: ${({ bg }) => (bg === COLORS.SECONDARY_DARK ? COLORS.SECONDARY_DARK : bg)};
+	}
+`
+export const FormSubmitButton = styled.input`
 	color: ${COLORS.PRIMARY};
 	background: ${({ bg }) => {
 		return bg || COLORS.PRIMARY_DARK
