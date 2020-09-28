@@ -11,13 +11,17 @@ import {
 	FormWrapperBox,
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-import { INPUT_WIDTH, setLoginFlag, getLoginFlag, unsetLoginFlag } from 'utils/formHelpers'
+import { INPUT_WIDTH } from 'utils/formHelpers'
 import Loader from 'components/Loader'
 
 function LoginForm() {
-	// const { register, handleSubmit, watch, errors } = useForm()
-	// const onSubmit = (data) => console.log(data)
 	const [isLoading, setIsLoading] = useState(false)
+	const { errors, register, handleSubmit } = useForm()
+
+	const onSubmit = (data) => {
+		console.log('onSubmit -> data', data)
+	}
+
 	return (
 		<>
 			{isLoading ? (
@@ -26,13 +30,25 @@ function LoginForm() {
 				<FormWrapper>
 					<FormWrapperBox>
 						<FormHeader>Login</FormHeader>
-						<form>
+						<form onSubmit={handleSubmit(onSubmit)}>
 							<FormFlex>
 								<FormBox>
-									<InputField placeholder="Email Address" type="text" width={INPUT_WIDTH} />
+									<InputField
+										register={register}
+										name="email"
+										placeholder="Email Address"
+										type="text"
+										width={INPUT_WIDTH}
+									/>
 								</FormBox>
 								<FormBox>
-									<InputField placeholder="Password" type="password" width={INPUT_WIDTH} />
+									<InputField
+										register={register}
+										name="password"
+										placeholder="Password"
+										type="password"
+										width={INPUT_WIDTH}
+									/>
 								</FormBox>
 								<FormBox>
 									<FormFlexInner>
@@ -50,11 +66,6 @@ function LoginForm() {
 								<FormBox>
 									<StyledLink to="/forgotpassword">Forgot Your Password?</StyledLink>
 								</FormBox>
-								{/* {error && (
-									<FormBox>
-										<ErrorMessage>{error.message}</ErrorMessage>
-									</FormBox>
-								)} */}
 							</FormFlex>
 						</form>
 					</FormWrapperBox>

@@ -1,11 +1,19 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { COLORS, MQ, SPACERS } from 'utils/styleHelpers'
+import { AiFillWarning } from 'react-icons/ai'
 
 export const ErrorMessage = styled.span`
 	color: ${COLORS.ERROR};
 	padding-top: 5px;
 `
+
+export const ErrorIcon = styled(AiFillWarning)`
+	padding-left: ${SPACERS.S};
+	padding-right ${SPACERS.S};
+	color: ${COLORS.ERROR};
+`
+
 export const FormButton = styled.button`
 	color: ${COLORS.PRIMARY};
 	background: ${({ bg }) => {

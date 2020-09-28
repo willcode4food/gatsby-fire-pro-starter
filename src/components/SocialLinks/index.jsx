@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaInstagram, FaTwitter, FaFacebookF } from 'react-icons/fa'
-import { Wrapper,SocialLink } from './styles'
+import { Wrapper, SocialLink } from './styles'
 
 export default function SocialLinks() {
 	return (

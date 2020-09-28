@@ -5,7 +5,7 @@ import GlobalLayout from 'components/GlobalLayout'
 
 function ForgotPasswordPage({ location }) {
 	return (
-		<GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
+		<GlobalLayout isShowingBreadcrumbs={false} location={location} isVerifyAgeModalOverriden={true}>
 			<ForgotPasswordForm />
 		</GlobalLayout>
 	)

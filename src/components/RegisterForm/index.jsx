@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { InputField } from 'components/Forms/FormFields'
-import { ErrorMessage, FormHeader, FormButton, FormSubmitButton, StyledLink } from 'components/Forms/FormStyles'
+import {
+	ErrorMessage,
+	ErrorIcon,
+	FormHeader,
+	FormButton,
+	FormSubmitButton,
+	StyledLink,
+} from 'components/Forms/FormStyles'
 import { COLORS } from 'utils/styleHelpers'
 import {
 	FormBox,
@@ -11,8 +18,9 @@ import {
 	FormWrapperBox,
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-import { INPUT_WIDTH, setLoginFlag, getLoginFlag, unsetLoginFlag } from 'utils/formHelpers'
+import { INPUT_WIDTH } from 'utils/formHelpers'
 import Loader from 'components/Loader'
+import { AiFillWarning } from 'react-icons/ai'
 
 function RegisterForm() {
 	const [isLoading, setIsLoading] = useState(false)
@@ -42,14 +50,16 @@ function RegisterForm() {
 										width={INPUT_WIDTH}
 									/>
 								</FormBox>
-								{errors.username && errors.type === 'required' && (
+								{errors.username && errors.username.type === 'required' && (
 									<FormBox>
-										<ErrorMessage>* Username is required</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>Username is required</ErrorMessage>
 									</FormBox>
 								)}
 								{errors.username && errors.username.type === 'minLength' && (
 									<FormBox>
-										<ErrorMessage>* Username must be at least 2 characters</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>Username must be at least 2 characters</ErrorMessage>
 									</FormBox>
 								)}
 								<FormBox>
@@ -63,12 +73,14 @@ function RegisterForm() {
 								</FormBox>
 								{errors.firstName && errors.firstName.type === 'required' && (
 									<FormBox>
-										<ErrorMessage>* First Name is required</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>First Name is required</ErrorMessage>
 									</FormBox>
 								)}
 								{errors.firstName && errors.firstName.type === 'minLength' && (
 									<FormBox>
-										<ErrorMessage>* First name must be at least 2 characters</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>First name must be at least 2 characters</ErrorMessage>
 									</FormBox>
 								)}
 								<FormBox>
@@ -82,12 +94,14 @@ function RegisterForm() {
 								</FormBox>
 								{errors.lastName && errors.lastName.type === 'required' && (
 									<FormBox>
-										<ErrorMessage>* Last Name is required</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>Last Name is required</ErrorMessage>
 									</FormBox>
 								)}
 								{errors.lastName && errors.lastName.type === 'minLength' && (
 									<FormBox>
-										<ErrorMessage>* Last name must be at least 2 characters</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>Last name must be at least 2 characters</ErrorMessage>
 									</FormBox>
 								)}
 								<FormBox>
@@ -104,12 +118,14 @@ function RegisterForm() {
 								</FormBox>
 								{errors.email && errors.email.type === 'required' && (
 									<FormBox>
-										<ErrorMessage>* Email is required</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>Email is required</ErrorMessage>
 									</FormBox>
 								)}
 								{errors.email && errors.email.type === 'pattern' && (
 									<FormBox>
-										<ErrorMessage>* Enter a valid email</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>Enter a valid email</ErrorMessage>
 									</FormBox>
 								)}
 								<FormBox>
@@ -126,13 +142,15 @@ function RegisterForm() {
 								</FormBox>
 								{errors.password && errors.password.type === 'required' && (
 									<FormBox>
-										<ErrorMessage>* A Password is required</ErrorMessage>
+										<ErrorIcon />
+										<ErrorMessage>A Password is required</ErrorMessage>
 									</FormBox>
 								)}
 								{errors.password && errors.password.type === 'pattern' && (
 									<FormBox>
+										<ErrorIcon />
 										<ErrorMessage>
-											* Passwords must be:{' '}
+											Passwords must be:{' '}
 											<ul>
 												<li>8 characters long</li>
 												<li>1 uppercase character</li>
@@ -154,6 +172,7 @@ function RegisterForm() {
 								</FormBox>
 								{errors.confirmPassword && errors.confirmPassword.type === 'validate' && (
 									<FormBox>
+										<ErrorIcon />
 										<ErrorMessage>Password and confirmation do not match</ErrorMessage>
 									</FormBox>
 								)}
@@ -175,11 +194,6 @@ function RegisterForm() {
 								<FormBox>
 									<StyledLink to="/login">Return to Login</StyledLink>
 								</FormBox>
-								{/* {error && (
-									<FormBox>
-										<ErrorMessage>{error.message}</ErrorMessage>
-									</FormBox>
-								)} */}
 							</FormFlex>
 						</form>
 					</FormWrapperBox>

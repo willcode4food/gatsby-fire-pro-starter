@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { InputField } from 'components/Forms/FormFields'
-import { ErrorMessage, FormHeader, FormButton, StyledLink } from 'components/Forms/FormStyles'
+import { FormHeader, FormButton, StyledLink } from 'components/Forms/FormStyles'
 import { COLORS } from 'utils/styleHelpers'
 import {
 	FormBox,
@@ -11,13 +11,17 @@ import {
 	FormWrapperBox,
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-import { INPUT_WIDTH, setLoginFlag, getLoginFlag, unsetLoginFlag } from 'utils/formHelpers'
+import { INPUT_WIDTH } from 'utils/formHelpers'
 import Loader from 'components/Loader'
 
 function LoginForm() {
-	// const { register, handleSubmit, watch, errors } = useForm()
-	// const onSubmit = (data) => console.log(data)
 	const [isLoading, setIsLoading] = useState(false)
+	const { errors, register, handleSubmit } = useForm()
+
+	const onSubmit = (data) => {
+		console.log('onSubmit -> data', data)
+	}
+
 	return (
 		<>
 			{isLoading ? (
@@ -26,10 +30,16 @@ function LoginForm() {
 				<FormWrapper>
 					<FormWrapperBox>
 						<FormHeader>Forgot Password</FormHeader>
-						<form>
+						<form onSubmit={handleSubmit(onSubmit)}>
 							<FormFlex>
 								<FormBox>
-									<InputField placeholder="Email Address" type="text" width={INPUT_WIDTH} />
+									<InputField
+										name="email"
+										placeholder="Email Address"
+										register={register}
+										type="text"
+										width={INPUT_WIDTH}
+									/>
 								</FormBox>
 								<FormBox>
 									<FormFlexInner>
@@ -41,11 +51,6 @@ function LoginForm() {
 								<FormBox>
 									<StyledLink to="/login">Return to Login</StyledLink>
 								</FormBox>
-								{/* {error && (
-									<FormBox>
-										<ErrorMessage>{error.message}</ErrorMessage>
-									</FormBox>
-								)} */}
 							</FormFlex>
 						</form>
 					</FormWrapperBox>
