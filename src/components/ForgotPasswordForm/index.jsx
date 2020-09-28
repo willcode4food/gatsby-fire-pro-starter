@@ -39,6 +39,7 @@ function LoginForm() {
 										register={register}
 										type="text"
 										width={INPUT_WIDTH}
+										aria-label="Email Address"
 									/>
 								</FormBox>
 								<FormBox>

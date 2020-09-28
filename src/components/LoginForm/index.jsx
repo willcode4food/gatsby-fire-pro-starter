@@ -39,6 +39,7 @@ function LoginForm() {
 										placeholder="Email Address"
 										type="text"
 										width={INPUT_WIDTH}
+										aria-label="Email Address"
 									/>
 								</FormBox>
 								<FormBox>
@@ -48,6 +49,7 @@ function LoginForm() {
 										placeholder="Password"
 										type="password"
 										width={INPUT_WIDTH}
+										aria-label="Password"
 									/>
 								</FormBox>
 								<FormBox>

@@ -48,6 +48,7 @@ function RegisterForm() {
 										register={register({ required: true, minLength: 2 })}
 										type="text"
 										width={INPUT_WIDTH}
+										aria-label="Username"
 									/>
 								</FormBox>
 								{errors.username && errors.username.type === 'required' && (
@@ -69,6 +70,7 @@ function RegisterForm() {
 										register={register({ required: true, minLength: 2 })}
 										type="text"
 										width={INPUT_WIDTH}
+										aria-label="First Name"
 									/>
 								</FormBox>
 								{errors.firstName && errors.firstName.type === 'required' && (
@@ -90,6 +92,7 @@ function RegisterForm() {
 										register={register({ required: true, minLength: 2 })}
 										type="text"
 										width={INPUT_WIDTH}
+										aria-label="Last Name"
 									/>
 								</FormBox>
 								{errors.lastName && errors.lastName.type === 'required' && (
@@ -114,6 +117,7 @@ function RegisterForm() {
 										})}
 										type="text"
 										width={INPUT_WIDTH}
+										aria-label="True"
 									/>
 								</FormBox>
 								{errors.email && errors.email.type === 'required' && (
@@ -138,6 +142,7 @@ function RegisterForm() {
 										})}
 										type="password"
 										width={INPUT_WIDTH}
+										aria-label="True"
 									/>
 								</FormBox>
 								{errors.password && errors.password.type === 'required' && (
@@ -168,6 +173,7 @@ function RegisterForm() {
 										register={register({ validate: (value) => value === watch('password') })}
 										type="password"
 										width={INPUT_WIDTH}
+										aria-label="Confirm Password"
 									/>
 								</FormBox>
 								{errors.confirmPassword && errors.confirmPassword.type === 'validate' && (
