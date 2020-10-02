@@ -1,7 +1,10 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { COLORS, MQ, SPACERS } from 'utils/styleHelpers'
+import { COLORS, SPACERS } from 'utils/styleHelpers'
+import { css } from '@emotion/core'
 import { AiFillWarning } from 'react-icons/ai'
+import { FcGoogle } from 'react-icons/fc'
+import { HiOutlineMail } from 'react-icons/hi'
 
 export const ErrorMessage = styled.span`
 	color: ${COLORS.ERROR};
@@ -14,58 +17,39 @@ export const ErrorIcon = styled(AiFillWarning)`
 	color: ${COLORS.ERROR};
 `
 
-export const FormButton = styled.button`
-	color: ${COLORS.PRIMARY};
-	background: ${({ bg }) => {
-		return bg || COLORS.PRIMARY_DARK
-	}};
-	border: none;
+export const GoogleLoginIcon = styled(FcGoogle)``
+
+export const EmailLoginIcon = styled(HiOutlineMail)``
+
+const formButtonStyles = ({ textColor, bgColor }) => css`
+	color: ${textColor || COLORS.PRIMARY_DARK};
+	background-color: ${bgColor || COLORS.PRIMARY};
+	border: 1px solid ${COLORS.TERNARY_DARK};
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 16px;
 	padding: 14px 28px;
 	text-align: center;
 	width: 100%;
-	transition: background 0.5s;
+	transition: background-color 0.5s, border 0.5s, color 0.5s;
 	.dark & {
-		background: ${({ bg }) => (bg === COLORS.SECONDARY_DARK ? COLORS.SECONDARY_DARK : bg)};
+		background-color: ${COLORS.SECONDARY_DARK};
+		border: 1px solid ${COLORS.PRIMARY};
+		color: ${COLORS.PRIMARY};
 	}
 `
+
+export const FormButton = styled.button`
+	${({ textColor, bgColor }) => formButtonStyles({ textColor, bgColor })}
+`
 export const FormSubmitButton = styled.input`
-	color: ${COLORS.PRIMARY};
-	background: ${({ bg }) => {
-		return bg || COLORS.PRIMARY_DARK
-	}};
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-	padding: 14px 28px;
-	text-align: center;
-	width: 100%;
-	transition: background 0.5s;
-	.dark & {
-		background: ${({ bg }) => (bg === COLORS.SECONDARY_DARK ? COLORS.SECONDARY_DARK : bg)};
-	}
+	${({ textColor, bgColor }) => formButtonStyles({ textColor, bgColor })}
 `
 export const FormHeader = styled.h2`
 	padding-left: ${SPACERS.S};
 	text-transform: uppercase;
 `
 
-export const StyledSubmitButton = styled.input`
-	background-color: ${({ bg }) => {
-		return bg || COLORS.PRIMARY_DARK
-	}};
-	border: none;
-	cursor: pointer;
-	font-size: 16px;
-	display: block;
-	padding: 14px 28px;
-	text-align: center;
-	type: submit;
-	width: 100%;
-`
 export const StyledLink = styled(Link)`
 	color: ${COLORS.PRIMARY_DARK};
 	&:hover {
@@ -76,22 +60,16 @@ export const StyledLink = styled(Link)`
 		color: ${COLORS.SECONDARY};
 	}
 `
-export const ReviewsListWrapper = styled.div``
-export const ReviewFormWrapper = styled.div`
-	${MQ.S} {
-		margin-right: ${SPACERS.L};
-		min-width: 200px;
-	}
-	${MQ.M} {
-		min-width: 300px;
-	}
-	${MQ.L} {
-		margin-right: ${SPACERS.XL};
-		min-width: 400px;
-	}
-`
 
-export const StyledStar = styled.div`
-	font-size: ${({ fontSize }) => fontSize};
-	margin-right: 3px;
+export const ButtonLabelWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+`
+export const ButtonLabelIconBox = styled.div`
+	flex-basis: 25%;
+`
+export const ButtonLabelBox = styled.div`
+	flex-basis: 75%;
+	text-align: left;
 `

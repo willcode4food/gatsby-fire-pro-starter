@@ -4,6 +4,7 @@ import { SPACERS, MQ } from 'utils/styleHelpers'
 export const FormWrapper = styled.div`
 	display: flex;
 	justify-content: center;
+	margin-bottom: ${SPACERS.M};
 	width: 100%;
 `
 export const FormWrapperBox = styled.div`

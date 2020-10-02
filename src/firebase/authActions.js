@@ -2,9 +2,6 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 const { auth } = firebase
 
-const googleProvider = new auth.GoogleAuthProvider()
-const facebookProvider = new auth.FacebookAuthProvider()
-
 // Sign Up (Email)
 export const doCreateUserWithEmailAndPassword = async (email, password) => {
 	const result = await auth().createUserWithEmailAndPassword(email, password)
@@ -32,7 +29,7 @@ export const doSignOut = async () => {
 }
 
 // Password Reset (Email)
-export const doPasswordReset = async email => {
+export const doPasswordReset = async (email) => {
 	try {
 		await auth().sendPasswordResetEmail(email)
 		return true
@@ -42,7 +39,7 @@ export const doPasswordReset = async email => {
 }
 
 // Password Reset (Email)
-export const doPasswordUpdate = async password => {
+export const doPasswordUpdate = async (password) => {
 	try {
 		await auth().currentUser.updatePassword(password)
 		return true
@@ -52,6 +49,7 @@ export const doPasswordUpdate = async password => {
 }
 
 export const doSignInWithGoogle = async () => {
+	const googleProvider = new auth.GoogleAuthProvider()
 	try {
 		await auth().signInWithRedirect(googleProvider)
 		return true
@@ -61,6 +59,7 @@ export const doSignInWithGoogle = async () => {
 }
 
 export const doSignInWithFacebook = async () => {
+	const facebookProvider = new auth.FacebookAuthProvider()
 	try {
 		await auth().signInWithRedirect(facebookProvider)
 		return true
@@ -69,7 +68,7 @@ export const doSignInWithFacebook = async () => {
 	}
 }
 
-export const doUpdateEmail = async email => {
+export const doUpdateEmail = async (email) => {
 	try {
 		await auth().currentUser.updateEmail(email)
 		return true

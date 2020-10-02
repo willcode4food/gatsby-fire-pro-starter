@@ -7,6 +7,7 @@ export const LoaderOverlay = styled.div`
 	.dark & {
 		background: ${COLORS.BLACK};
 	}
+	z-index: 3;
 `
 
 export const LoaderWrapper = styled.div`

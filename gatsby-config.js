@@ -13,9 +13,9 @@ module.exports = {
 					utils: 'src/utils',
 					hooks: 'src/hooks',
 					firebaseActions: 'src/firebase',
-					templates: "src/templates"
+					templates: 'src/templates',
 				},
-				extensions: ['js'],
+				extensions: ['js', 'jsx'],
 			},
 		},
 		`gatsby-plugin-react-helmet`,

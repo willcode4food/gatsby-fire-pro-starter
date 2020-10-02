@@ -39,6 +39,8 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-plugin-react": "^7.21.2",
     "prettier": "2.1.0"
   },
   "keywords": [

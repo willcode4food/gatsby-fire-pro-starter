@@ -5,7 +5,7 @@ import { db } from './connection'
 import * as firebase from 'firebase/app'
 
 // data layer for firebase and Users
-export const doDefaultUserRole = async userID => {
+export const doDefaultUserRole = async (userID) => {
 	const rolesRef = await db
 		.collection('users')
 		.doc(userID)
@@ -18,35 +18,16 @@ export const doDefaultUserRole = async userID => {
 	return rolesRef
 }
 
-export const doCreateUser = async ({
-	id,
-	prefersUsername,
-	username,
-	firstName,
-	lastName,
-	email,
-	provider,
-	isAgeVerified,
-}) => {
+export const doCreateUser = async ({ id, ...data }) => {
 	try {
 		const dateCreated = new Date(Date.now())
-		const data = {
-			email,
-			firstName,
-			lastName,
-			prefersUsername,
-			provider,
-			dateCreated,
-			isAgeVerified,
+
+		const firestorePayload = {
+			...data,
 			defaultAvatarThemeIndex: getAvatarThemeIndex(),
 		}
 
-		const firestorePayload = username ? { ...data, username, lowerCaseUsername: username.toLowerCase() } : data
-
-		const authUser = await db
-			.collection('users')
-			.doc(id)
-			.set(firestorePayload)
+		const authUser = await db.collection('users').doc(id).set(firestorePayload)
 		await doDefaultUserRole(id)
 		return authUser
 	} catch (error) {
@@ -54,14 +35,10 @@ export const doCreateUser = async ({
 	}
 }
 
-export const getUserRoles = async userID => {
+export const getUserRoles = async (userID) => {
 	try {
-		const rolesSnapShot = await db
-			.collection('users')
-			.doc(userID)
-			.collection('roles')
-			.get()
-		return !rolesSnapShot.empty ? rolesSnapShot.docs.map(d => d.id) : []
+		const rolesSnapShot = await db.collection('users').doc(userID).collection('roles').get()
+		return !rolesSnapShot.empty ? rolesSnapShot.docs.map((d) => d.id) : []
 	} catch (error) {
 		throw new Error(error.message)
 	}
@@ -73,18 +50,18 @@ export const doGetUsers = async () => {
 	return !querySnapshot.empty ? querySnapshot.docs : []
 }
 
-export const doGetUser = async id => {
+export const doGetUser = async (id) => {
 	const docRef = await db.collection('users').doc(id)
 	const doc = await docRef.get()
 	return doc.exists ? { ...doc.data(), exists: true } : { exists: false }
 }
 
-export const doUpdateUser = async data => {
+export const doUpdateUser = async (data) => {
 	const { id, ...rest } = data
 	const userData = { ...rest }
 	const userRef = db.collection('users').doc(id)
 	try {
-		await db.runTransaction(async function(transaction) {
+		await db.runTransaction(async function (transaction) {
 			const userDoc = await transaction.get(userRef)
 			if (!userDoc.exists) {
 				throw Error('Invalid User Id')
@@ -104,7 +81,7 @@ export const doUpdateUser = async data => {
 	}
 }
 
-export const validateUsername = async username => {
+export const validateUsername = async (username) => {
 	const token = await firebase.auth().currentUser.getIdToken(true)
 	const config = {
 		headers: { Authorization: `Bearer ${token}` },

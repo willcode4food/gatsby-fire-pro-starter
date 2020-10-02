@@ -1,4 +1,4 @@
-import { LOGIN_FLAG_STORAGE } from 'utils/constants'
+import { LOGIN_FLAG_STORAGE, USERNAME_STORAGE } from 'utils/constants'
 
 export const BUTTON_MX = [0, 0, 2]
 
@@ -18,4 +18,13 @@ export const getLoginFlag = () => {
 }
 export const unsetLoginFlag = () => {
 	window.localStorage.removeItem(LOGIN_FLAG_STORAGE)
+}
+export const setUsername = (username) => {
+	window.localStorage.setItem(USERNAME_STORAGE, username)
+}
+export const getUsername = () => {
+	return window.localStorage.getItem(USERNAME_STORAGE)
+}
+export const unsetUsername = () => {
+	window.localStorage.removeItem(USERNAME_STORAGE)
 }

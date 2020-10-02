@@ -7,7 +7,7 @@ const Loader = () => (
 	<LoaderOverlay>
 		<LoaderWrapper>
 			<LoaderBox>
-				<BeatLoader color={COLORS.PRIMARY} margin="10px" size={24} />
+				<BeatLoader color={COLORS.SECONDARY} margin="10px" size={24} />
 			</LoaderBox>
 		</LoaderWrapper>
 	</LoaderOverlay>

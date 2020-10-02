@@ -6,7 +6,7 @@ export const InputFieldStyle = styled.input`
 	font-size: inherit;
 	line-height: inherit;
 	width: 100%;
-	box-shadow: rgb(238, 238, 238) 0px 0px 0px 1px inset;
+	box-shadow: ${COLORS.TOGGLE} 0px 0px 0px 1px inset;
 	padding-left: 10px;
 	padding-right: 4px;
 	padding-top: 13px;

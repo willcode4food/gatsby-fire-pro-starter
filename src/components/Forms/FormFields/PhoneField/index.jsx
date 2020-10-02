@@ -1,5 +1,5 @@
 import React from 'react'
-import { MaskedInputField } from '../MaskedInputField'
+import MaskedInputField from '../MaskedInputField'
 
 function PhoneField(input) {
 	return (
