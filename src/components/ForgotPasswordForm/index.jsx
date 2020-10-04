@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { InputField } from 'components/Forms/FormFields'
-import { FormHeader, FormButton, StyledLink } from 'components/Forms/FormStyles'
-import { COLORS } from 'utils/styleHelpers'
+import { InputField, SubmitButton } from 'components/Forms/FormFields'
+import { FormHeader, StyledLink, ErrorMessage, ErrorIcon } from 'components/Forms/FormStyles'
 import {
 	FormBox,
 	FormFlex,
@@ -11,44 +10,56 @@ import {
 	FormWrapperBox,
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-import { INPUT_WIDTH } from 'utils/formHelpers'
 import Loader from 'components/Loader'
+import { FIREBASE } from 'utils/constants'
+import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
 
-function LoginForm() {
-	const [isLoading, setIsLoading] = useState(false)
+function ForgotPasswordForm() {
 	const { errors, register, handleSubmit } = useForm()
-
-	const onSubmit = (data) => {
-		console.log('onSubmit -> data', data)
-	}
-
+	const [appError, setAppError] = useState(null)
+	const { onForgotPassword, isAuthenticationLoading, authenticationError } = useFirebaseAuthentication({
+		firebesConfig: FIREBASE.CONFIG,
+	})
+	useEffect(() => {
+		setAppError(authenticationError)
+	}, [authenticationError])
 	return (
 		<>
-			{isLoading ? (
+			{isAuthenticationLoading ? (
 				<Loader />
 			) : (
 				<FormWrapper>
 					<FormWrapperBox>
 						<FormHeader>Forgot Password</FormHeader>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form onSubmit={handleSubmit(onForgotPassword)}>
 							<FormFlex>
 								<FormBox>
 									<InputField
 										name="email"
 										placeholder="Email Address"
-										register={register}
+										register={register({ required: true })}
 										type="text"
-										width={INPUT_WIDTH}
 										aria-label="Email Address"
 									/>
 								</FormBox>
+								{errors.email && (
+									<FormBox>
+										<ErrorIcon />
+										<ErrorMessage>Please enter a valid email</ErrorMessage>
+									</FormBox>
+								)}
 								<FormBox>
 									<FormFlexInner>
 										<FormFlexInnerBox>
-											<FormButton bg={COLORS.PRIMARY_DARK}>Reset My Password</FormButton>
+											<SubmitButton value="Reset My Password" />
 										</FormFlexInnerBox>
 									</FormFlexInner>
 								</FormBox>
+								{appError && (
+									<FormBox>
+										<ErrorMessage>{appError.message}</ErrorMessage>
+									</FormBox>
+								)}
 								<FormBox>
 									<StyledLink to="/login">Return to Login</StyledLink>
 								</FormBox>
@@ -61,4 +72,4 @@ function LoginForm() {
 	)
 }
 
-export default LoginForm
+export default ForgotPasswordForm

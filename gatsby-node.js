@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Implement Gatsby's Node APIs in this file.
  *

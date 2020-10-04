@@ -42,13 +42,11 @@ export const Wrapper = styled.button`
 	transform: scale(0.75);
 	transition: opacity 0.3s ease;
 	width: 30px;
-	&:hover {
-		opacity: 1;
-	}
+	opacity: 1;
 `
 export const MoonOrSun = styled.div`
-	border: ${(p) => (p.isDark ? `4px` : `2px`)} solid ${(p) => p.color};
-	background: ${(p) => p.color};
+	border: ${(p) => (p.isDark ? `4px` : `2px`)} solid ${(p) => (p.isDark ? p.darkColor : p.color)};
+	background: ${(p) => (p.isDark ? p.darkColor : p.color)};
 	border-radius: 50%;
 	height: 24px;
 	overflow: ${(p) => (p.isDark ? `visible` : `hidden`)};
@@ -58,7 +56,7 @@ export const MoonOrSun = styled.div`
 	width: 24px;
 	&::before {
 		border-radius: 50%;
-		border: 2px solid ${(p) => p.color};
+		border: 2px solid ${(p) => (p.isDark ? p.darkColor : p.color)};
 		content: '';
 		height: 24px;
 		opacity: ${(p) => (p.isDark ? 0 : 1)};
@@ -71,9 +69,13 @@ export const MoonOrSun = styled.div`
 	}
 	&::after {
 		border-radius: 50%;
-		box-shadow: 0 -23px 0 ${(p) => p.color}, 0 23px 0 ${(p) => p.color}, 23px 0 0 ${(p) => p.color},
-			-23px 0 0 ${(p) => p.color}, 15px 15px 0 ${(p) => p.color}, -15px 15px 0 ${(p) => p.color},
-			15px -15px 0 ${(p) => p.color}, -15px -15px 0 ${(p) => p.color};
+		box-shadow: 0 -23px 0 ${(p) => (p.isDark ? p.darkColor : p.color)},
+			0 23px 0 ${(p) => (p.isDark ? p.darkColor : p.color)}, 23px 0 0 ${(p) => (p.isDark ? p.darkColor : p.color)},
+			-23px 0 0 ${(p) => (p.isDark ? p.darkColor : p.color)},
+			15px 15px 0 ${(p) => (p.isDark ? p.darkColor : p.color)},
+			-15px 15px 0 ${(p) => (p.isDark ? p.darkColor : p.color)},
+			15px -15px 0 ${(p) => (p.isDark ? p.darkColor : p.color)},
+			-15px -15px 0 ${(p) => (p.isDark ? p.darkColor : p.color)};
 		content: '';
 		height: 8px;
 		left: 50%;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
 	siteMetadata: {
 		title: `Gatsby Default Starter`,
@@ -10,6 +11,8 @@ module.exports = {
 			options: {
 				alias: {
 					components: 'src/components',
+					context: 'src/context',
+					providers: 'src/providers',
 					utils: 'src/utils',
 					hooks: 'src/hooks',
 					firebaseActions: 'src/firebase',

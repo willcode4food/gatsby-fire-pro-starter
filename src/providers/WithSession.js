@@ -1,7 +1,8 @@
 import React, { useState, useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
-import { AuthContext, SessionContext } from 'components/Session/AuthContext'
-import { version } from '../../../package.json'
+import AuthContext from 'context/AuthContext'
+import SessionContext from 'context/SessionContext'
+import { version } from '../../package.json'
 import useUserIp from 'hooks/useUserIp'
 import { genGuid } from 'utils/genGuid'
 

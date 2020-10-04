@@ -1,20 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
-import * as firebase from 'firebase/app'
 import PropTypes from 'prop-types'
-import { AuthContext } from 'components/Session/AuthContext'
-import { userActions } from '../../firebase'
-const { getUserRoles } = userActions
+import AuthContext from 'context/AuthContext'
+import { FIREBASE } from 'utils/constants'
+import useFirebaseApp from 'hooks/firebase/useFirebaseApp'
 
 function WithFirebaseAuthentication({ children }) {
 	const hasMounted = useRef(false)
 	const [authUser, setAuthUser] = useState({ uid: null })
 	const [isLoading, setIsLoading] = useState(true)
 	const [roles, setRoles] = useState([])
+	const { db, auth } = useFirebaseApp({ firebaseConfig: FIREBASE.CONFIG })
+	const getUserRoles = async (userID) => {
+		try {
+			const rolesSnapShot = await db.collection('users').doc(userID).collection('roles').get()
+			return !rolesSnapShot.empty ? rolesSnapShot.docs.map((d) => d.id) : []
+		} catch (error) {
+			throw new Error(error.message)
+		}
+	}
 
 	useEffect(() => {
 		async function getAuth() {
 			hasMounted.current = true
-			firebase.auth().onAuthStateChanged(async (authUser) => {
+			auth().onAuthStateChanged(async (authUser) => {
 				if (hasMounted.current) {
 					setIsLoading(true)
 					if (authUser) {

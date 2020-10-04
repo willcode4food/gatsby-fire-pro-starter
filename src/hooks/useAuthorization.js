@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AuthContext } from 'components/Session/AuthContext'
+import AuthContext from 'context/AuthContext'
 
 function useAuthorization(authCondition) {
 	const { authUser, roles, isLoading } = useContext(AuthContext)

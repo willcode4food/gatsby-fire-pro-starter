@@ -7,19 +7,10 @@
 		"moduleResolution": "node"
 	},
 	"paths": {
-		"components/**/*": [
-			"./components/**/*"
-		],
-		"pages/**/*": [
-			"./pages/**/*"
-		]
+		"components/**/*": ["./components/**/*"],
+		"pages/**/*": ["./pages/**/*"]
 	},
-	"include": [
-		"./src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"public"
-	]
+	"include": ["./src/**/*"],
+	"exclude": ["node_modules", "public"]
 }
-// 
+//

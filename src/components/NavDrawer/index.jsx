@@ -2,14 +2,14 @@ import { bool, func, string } from 'prop-types'
 import React, { useContext } from 'react'
 import track, { TrackingPropType } from 'react-tracking'
 import { Link } from 'gatsby'
-import { SessionContext } from 'components/Session/AuthContext'
+import SessionContext from 'context/SessionContext'
 import { PathHistoryLink } from 'components/PathHistory'
 import { SignOutButton } from 'components/SignOutForm'
 import { stampTime, eventDispatch } from 'utils/tracker'
 
 import { Drawer, NavWrapper } from './styles'
 
-function NavDrawer({ isNavOpen, pathname, resetState, tracking, isShowingBreadcrumbs = true }) {
+function NavDrawer({ isNavOpen, pathname, resetState }) {
 	const { sessionId, uid } = useContext(SessionContext)
 	return (
 		<Drawer open={isNavOpen}>

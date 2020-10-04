@@ -6,7 +6,7 @@ import Logo from './Logo'
 import AccountLink from 'components/AccountLink'
 import HamburgerArrow from './HamburgerArrow'
 import ThemeToggle from 'components/ThemeToggle'
-import { SessionContext } from 'components/Session/AuthContext'
+import SessionContext from 'context/SessionContext'
 import {
 	StickyNav,
 	HeaderBar,

@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { InputField } from 'components/Forms/FormFields'
-import { ErrorMessage, FormHeader, FormButton, StyledLink } from 'components/Forms/FormStyles'
-import { COLORS } from 'utils/styleHelpers'
+import { InputField, SubmitButton } from 'components/Forms/FormFields'
+import { ErrorMessage, FormHeader, FormButton, StyledLink, ErrorIcon } from 'components/Forms/FormStyles'
 import {
 	FormBox,
 	FormFlex,
@@ -11,15 +10,33 @@ import {
 	FormWrapperBox,
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-import { INPUT_WIDTH } from 'utils/formHelpers'
+import { ButtonLabelWrapper, ButtonLabelIconBox, ButtonLabelBox, GoogleLoginIcon } from 'components/Forms/FormStyles'
 import Loader from 'components/Loader'
+import { FIREBASE } from 'utils/constants'
+import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
 
 function LoginForm() {
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading] = useState(false)
 	const { errors, register, handleSubmit } = useForm()
+	const [authError, setAuthError] = useState(null)
+	const { onEmailLogin, onGoogleLogin, authenticationError } = useFirebaseAuthentication({
+		firebaseConfig: FIREBASE.CONFIG,
+	})
 
-	const onSubmit = (data) => {
-		console.log('onSubmit -> data', data)
+	useEffect(() => {
+		setAuthError(authenticationError)
+	}, [authenticationError])
+
+	const onEmailSubmit = async (data) => {
+		try {
+			await onEmailLogin(data)
+		} catch (e) {
+			authenticationError
+		}
+	}
+
+	const onGoogleSubmit = async (event) => {
+		onGoogleLogin(event)
 	}
 
 	return (
@@ -30,35 +47,58 @@ function LoginForm() {
 				<FormWrapper>
 					<FormWrapperBox>
 						<FormHeader>Login</FormHeader>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form onSubmit={handleSubmit(onEmailSubmit)}>
 							<FormFlex>
+								{authError && (
+									<FormBox>
+										<ErrorIcon />
+										<ErrorMessage>{authError.message}</ErrorMessage>
+									</FormBox>
+								)}
 								<FormBox>
 									<InputField
-										register={register}
+										register={register({ required: true })}
 										name="email"
 										placeholder="Email Address"
 										type="text"
-										width={INPUT_WIDTH}
 										aria-label="Email Address"
 									/>
 								</FormBox>
+								{errors.email && (
+									<FormBox>
+										<ErrorIcon />
+										<ErrorMessage>Please enter a valid email</ErrorMessage>
+									</FormBox>
+								)}
 								<FormBox>
 									<InputField
-										register={register}
+										register={register({ required: true })}
 										name="password"
 										placeholder="Password"
 										type="password"
-										width={INPUT_WIDTH}
 										aria-label="Password"
 									/>
 								</FormBox>
+								{errors.password && (
+									<FormBox>
+										<ErrorIcon />
+										<ErrorMessage>Please enter a password</ErrorMessage>
+									</FormBox>
+								)}
 								<FormBox>
 									<FormFlexInner>
 										<FormFlexInnerBox>
-											<FormButton bg={COLORS.PRIMARY_DARK}>Sign In with Email</FormButton>
+											<SubmitButton value="Login With Email" />
 										</FormFlexInnerBox>
 										<FormFlexInnerBox>
-											<FormButton bg={COLORS.PRIMARY_BUTTON}>Sign in with Google</FormButton>
+											<FormButton onClick={onGoogleSubmit}>
+												<ButtonLabelWrapper>
+													<ButtonLabelIconBox>
+														<GoogleLoginIcon />
+													</ButtonLabelIconBox>
+													<ButtonLabelBox>Login With Google</ButtonLabelBox>
+												</ButtonLabelWrapper>
+											</FormButton>
 										</FormFlexInnerBox>
 									</FormFlexInner>
 								</FormBox>

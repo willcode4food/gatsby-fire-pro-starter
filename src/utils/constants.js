@@ -1,7 +1,16 @@
+/* eslint-disable no-undef */
 const FIREBASE = {
 	STORAGE: {
 		PROFILE_IMG_FOLDER: 'profile-images',
 		BASE_URL: 'https://storage.googleapis.com/...',
+	},
+	CONFIG: {
+		apiKey: process.env.GATSBY_APIKEY,
+		authDomain: process.env.GATSBY_AUTHDOMAIN,
+		databaseURL: process.env.GATSBY_DATABASEURL,
+		projectId: process.env.GATSBY_PROJECTID,
+		storageBucket: process.env.GATSBY_STORAGEBUCKET,
+		messagingSenderId: process.env.GATSBY_MESSAGINGSENDERID,
 	},
 }
 
@@ -42,26 +51,23 @@ const TRACKING_ACTIONS = {
 	VIEW_REVIEWS: 'reviewsView',
 }
 
-const LOGIN_FLAG_STORAGE = 'LOGIN_FLAG_STORAGE'
 const PATH_HISTORY_STORAGE = 'PATH_HISTORY_STORAGE'
-const USERNAME_STORAGE = 'USERNAME_STORAGE'
 
 const USER_ROLES = {
 	ADMIN: 'admin',
 	USER: 'user',
 }
 
+// eslint-disable-next-line no-undef
 module.exports = {
 	DEFAULT_AVATAR_SIZE,
 	DEFAULT_AVATAR_THUMB_SIZE,
 	EVENT_TYPES,
 	FIREBASE,
-	LOGIN_FLAG_STORAGE,
 	PATH_HISTORY_STORAGE,
 	PROFILE_IMAGE_SIZE,
 	PROFILE_IMAGE_THUMB_SIZE,
 	PROFILE_IMAGE_TYPES,
 	TRACKING_ACTIONS,
 	USER_ROLES,
-	USERNAME_STORAGE,
 }

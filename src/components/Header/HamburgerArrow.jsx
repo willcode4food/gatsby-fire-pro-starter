@@ -18,10 +18,6 @@ const HamburgerArrow = styled.div`
 	transition-duration: 0.15s;
 	transition-property: opacity, filter;
 	transition-timing-function: linear;
-
-	&:hover {
-		opacity: 0.7;
-	}
 `
 
 // /*

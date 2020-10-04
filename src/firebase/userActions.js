@@ -1,12 +1,17 @@
 import axios from 'axios'
 import { apiUsersURL } from 'utils/apiHelpers'
 import { getAvatarThemeIndex } from 'utils/userHelpers'
-import { db } from './connection'
 import * as firebase from 'firebase/app'
-
+import { FIREBASE } from 'utils/constants'
+const db = () => {
+	if (!firebase.apps.length) {
+		firebase.initializeApp(FIREBASE.CONFIG)
+	}
+	return firebase.firestore()
+}
 // data layer for firebase and Users
 export const doDefaultUserRole = async (userID) => {
-	const rolesRef = await db
+	const rolesRef = await db()
 		.collection('users')
 		.doc(userID)
 		.collection('roles')
@@ -24,10 +29,11 @@ export const doCreateUser = async ({ id, ...data }) => {
 
 		const firestorePayload = {
 			...data,
+			dateCreated,
 			defaultAvatarThemeIndex: getAvatarThemeIndex(),
 		}
 
-		const authUser = await db.collection('users').doc(id).set(firestorePayload)
+		const authUser = await db().collection('users').doc(id).set(firestorePayload)
 		await doDefaultUserRole(id)
 		return authUser
 	} catch (error) {
@@ -37,7 +43,7 @@ export const doCreateUser = async ({ id, ...data }) => {
 
 export const getUserRoles = async (userID) => {
 	try {
-		const rolesSnapShot = await db.collection('users').doc(userID).collection('roles').get()
+		const rolesSnapShot = await db().collection('users').doc(userID).collection('roles').get()
 		return !rolesSnapShot.empty ? rolesSnapShot.docs.map((d) => d.id) : []
 	} catch (error) {
 		throw new Error(error.message)
@@ -46,12 +52,12 @@ export const getUserRoles = async (userID) => {
 
 export const doGetUsers = async () => {
 	// const db = firebase.firestore()
-	const querySnapshot = await db.collection('users').get()
+	const querySnapshot = await db().collection('users').get()
 	return !querySnapshot.empty ? querySnapshot.docs : []
 }
 
 export const doGetUser = async (id) => {
-	const docRef = await db.collection('users').doc(id)
+	const docRef = await db().collection('users').doc(id)
 	const doc = await docRef.get()
 	return doc.exists ? { ...doc.data(), exists: true } : { exists: false }
 }
@@ -59,9 +65,9 @@ export const doGetUser = async (id) => {
 export const doUpdateUser = async (data) => {
 	const { id, ...rest } = data
 	const userData = { ...rest }
-	const userRef = db.collection('users').doc(id)
+	const userRef = db().collection('users').doc(id)
 	try {
-		await db.runTransaction(async function (transaction) {
+		await db().runTransaction(async function (transaction) {
 			const userDoc = await transaction.get(userRef)
 			if (!userDoc.exists) {
 				throw Error('Invalid User Id')

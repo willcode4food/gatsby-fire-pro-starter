@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { BREAKPOINTS_VALUES } from 'utils/styleHelpers'
 import { setDefaultBreakpoints } from 'react-socks'
 import { BreakpointProvider } from 'react-socks'
-import { WithSession } from 'components/Session'
-import WithFirebaseAuthentication from 'components/Session/WithFirebaseAuthentication'
+import WithSession from 'providers/WithSession'
+import WithFirebaseAuthentication from 'providers/WithFirebaseAuthentication'
 import 'typeface-fjalla-one'
 
 setDefaultBreakpoints(Object.keys(BREAKPOINTS_VALUES).map((value) => ({ [value]: BREAKPOINTS_VALUES[value] })))

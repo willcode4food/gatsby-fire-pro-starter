@@ -16,7 +16,7 @@ function ThemeToggle() {
 		<Wrapper
 			aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
 			isDark={isDark}
-			onClick={(e) => {
+			onClick={() => {
 				setTheme(isDark ? 'light' : 'dark')
 				window.__setPreferredTheme(isDark ? 'light' : 'dark')
 			}}
@@ -24,7 +24,7 @@ function ThemeToggle() {
 		>
 			{theme !== null ? (
 				<>
-					<MoonOrSun isDark={isDark} color={COLORS.TOGGLE} />
+					<MoonOrSun isDark={isDark} color={COLORS.TOGGLE} darkColor={COLORS.PRIMARY} />
 					<MoonMask isDark={isDark} />
 				</>
 			) : (
