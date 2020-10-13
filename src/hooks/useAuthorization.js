@@ -6,8 +6,7 @@ function useAuthorization(authCondition) {
 
 	return {
 		isAuthorized: !isLoading ? authCondition(authUser, roles) : false,
-		authUser,
-		isLoading,
+		isAuthorizationLoading: isLoading,
 	}
 }
 

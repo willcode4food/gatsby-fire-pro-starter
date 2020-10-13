@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SelectFieldStyle } from './styles'
 
-function SelectField({ input, meta, ...rest }) {
-	return <SelectFieldStyle {...input} meta={meta} {...rest} />
+function SelectField({ input, register, ...rest }) {
+	return <SelectFieldStyle ref={register} {...input} {...rest} />
 }
 
 SelectField.propTypes = {
 	input: PropTypes.any,
-	meta: PropTypes.any,
+	register: PropTypes.func,
 }
 
 export default SelectField

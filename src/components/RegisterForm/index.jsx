@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useForm } from 'react-hook-form'
-import { InputField, SubmitButton } from 'components/Forms/FormFields'
+import { navigate } from 'gatsby'
+import { InputField, EmailSubmitButton } from 'components/Forms/FormFields'
 import {
 	ButtonLabelWrapper,
 	ButtonLabelBox,
@@ -22,26 +23,55 @@ import {
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
 import { FIREBASE } from 'utils/constants'
-
+import { getAvatarThemeIndex } from 'utils/userHelpers'
 import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
 import Loader from 'components/Loader'
-import { navigateToPathHistory } from 'components/PathHistory'
 
 function RegisterForm() {
 	const { errors, register, handleSubmit, watch } = useForm()
+	const [hasGoogleRegistrationError, setHasGoogleRegistrationError] = useState(false)
+	function onAuthenticationSuccess() {
+		navigate('/account')
+	}
+
 	const {
 		authenticationError,
 		isAuthenticationLoading,
-		isUsernameForThirdPartyLoginError,
 		onGoogleRegistration,
 		onEmailRegistration,
-		setIsUsernameForThirdPartyLoginError,
 	} = useFirebaseAuthentication({
-		usernameFieldName: 'username',
-		onAuthenticationSuccess: navigateToPathHistory,
+		onAuthenticationSuccess,
 		firebaseConfig: FIREBASE.CONFIG,
 	})
-
+	function getDefaultAvatarIndex() {
+		const index = document.getElementsByName('defaultAvatarThemeIndex')[0]
+		return parseInt(index.value)
+	}
+	const handleGoogleSubmit = async (event) => {
+		event.preventDefault()
+		const username = document.getElementsByName('username')[0]
+		if (!username.value || typeof username.value === undefined) {
+			setHasGoogleRegistrationError(true)
+			return
+		}
+		const defaultAvatarThemeIndex = getDefaultAvatarIndex()
+		await onGoogleRegistration({
+			username: username.value,
+			defaultAvatarThemeIndex,
+			loginProvider: 'google',
+		})
+		return
+	}
+	const onSubmit = async (data) => {
+		// eslint-disable-next-line no-unused-vars
+		const defaultAvatarThemeIndex = getDefaultAvatarIndex()
+		const { confirmPassword, ...restOfFormData } = data
+		onEmailRegistration({
+			...restOfFormData,
+			loginProvider: 'email',
+			defaultAvatarThemeIndex,
+		})
+	}
 	return (
 		<>
 			{isAuthenticationLoading ? (
@@ -50,7 +80,7 @@ function RegisterForm() {
 				<FormWrapper>
 					<FormWrapperBox>
 						<FormHeader>Register</FormHeader>
-						<form onSubmit={handleSubmit(onEmailRegistration)}>
+						<form onSubmit={handleSubmit(onSubmit)}>
 							{authenticationError && (
 								<FormBox>
 									<ErrorMessage>{authenticationError}</ErrorMessage>
@@ -60,8 +90,7 @@ function RegisterForm() {
 								<FormBox>
 									<InputField
 										onChange={() => {
-											isUsernameForThirdPartyLoginError &&
-												setIsUsernameForThirdPartyLoginError(false)
+											hasGoogleRegistrationError && setHasGoogleRegistrationError(false)
 										}}
 										name="username"
 										placeholder="Username"
@@ -71,7 +100,7 @@ function RegisterForm() {
 									/>
 								</FormBox>
 								{((errors.username && errors.username.type === 'required') ||
-									isUsernameForThirdPartyLoginError) && (
+									hasGoogleRegistrationError) && (
 									<FormBox>
 										<ErrorIcon />
 										<ErrorMessage>Username is required</ErrorMessage>
@@ -190,6 +219,12 @@ function RegisterForm() {
 										type="password"
 										aria-label="Confirm Password"
 									/>
+									<input
+										type="hidden"
+										ref={register}
+										name="defaultAvatarThemeIndex"
+										defaultValue={getAvatarThemeIndex()}
+									/>
 								</FormBox>
 								{errors.confirmPassword && errors.confirmPassword.type === 'validate' && (
 									<FormBox>
@@ -200,10 +235,10 @@ function RegisterForm() {
 								<FormBox>
 									<FormFlexInner>
 										<FormFlexInnerBox>
-											<SubmitButton value="Register With Email" />
+											<EmailSubmitButton text="Register With Email" />
 										</FormFlexInnerBox>
 										<FormFlexInnerBox>
-											<FormButton onClick={onGoogleRegistration}>
+											<FormButton onClick={handleGoogleSubmit}>
 												<ButtonLabelWrapper>
 													<ButtonLabelIconBox>
 														<GoogleLoginIcon />

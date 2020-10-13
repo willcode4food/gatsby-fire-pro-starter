@@ -18,8 +18,8 @@ const DEFAULT_AVATAR_THEMES = [
 	},
 	{
 		foreground: COLORS.PRIMARY,
-		background: COLORS.SECONDARY_DARK,
-		border: COLORS.SECONDARY_DARK,
+		background: COLORS.TOGGLE,
+		border: COLORS.TOGGLE,
 	},
 	{
 		foreground: COLORS.SECONDARY_DARK,

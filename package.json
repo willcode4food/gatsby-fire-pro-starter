@@ -26,6 +26,7 @@
     "gray-percentage": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-avatar-editor": "11.0.9",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.8.4",

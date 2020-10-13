@@ -15,12 +15,13 @@ export const FileFieldInput = styled.input`
 	z-index: -1;
 	& + label {
 		background-color: ${({ bg }) => {
-			return bg || COLORS.PRIMARY_DARK
+			return bg || COLORS.PRIMARY
 		}};
-		border: none;
+		border: 1px solid ${COLORS.PRIMARY_DARK};
 		border-radius: 4px;
-		color: ${COLORS.PRIMARY};
+		color: ${COLORS.PRIMARY_DARK};
 		cursor: pointer;
+		font-family: Arial;
 		font-size: 16px;
 		padding: 14px 28px;
 		text-align: center;
@@ -43,8 +44,10 @@ export const FileFieldInput = styled.input`
 `
 export const FileFieldLabel = styled.label`
 	background: ${COLORS.PRIMARY_DARK};
-	transition: background 0.5s;
+	transition: background 0.5s, border-color 0.5s, color 0.5s;
 	.dark & {
 		background: ${COLORS.SECONDARY_DARK};
+		border-color: ${COLORS.PRIMARY};
+		color: ${COLORS.PRIMARY};
 	}
 `

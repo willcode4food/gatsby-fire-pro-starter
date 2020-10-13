@@ -46,6 +46,5 @@ export const FormBox = styled.div`
 `
 export const FormBoxCenter = styled.div`
 	width: 100%;
-	margin: ${SPACERS.S};
 	text-align: center;
 `

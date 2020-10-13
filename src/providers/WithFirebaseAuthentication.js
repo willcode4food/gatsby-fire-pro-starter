@@ -10,6 +10,7 @@ function WithFirebaseAuthentication({ children }) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [roles, setRoles] = useState([])
 	const { db, auth } = useFirebaseApp({ firebaseConfig: FIREBASE.CONFIG })
+	//TODO: implemtn into a hook
 	const getUserRoles = async (userID) => {
 		try {
 			const rolesSnapShot = await db.collection('users').doc(userID).collection('roles').get()

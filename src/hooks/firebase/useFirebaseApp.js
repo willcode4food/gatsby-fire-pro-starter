@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 function useFirebaseApp({ firebaseConfig }) {
 	const { auth } = firebase
@@ -11,10 +12,14 @@ function useFirebaseApp({ firebaseConfig }) {
 		}
 		return firebase.firestore()
 	})
+	const storage = useMemo(() => {
+		return firebase.storage()
+	})
 
 	return {
 		db,
 		auth,
+		storage,
 	}
 }
 

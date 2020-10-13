@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { InputField, SubmitButton } from 'components/Forms/FormFields'
+import { InputField, EmailSubmitButton } from 'components/Forms/FormFields'
 import { ErrorMessage, FormHeader, FormButton, StyledLink, ErrorIcon } from 'components/Forms/FormStyles'
 import {
 	FormBox,
@@ -10,17 +10,24 @@ import {
 	FormWrapperBox,
 	FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
+import { navigate } from 'gatsby'
 import { ButtonLabelWrapper, ButtonLabelIconBox, ButtonLabelBox, GoogleLoginIcon } from 'components/Forms/FormStyles'
+
 import Loader from 'components/Loader'
 import { FIREBASE } from 'utils/constants'
 import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
 
 function LoginForm() {
-	const [isLoading] = useState(false)
 	const { errors, register, handleSubmit } = useForm()
 	const [authError, setAuthError] = useState(null)
-	const { onEmailLogin, onGoogleLogin, authenticationError } = useFirebaseAuthentication({
+
+	function onAuthenticationSuccess() {
+		navigate('/account')
+	}
+
+	const { onEmailLogin, onGoogleLogin, authenticationError, isAuthenticationLoading } = useFirebaseAuthentication({
 		firebaseConfig: FIREBASE.CONFIG,
+		onAuthenticationSuccess,
 	})
 
 	useEffect(() => {
@@ -41,7 +48,7 @@ function LoginForm() {
 
 	return (
 		<>
-			{isLoading ? (
+			{isAuthenticationLoading ? (
 				<Loader />
 			) : (
 				<FormWrapper>
@@ -88,7 +95,7 @@ function LoginForm() {
 								<FormBox>
 									<FormFlexInner>
 										<FormFlexInnerBox>
-											<SubmitButton value="Login With Email" />
+											<EmailSubmitButton text="Login With Email" />
 										</FormFlexInnerBox>
 										<FormFlexInnerBox>
 											<FormButton onClick={onGoogleSubmit}>

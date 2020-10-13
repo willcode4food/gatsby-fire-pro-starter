@@ -2,7 +2,7 @@
 const FIREBASE = {
 	STORAGE: {
 		PROFILE_IMG_FOLDER: 'profile-images',
-		BASE_URL: 'https://storage.googleapis.com/...',
+		BASE_URL: process.env.GATSBY_STORAGEBUCKET_URL,
 	},
 	CONFIG: {
 		apiKey: process.env.GATSBY_APIKEY,
@@ -14,7 +14,10 @@ const FIREBASE = {
 	},
 }
 
-const PROFILE_IMAGE_TYPES = ['.jpg', '.png', '.jpeg', '.gif']
+const ACCEPTED_IMAGE_FORMATS = ['.jpg', '.png', '.jpeg', '.gif']
+const AVATAR_IMAGE_SIZE = 80
+const AVATAR_IMAGE_SIZE_MEDIUM = 175
+const AVATAR_IMAGE_SIZE_LARGE = 200
 const PROFILE_IMAGE_SIZE = 150
 const PROFILE_IMAGE_THUMB_SIZE = 55
 const DEFAULT_AVATAR_SIZE = '9rem'
@@ -58,16 +61,25 @@ const USER_ROLES = {
 	USER: 'user',
 }
 
+const LOGIN_PROVIDER = {
+	EMAIL: 'email',
+	GOOGLE: 'google',
+}
+
 // eslint-disable-next-line no-undef
 module.exports = {
+	AVATAR_IMAGE_SIZE,
+	AVATAR_IMAGE_SIZE_MEDIUM,
+	AVATAR_IMAGE_SIZE_LARGE,
 	DEFAULT_AVATAR_SIZE,
 	DEFAULT_AVATAR_THUMB_SIZE,
 	EVENT_TYPES,
+	LOGIN_PROVIDER,
 	FIREBASE,
 	PATH_HISTORY_STORAGE,
 	PROFILE_IMAGE_SIZE,
 	PROFILE_IMAGE_THUMB_SIZE,
-	PROFILE_IMAGE_TYPES,
+	ACCEPTED_IMAGE_FORMATS,
 	TRACKING_ACTIONS,
 	USER_ROLES,
 }

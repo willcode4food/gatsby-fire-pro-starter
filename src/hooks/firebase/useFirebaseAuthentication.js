@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import useFirebaseApp from 'hooks/firebase/useFirebaseApp'
+import useFirestoreDocument from 'hooks/firebase/useFirestoreDocument'
 
-function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationSuccess = null, firebaseConfig }) {
-	const [isUsernameForThirdPartyLoginError, setIsUsernameForThirdPartyLoginError] = useState(false)
+function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseConfig }) {
 	const [isAuthenticationLoading, setIsAuthenticationLoading] = useState(false)
 	const [authenticationError, setAuthenticationError] = useState(null)
+	const { createDocument, document } = useFirestoreDocument({ firebaseConfig })
 	const LOGIN_FLAG_STORAGE = 'LOGIN_FLAG_STORAGE'
-	const USERNAME_STORAGE = 'USERNAME_STORAGE'
+	const USER_PROFILE_STORAGE = 'USER_PROFILE_STORAGE'
 
 	// Temporarry Storage Setters and getters
 	const setLoginFlagStorage = () => {
@@ -18,29 +19,27 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 	const unsetLoginFlagStorage = () => {
 		window.localStorage.removeItem(LOGIN_FLAG_STORAGE)
 	}
-	const setUsernameStorage = (username) => {
-		window.localStorage.setItem(USERNAME_STORAGE, username)
+	const setUserProfileStorage = (userProfileData) => {
+		window.localStorage.setItem(USER_PROFILE_STORAGE, JSON.stringify({ ...userProfileData }))
 	}
-	const getUsernameStorage = () => {
-		return window.localStorage.getItem(USERNAME_STORAGE)
+	const unsetUserProfileStorage = () => {
+		window.localStorage.removeItem(USER_PROFILE_STORAGE)
 	}
-	const unsetUsernameStorage = () => {
-		window.localStorage.removeItem(USERNAME_STORAGE)
+	const getUserProfileStorage = () => {
+		const storedProfile = window.localStorage.getItem(USER_PROFILE_STORAGE)
+		return JSON.parse(storedProfile)
 	}
 
 	// Actions
+
 	const doCreateUser = async ({ id, ...data }) => {
 		try {
 			const dateCreated = new Date(Date.now())
 
-			const firestorePayload = {
-				...data,
-				dateCreated,
-			}
-
-			const authUser = await db.collection('users').doc(id).set(firestorePayload)
+			// const authUser = await db.collection('users').doc(id).set(firestorePayload)
+			createDocument('users', { dateCreated, ...data }, id)
 			await doDefaultUserRole(id)
-			return authUser
+			return document
 		} catch (error) {
 			throw new Error(error.message)
 		}
@@ -67,6 +66,7 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 	const doGetUser = async (id) => {
 		const docRef = await db.collection('users').doc(id)
 		const doc = await docRef.get()
+
 		return doc.exists ? { ...doc.data(), exists: true } : { exists: false }
 	}
 
@@ -107,7 +107,6 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 			setIsAuthenticationLoading(true)
 			setLoginFlagStorage()
 			await doSignInWithGoogle()
-			onAuthenticationSuccess
 		} catch (error) {
 			const { message } = error
 			setIsAuthenticationLoading(false)
@@ -134,17 +133,8 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 		setAuthenticationError(null)
 		setIsAuthenticationLoading(true)
 		try {
-			const { firstName = null, lastName = null, email = null, password = null, username = null } = data
-			if (!firstName) {
-				const errorMessage = 'No data for first name'
-				setAuthenticationError(errorMessage)
-				return
-			}
-			if (!lastName) {
-				const errorMessage = 'No data for last name'
-				setAuthenticationError(errorMessage)
-				return
-			}
+			const { email = null, password = null, username = null, ...restOfUserData } = data
+
 			if (!email) {
 				const errorMessage = 'No data for email'
 				setAuthenticationError(errorMessage)
@@ -159,24 +149,12 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 			const {
 				user: { uid },
 			} = authUser
-			let userObject = {}
-			if (username && usernameFieldName) {
-				userObject = {
-					id: uid,
-					firstName,
-					lastName,
-					username,
-					email,
-					provider: 'email',
-				}
-			} else {
-				userObject = {
-					id: uid,
-					firstName,
-					lastName,
-					email,
-					provider: 'email',
-				}
+
+			const userObject = {
+				id: uid,
+				username,
+				email,
+				...restOfUserData,
 			}
 			// create a user with email
 			await doCreateUser(userObject)
@@ -203,23 +181,10 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 		}
 	}
 
-	const onGoogleRegistration = async (event) => {
-		event.preventDefault()
+	const onGoogleRegistration = async (data) => {
 		setAuthenticationError(null)
 
-		if (usernameFieldName) {
-			const username = document.getElementsByName(usernameFieldName)[0]
-			if (
-				!username.value ||
-				username.value === '' ||
-				typeof username.value === undefined ||
-				username.value.length < 2
-			) {
-				setIsUsernameForThirdPartyLoginError(true)
-				return
-			}
-			setUsernameStorage(username.value)
-		}
+		setUserProfileStorage({ ...data })
 
 		setLoginFlagStorage()
 		setIsAuthenticationLoading(true)
@@ -238,6 +203,7 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 
 	const { db, auth } = useFirebaseApp({ firebaseConfig })
 
+	///handles redirect from third party authentication
 	useEffect(() => {
 		if (getLoginFlagStorage()) {
 			setIsAuthenticationLoading(true)
@@ -249,37 +215,24 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 				if (result.user) {
 					setIsAuthenticationLoading(true)
 					const { user } = result
-					const { uid, displayName, email, emailVerified } = user
-					const { exists } = doGetUser(uid)
+					const { displayName, uid, email, emailVerified } = user
+					const { exists } = await doGetUser(uid)
 					if (!emailVerified) {
 						setIsAuthenticationLoading(false)
 						setAuthenticationError('Your Google Account is not verified')
 					} else if (!exists) {
+						const userProfileData = getUserProfileStorage()
 						const name = displayName.indexOf(' ') >= 0 ? displayName.split(' ') : [displayName]
 						const firstName = name[0]
 						const lastName = name.length > 1 ? name[1] : ''
-						let userObject = {}
-						if (usernameFieldName) {
-							const username = getUsernameStorage()
-							userObject = {
-								id: uid,
-								username,
-								firstName,
-								lastName,
-								email,
-								provider: 'google',
-							}
-							unsetUsernameStorage()
-						} else {
-							userObject = {
-								id: uid,
-								firstName,
-								lastName,
-								email,
-								provider: 'google',
-							}
-						}
+						const userObject = {
+							id: uid,
 
+							firstName,
+							email,
+							lastName,
+							...userProfileData,
+						}
 						try {
 							await doCreateUser({ ...userObject })
 							onAuthenticationSuccess()
@@ -288,25 +241,27 @@ function useFirebaseAuthentication({ usernameFieldName = null, onAuthenticationS
 							setAuthenticationError(e.message)
 						}
 					}
+					onAuthenticationSuccess()
+					setIsAuthenticationLoading(false)
 				}
 			} catch (e) {
 				setIsAuthenticationLoading(false)
-				setAuthenticationError(e.message)
 			}
 		}
 		handleRedirectResult()
+		return () => {
+			unsetUserProfileStorage()
+		}
 	}, [])
 
 	return {
 		isAuthenticationLoading,
-		isUsernameForThirdPartyLoginError,
 		onGoogleLogin,
 		onGoogleRegistration,
 		onEmailLogin,
 		onEmailRegistration,
 		onForgotPassword,
 		authenticationError,
-		setIsUsernameForThirdPartyLoginError,
 	}
 }
 
