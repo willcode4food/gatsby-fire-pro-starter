@@ -4,14 +4,14 @@ import RegisterForm from 'components/RegisterForm'
 import GlobalLayout from 'components/GlobalLayout'
 
 function RegisterPage({ location }) {
-	return (
-		<GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
-			<RegisterForm />
-		</GlobalLayout>
-	)
+    return (
+        <GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
+            <RegisterForm />
+        </GlobalLayout>
+    )
 }
 RegisterPage.propTypes = {
-	location: PropTypes.object,
+    location: PropTypes.object,
 }
 
 export default RegisterPage

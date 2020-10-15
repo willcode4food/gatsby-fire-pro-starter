@@ -4,15 +4,15 @@ import ForgotPasswordForm from 'components/ForgotPasswordForm'
 import GlobalLayout from 'components/GlobalLayout'
 
 function ForgotPasswordPage({ location }) {
-	return (
-		<GlobalLayout isShowingBreadcrumbs={false} location={location} isVerifyAgeModalOverriden={true}>
-			<ForgotPasswordForm />
-		</GlobalLayout>
-	)
+    return (
+        <GlobalLayout isShowingBreadcrumbs={false} location={location} isVerifyAgeModalOverriden={true}>
+            <ForgotPasswordForm />
+        </GlobalLayout>
+    )
 }
 
 ForgotPasswordPage.propTypes = {
-	location: PropTypes.object,
+    location: PropTypes.object,
 }
 
 export default ForgotPasswordPage

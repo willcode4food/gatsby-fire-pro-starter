@@ -10,31 +10,31 @@ import { stampTime, eventDispatch } from 'utils/tracker'
 import { Drawer, NavWrapper } from './styles'
 
 function NavDrawer({ isNavOpen, pathname, resetState }) {
-	const { sessionId, uid } = useContext(SessionContext)
-	return (
-		<Drawer open={isNavOpen}>
-			{sessionId && (
-				<NavWrapper onClick={resetState}>
-					<Link to="/">Home</Link>
-					{uid && <Link to="/account">My Account</Link>}
-					{!uid && <PathHistoryLink previousUrl={pathname} />}
-					{!uid && <PathHistoryLink previousUrl={pathname} to="/register" text="Create an Account" />}
-					<Link to="/">Menu Item 1{/* <DispensaryLocator iconHeight={[30]} iconWidth={[30]} /> */}</Link>
-					{/* <Link to="/strains/">
+    const { sessionId, uid } = useContext(SessionContext)
+    return (
+        <Drawer open={isNavOpen}>
+            {sessionId && (
+                <NavWrapper onClick={resetState}>
+                    <Link to="/">Home</Link>
+                    {uid && <Link to="/account">My Account</Link>}
+                    {!uid && <PathHistoryLink previousUrl={pathname} />}
+                    {!uid && <PathHistoryLink previousUrl={pathname} to="/register" text="Create an Account" />}
+                    <Link to="/">Menu Item 1{/* <DispensaryLocator iconHeight={[30]} iconWidth={[30]} /> */}</Link>
+                    {/* <Link to="/strains/">
 						<StrainFinder />
 					</Link> */}
-					{uid && <SignOutButton />}
-				</NavWrapper>
-			)}
-		</Drawer>
-	)
+                    {uid && <SignOutButton />}
+                </NavWrapper>
+            )}
+        </Drawer>
+    )
 }
 NavDrawer.propTypes = {
-	isNavOpen: bool,
-	isShowingBreadcrumbs: bool,
-	pathname: string,
-	resetState: func,
-	tracking: TrackingPropType,
+    isNavOpen: bool,
+    isShowingBreadcrumbs: bool,
+    pathname: string,
+    resetState: func,
+    tracking: TrackingPropType,
 }
 
 export default track({ timestamp: stampTime() }, { dispatch: (data) => eventDispatch(data) })(NavDrawer)

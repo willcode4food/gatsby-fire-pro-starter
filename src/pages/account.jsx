@@ -7,26 +7,26 @@ import useAuthorization from 'hooks/useAuthorization'
 import UnauthorizedPage from 'components/UnauthorizedPage'
 
 function AccountPage({ location }) {
-	const { isAuthorized, isAuthorizationLoading } = useAuthorization(authConditionIsUser)
-	if (!isAuthorizationLoading) {
-		return (
-			<>
-				{isAuthorized ? (
-					<GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
-						<AccountProfileForm />
-					</GlobalLayout>
-				) : (
-					<UnauthorizedPage />
-				)}
-			</>
-			// <GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
-			// 	<AccountProfileForm />
-			// </GlobalLayout>
-		)
-	}
-	return null
+    const { isAuthorized, isAuthorizationLoading } = useAuthorization(authConditionIsUser)
+    if (!isAuthorizationLoading) {
+        return (
+            <>
+                {isAuthorized ? (
+                    <GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
+                        <AccountProfileForm />
+                    </GlobalLayout>
+                ) : (
+                    <UnauthorizedPage />
+                )}
+            </>
+            // <GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
+            // 	<AccountProfileForm />
+            // </GlobalLayout>
+        )
+    }
+    return null
 }
 AccountPage.propTypes = {
-	location: PropTypes.object,
+    location: PropTypes.object,
 }
 export default AccountPage

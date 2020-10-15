@@ -4,13 +4,13 @@ import LoginForm from 'components/LoginForm'
 import GlobalLayout from 'components/GlobalLayout'
 
 function LoginPage({ location }) {
-	return (
-		<GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
-			<LoginForm />
-		</GlobalLayout>
-	)
+    return (
+        <GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
+            <LoginForm />
+        </GlobalLayout>
+    )
 }
 LoginPage.propTypes = {
-	location: PropTypes.object,
+    location: PropTypes.object,
 }
 export default LoginPage
