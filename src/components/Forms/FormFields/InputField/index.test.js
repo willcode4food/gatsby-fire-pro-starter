@@ -7,12 +7,12 @@ import InputField from './index.jsx'
 expect.addSnapshotSerializer(serializer)
 
 describe('InputField', () => {
-	it('renders correctly', () => {
-		const tree = renderer
-			.create(<InputField name="firestName" placeholder="Last Name" type="text" aria-label="Last Name" />)
-			.toJSON()
+    it('renders correctly', () => {
+        const tree = renderer
+            .create(<InputField name="firestName" placeholder="Last Name" type="text" aria-label="Last Name" />)
+            .toJSON()
 
-		expect(tree).toMatchInlineSnapshot(`
+        expect(tree).toMatchInlineSnapshot(`
         .emotion-0 {
           font-size: inherit;
           line-height: inherit;
@@ -56,5 +56,5 @@ describe('InputField', () => {
           type="text"
         />
     `)
-	})
+    })
 })
