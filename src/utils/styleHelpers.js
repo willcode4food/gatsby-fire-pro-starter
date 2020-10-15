@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const COLORS = {
 	PRIMARY: '#FFF',
 	PRIMARY_BUTTON: '#FF1647',

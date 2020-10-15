@@ -24,6 +24,7 @@
     "gatsby-transformer-remark": "^2.8.34",
     "gatsby-transformer-sharp": "^2.5.13",
     "gray-percentage": "^2.0.0",
+    "jest-emotion": "^10.0.32",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-avatar-editor": "11.0.9",
@@ -40,9 +41,15 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.0.4",
+    "babel-jest": "^26.5.2",
+    "babel-preset-gatsby": "^0.5.14",
     "eslint": "^7.10.0",
     "eslint-plugin-react": "^7.21.2",
-    "prettier": "2.1.0"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.5.3",
+    "prettier": "2.1.0",
+    "react-test-renderer": "^16.14.0"
   },
   "keywords": [
     "gatsby"
@@ -55,7 +62,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

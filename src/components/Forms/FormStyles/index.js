@@ -6,6 +6,7 @@ import { AiFillWarning } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { HiOutlineMail } from 'react-icons/hi'
 import { MQ } from 'utils/styleHelpers'
+
 export const ErrorMessage = styled.span`
 	color: ${COLORS.ERROR};
 	padding-top: 5px;

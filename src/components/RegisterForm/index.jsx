@@ -63,8 +63,8 @@ function RegisterForm() {
 		return
 	}
 	const onSubmit = async (data) => {
-		// eslint-disable-next-line no-unused-vars
 		const defaultAvatarThemeIndex = getDefaultAvatarIndex()
+		// eslint-disable-next-line no-unused-vars
 		const { confirmPassword, ...restOfFormData } = data
 		onEmailRegistration({
 			...restOfFormData,
