@@ -3,20 +3,51 @@ import renderer from 'react-test-renderer'
 import serializer from 'jest-emotion'
 
 import AccountLink from './index.jsx'
+import useAuthorization from 'hooks/useAuthorization.js'
 
-let mockIsLoading = false
-let mockIsAuthorized = true
 expect.addSnapshotSerializer(serializer)
-jest.mock('hooks/useAuthorization', () => {
-    return jest.fn(() => {
-        return { isLoading: mockIsLoading, isAuthorized: mockIsAuthorized }
-    })
-})
+jest.mock('hooks/useAuthorization')
 
 describe('AccountLink', () => {
-    it('renders correctly', () => {
-        const tree = renderer.create(<AccountLink />).toJSON()
-        expect(tree).toMatchInlineSnapshot(`
+    // beforeEach(() => jest.resetModules())
+    describe('when authenticated and is loading', () => {
+        it('renders null', () => {
+            useAuthorization.mockReturnValue({
+                isLoading: true,
+                isAuthorized: true,
+            })
+            const tree = renderer.create(<AccountLink />).toJSON()
+            expect(tree).toBeNull()
+        })
+    })
+    describe('when not authenticated and is loading', () => {
+        it('renders null', () => {
+            useAuthorization.mockReturnValue({
+                isLoading: true,
+                isAuthorized: false,
+            })
+            const tree = renderer.create(<AccountLink />).toJSON()
+            expect(tree).toBeNull()
+        })
+    })
+    describe('when not authenticated and is not loading', () => {
+        it('renders null', () => {
+            useAuthorization.mockReturnValue({
+                isLoading: true,
+                isAuthorized: false,
+            })
+            const tree = renderer.create(<AccountLink />).toJSON()
+            expect(tree).toBeNull()
+        })
+    })
+    describe('when authenticated and is not loading', () => {
+        it('renders when not loading', () => {
+            useAuthorization.mockReturnValue({
+                isLoading: false,
+                isAuthorized: true,
+            })
+            const tree = renderer.create(<AccountLink />).toJSON()
+            expect(tree).toMatchInlineSnapshot(`
             .emotion-0 {
               width: 25px;
               height: 25px;
@@ -53,5 +84,6 @@ describe('AccountLink', () => {
               </svg>
             </a>
         `)
+        })
     })
 })
