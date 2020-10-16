@@ -6,6 +6,7 @@ module.exports = {
     graphql: jest.fn(),
     Link: jest.fn().mockImplementation(
         // these props are invalid for an `a` tag
+        // eslint-disable-next-line no-unused-vars
         ({ activeClassName, activeStyle, getProps, innerRef, partiallyActive, ref, replace, to, ...rest }) =>
             React.createElement('a', {
                 ...rest,
