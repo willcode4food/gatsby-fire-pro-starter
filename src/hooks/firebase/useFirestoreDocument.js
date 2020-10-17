@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import useFirebaseApp from './useFirebaseApp'
+import PropTypes from 'prop-types'
+
+//TODO:add proptypes to all firebase hooks
 
 function useFirestoreDocument(data = { collection: null, docId: null, firebaseConfig: null }) {
     const { collection, docId, firebaseConfig } = data

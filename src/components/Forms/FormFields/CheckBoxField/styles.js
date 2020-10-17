@@ -1,10 +1,12 @@
 import styled from '@emotion/styled'
-import { COLORS, shadeColor2 } from 'utils/styleHelpers'
+import { COLORS } from 'utils/styleHelpers'
 
 export const CheckBoxContainer = styled.label`
     appearence: button;
-    background-color: ${({ isChecked, bgc, bgcOff }) => (isChecked ? shadeColor2(bgc, 0.5) : bgcOff)};
-    border: 1px solid ${({ bgc }) => shadeColor2(bgc, 0.5)};
+    background-color: ${(
+        props = { isChecked: false, backgroundColor: COLORS.PRIMARY, backgroundColorOff: COLORS.SECONDARY }
+    ) => (props.isChecked ? props.backgroundColor : props.backgroundColorOff)};
+    border: 1px solid ${(props = { backgroundColor: COLORS.PRIMARY }) => props.backgroundColor};
     border-radius: 1px;
     cursor: pointer;
     display: block;
@@ -15,7 +17,7 @@ export const CheckBoxContainer = styled.label`
     &:after {
         content: '✓';
         font-size: 25px;
-        color: ${COLORS.GREEN};
+        color: ${COLORS.SECONDARY};
     }
     &:before {
         content: '';
@@ -29,14 +31,3 @@ export const CheckBoxStyle = styled.input`
         color: red;
     }
 `
-
-// CheckBoxContainer.propTypes = {
-// 	bgc: PropTypes.string,
-// 	bgcOff: PropTypes.string,
-// 	isChecked: PropTypes.bool,
-// }
-// CheckBoxContainer.defaultProps = {
-// 	bgc: COLORS.GREEN,
-// 	bgcOff: COLORS.WHITE,
-// 	isChecked: false,
-// }

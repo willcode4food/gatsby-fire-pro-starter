@@ -9,7 +9,6 @@ expect.addSnapshotSerializer(serializer)
 jest.mock('hooks/useAuthorization')
 
 describe('AccountLink', () => {
-    // beforeEach(() => jest.resetModules())
     describe('when authenticated and is loading', () => {
         it('renders null', () => {
             useAuthorization.mockReturnValue({
@@ -41,7 +40,7 @@ describe('AccountLink', () => {
         })
     })
     describe('when authenticated and is not loading', () => {
-        it('renders when not loading', () => {
+        it('renders', () => {
             useAuthorization.mockReturnValue({
                 isLoading: false,
                 isAuthorized: true,
