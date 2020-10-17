@@ -2,6 +2,10 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import CheckBoxField from './index.jsx'
 import { render, fireEvent } from '@testing-library/react'
+import Adapter from 'enzyme-adapter-react-16'
+import { configure, mount } from 'enzyme'
+
+configure({ adapter: new Adapter() })
 
 jest.mock('utils/styleHelpers', () => {
     return {
@@ -118,6 +122,14 @@ describe('CheckBoxField', () => {
             const checkBox = getByRole('checkbox')
             fireEvent.click(checkBox)
             expect(checkBox.checked).toEqual(true)
+        })
+        it('changes state to inverse of state', () => {
+            const handleChange = jest.mock()
+            const wrapper = mount(<CheckBoxField defaultIsChecked={true} />)
+            const handleChangeSpy = jest.spyOn(React, 'useState')
+            handleChangeSpy.mockImplementation((isChecked) => [isChecked, handleChange])
+            wrapper.find(CheckBoxField).simulate('click')
+            expect(handleChange).toBeTruthy()
         })
     })
 })
