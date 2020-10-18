@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import serializer from 'jest-emotion'
 
-import AccountLink from './index.jsx'
+import AccountLink from './'
 import useAuthorization from 'hooks/useAuthorization.js'
 
 expect.addSnapshotSerializer(serializer)

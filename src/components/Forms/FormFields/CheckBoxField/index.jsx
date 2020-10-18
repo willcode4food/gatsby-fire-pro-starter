@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { CheckBoxContainer, CheckBoxStyle } from './styles'
 import { COLORS } from 'utils/styleHelpers'
-function CheckBoxField({ label, backgroundColor, backgroundColorOff, defaultIsChecked }) {
+function CheckBoxField({ label, backgroundColor, backgroundColorOff }) {
     const [isChecked, setIsChecked] = useState(false)
-
-    useEffect(() => {
-        setIsChecked(defaultIsChecked)
-    }, [defaultIsChecked])
-
     function handleChange() {
         setIsChecked(!isChecked)
     }
