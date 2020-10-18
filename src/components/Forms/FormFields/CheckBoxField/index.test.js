@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import CheckBoxField from './index.jsx'
+import CheckBoxField from './'
 import { render, fireEvent } from '@testing-library/react'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure, mount } from 'enzyme'
