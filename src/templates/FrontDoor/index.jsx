@@ -16,9 +16,10 @@ import {
     ContentValuePropHeader,
 } from './styles'
 import { COLORS, FONT_SIZES } from 'utils/styleHelpers'
-import { PrimaryButtonLink, PrimaryButtonAnchor } from 'components/PrimaryButton'
+import { PrimaryButtonLink } from 'components/Buttons/PrimaryButtonLink'
+import { PrimaryButtonAnchor } from 'components/Buttons/PrimaryButtonAnchor'
 
-function FrontDoor({ data, location }) {
+function FrontDoor() {
     return (
         <>
             <Hero />

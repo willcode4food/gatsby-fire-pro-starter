@@ -1,9 +1,7 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { COLORS, SPACERS, FONT_FAMILY, FONT_SIZES } from 'utils/styleHelpers.js'
 
-const primaryButtonStyles = ({
+export const primaryButtonStyles = ({
     color = COLORS.PRIMARY_BUTTON,
     fontSize = FONT_SIZES.H4,
     textColor = COLORS.PRIMARY,
@@ -28,17 +26,4 @@ const primaryButtonStyles = ({
         background: ${color};
         border: 1px solid ${color};
     }
-`
-
-export const PrimaryButton = styled.button`
-    ${({ color, fontSize, textColor, textColorDark }) =>
-        primaryButtonStyles({ color, fontSize, textColorDark, textColor })}
-`
-export const PrimaryButtonLink = styled(Link)`
-    ${({ color, fontSize, textColor, textColorDark }) =>
-        primaryButtonStyles({ color, fontSize, textColorDark, textColor })}
-`
-export const PrimaryButtonAnchor = styled.a`
-    ${({ color, fontSize, textColor, textColorDark }) =>
-        primaryButtonStyles({ color, fontSize, textColorDark, textColor })}
 `

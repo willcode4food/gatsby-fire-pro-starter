@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import propTypes from 'prop-types'
-import { PrimaryButton } from 'components/PrimaryButton'
+import { PrimaryButton } from 'components/Buttons/PrimaryButton'
 import {
     StyledOverlay,
     OverlayTitle,
