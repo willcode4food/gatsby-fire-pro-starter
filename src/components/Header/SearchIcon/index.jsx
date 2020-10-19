@@ -1,6 +1,6 @@
 /* eslint max-len:0 */
 import React from 'react'
-import { SearchWrapper } from './styles'
+import { SearchWrapper } from '../styles'
 
 const SearchIcon = (props) => (
     <SearchWrapper {...props}>
