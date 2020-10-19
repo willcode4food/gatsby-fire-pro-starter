@@ -11,7 +11,7 @@ export const TextAreaStyle = styled.textarea`
 	padding-top: 8px;
 	padding-bottom: 8px;
 	color: inherit;
-	background: ${COLORS.WHITE};
+	background: ${COLORS.PRIMARY};
 	font-family: inherit;
 	display: inline-block;
 	vertical-align: middle;
@@ -24,7 +24,7 @@ export const TextAreaStyle = styled.textarea`
 	border-image: initial;
 	transition: background 0.5s, color 0.5s;
 	.dark & {
-		background: ${COLORS.BLACK};
-		color ${COLORS.WHITE};
+		background: ${COLORS.PRIMARY_DARK};
+		color ${COLORS.PRIMARY};
 	}
 `

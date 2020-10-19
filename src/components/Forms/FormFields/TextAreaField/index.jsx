@@ -13,7 +13,7 @@ const TextAreaField = ({ input, meta, placeholder, cols = 32, rows = 5 }) => (
         rows={rows}
     />
 )
-//TODO: make proptypes for specific
+
 TextAreaField.propTypes = {
     cols: PropTypes.number,
     input: PropTypes.any,
