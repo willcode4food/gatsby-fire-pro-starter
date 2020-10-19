@@ -16,8 +16,9 @@ import {
     ContentValuePropHeader,
 } from './styles'
 import { COLORS, FONT_SIZES } from 'utils/styleHelpers'
-import { PrimaryButtonLink } from 'components/Buttons/PrimaryButtonLink'
-import { PrimaryButtonAnchor } from 'components/Buttons/PrimaryButtonAnchor'
+import { PrimaryButtonLink } from 'components/Buttons'
+
+import { PrimaryButtonAnchor } from 'components/Buttons'
 
 function FrontDoor() {
     return (
@@ -28,7 +29,7 @@ function FrontDoor() {
                     <ContentValueProp>
                         <ContentValuePropHeader>Ready to board the rocketship?</ContentValuePropHeader>
                         <ContentValuePropContent>
-                            We're about to show the world they are ready for us!
+                            We&apos;re about to show the world they are ready for us!
                         </ContentValuePropContent>
                         <ContentValuePropBox>
                             <PrimaryButtonLink
@@ -44,7 +45,7 @@ function FrontDoor() {
                 <ContentBoxCta color={COLORS.TERNARY} darkColor={COLORS.TERNARY_DARK} isHidden={[false, false]}>
                     <ContentValueProp>
                         <ContentValuePropHeader>Do you like being awesome?</ContentValuePropHeader>
-                        <ContentValuePropContent>Let's be awesome together</ContentValuePropContent>
+                        <ContentValuePropContent>Let&apos;s be awesome together</ContentValuePropContent>
                         <ContentValuePropBox>
                             <PrimaryButtonLink
                                 color={COLORS.PRIMARY_BUTTON}

@@ -1,9 +1,5 @@
-import * as PrimaryButton from './PrimaryButton'
-import * as PrimaryButtonAnchor from './PrimaryButtonAnchor'
-import * as PrimaryButtonLink from './PrimaryButtonLink'
+import PrimaryButton from './PrimaryButton'
+import PrimaryButtonAnchor from './PrimaryButtonAnchor'
+import PrimaryButtonLink from './PrimaryButtonLink'
 
-export default {
-    PrimaryButton,
-    PrimaryButtonAnchor,
-    PrimaryButtonLink,
-}
+export { PrimaryButton, PrimaryButtonAnchor, PrimaryButtonLink }

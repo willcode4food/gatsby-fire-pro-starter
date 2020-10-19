@@ -62,7 +62,7 @@
     "build": "gatsby build",
     "dev": "rm -rf ./.cache && yarn && gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "npm run dev",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",

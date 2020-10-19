@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Firebase Pro`,
+        title: `Gatsby Fire Pro`,
         titleTemplate: '%s · The best place to jump on board the rocketship',
         description: `Use this starter to begin your next new project using Firebase.  Authentication, Firestore and Object Storage out of the box.`,
         siteUrl: 'https://www.pondstreetsoftware.com', // No trailing slash allowed!
