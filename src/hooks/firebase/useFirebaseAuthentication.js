@@ -200,7 +200,14 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
     if (!onAuthenticationSuccess) {
         onAuthenticationSuccess = () => (window ? (window.location.href = '/') : true)
     }
-
+    const onSignOut = async () => {
+        try {
+            await auth().signOut()
+            window.location.reload()
+        } catch (error) {
+            setAuthenticationError({ message: error.message })
+        }
+    }
     const { db, auth } = useFirebaseApp({ firebaseConfig })
 
     ///handles redirect from third party authentication
@@ -261,6 +268,7 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
         onEmailLogin,
         onEmailRegistration,
         onForgotPassword,
+        onSignOut,
         authenticationError,
     }
 }
