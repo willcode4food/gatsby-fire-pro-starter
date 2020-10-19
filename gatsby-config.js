@@ -1,8 +1,11 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Default Starter`,
-        description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-        author: `@gatsbyjs`,
+        title: `Gatsby Firebase Pro`,
+        titleTemplate: '%s · The best place to jump on board the rocketship',
+        description: `Use this starter to begin your next new project using Firebase.  Authentication, Firestore and Object Storage out of the box.`,
+        siteUrl: 'https://www.pondstreetsoftware.com', // No trailing slash allowed!
+        image: '/images/placeholder.png', // Path to your image you placed in the 'static' folder
+        twitterUsername: '@pondstreetsoftware',
     },
     plugins: [
         {
@@ -22,13 +25,6 @@ module.exports = {
         },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-emotion`,
-        // {
-        //   resolve: `gatsby-source-filesystem`,
-        //   options: {
-        //     name: `images`,
-        //     path: `${__dirname}/src/images`,
-        //   },
-        // },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
@@ -42,14 +38,5 @@ module.exports = {
                 display: `minimal-ui`,
             },
         },
-        // {
-        // 	resolve: `gatsby-plugin-typography`,
-        // 	options: {
-        // 		pathToConfigModule: `src/utils/typography.js`,
-        // 	},
-        // },
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // `gatsby-plugin-offline`,
     ],
 }
