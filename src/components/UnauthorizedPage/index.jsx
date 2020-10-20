@@ -3,7 +3,6 @@ import { navigate } from 'gatsby'
 
 function UnauthorizedPage() {
     useEffect(() => {
-        console.warn('Access Denied')
         navigate('/')
     }, [])
     return <div />
