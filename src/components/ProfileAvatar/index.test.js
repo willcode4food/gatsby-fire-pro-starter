@@ -6,7 +6,7 @@ import ProfileAvatar from './'
 describe('ProfileAvatar', () => {
     describe('when it is added', () => {
         it('renders', () => {
-            const tree = renderer.create(<ProfileAvatar />).toJSON()
+            const tree = renderer.create(<ProfileAvatar displayText="display text" />).toJSON()
             expect(tree).toMatchInlineSnapshot(`
                 .emotion-6 {
                   display: -webkit-box;
