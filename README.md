@@ -24,6 +24,7 @@ Out of the box, with some basic configuration setup, you can easily connect this
 -   Forgot Password for Email Logins
 -   Supports connecting to multiple projects based on environments (dev, prod)
 -   Dark Theme
+-   Snapshot Tests (WIP)
 
 ## 🚀 Quick start
 
