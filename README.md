@@ -25,6 +25,7 @@ Out of the box, with some basic configuration setup, you can easily connect this
 -   Supports connecting to multiple projects based on environments (dev, prod)
 -   Dark Theme
 -   Snapshot Tests (WIP)
+-   Role Based Authorization
 
 ## 🚀 Quick start
 
