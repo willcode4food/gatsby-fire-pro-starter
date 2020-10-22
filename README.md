@@ -23,6 +23,7 @@ Out of the box, with some basic configuration setup, you can easily connect this
 -   Responsive design
 -   Forgot Password for Email Logins
 -   Supports connecting to multiple projects based on environments (dev, prod)
+-   Dark Theme
 
 ## 🚀 Quick start
 
@@ -30,8 +31,21 @@ Out of the box, with some basic configuration setup, you can easily connect this
     Once the project is created. You need to set up the following components of Firebase
 
     1. Authentication - enable Email/Password and Google
-    1. Cloud Firestore
+    1. Cloud Firestore - Set proper permissions for writing to the database
     1. Storage
+       To view the profile pictures in Storage publically, you will need to modify your Rules to the following:
+
+        ```json
+        rules_version = '2';
+        service firebase.storage {
+        match /b/{bucket}/o {
+                    match /{allPaths=**} {
+                    allow read: if true;
+                    allow write: if request.auth != null;
+                }
+            }
+        }
+        ```
 
 1.  **Create a Gatsby site.**
 
