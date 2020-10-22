@@ -35,7 +35,7 @@ Out of the box, with some basic configuration setup, you can easily connect this
     1. Storage
        To view the profile pictures in Storage publically, you will need to modify your Rules to the following:
 
-        ```json
+        ```javascript
         rules_version = '2';
         service firebase.storage {
         match /b/{bucket}/o {
