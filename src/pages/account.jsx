@@ -19,9 +19,6 @@ function AccountPage({ location }) {
                     <UnauthorizedPage />
                 )}
             </>
-            // <GlobalLayout location={location} isVerifyAgeModalOverriden={true}>
-            // 	<AccountProfileForm />
-            // </GlobalLayout>
         )
     }
     return null
