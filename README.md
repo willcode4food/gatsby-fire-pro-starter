@@ -1,10 +1,10 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
+  <a href="https://www.gatsbyjs.com" target="_new">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
   </a>
   
-  <a href="https://firebase.google.com">
+  <a href="https://firebase.google.com" target="_new">
     <img alt="Firebase" src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png"></a>
 </p>
 <h1 align="center">
@@ -27,12 +27,12 @@ Out of the box, with some basic configuration setup, you can easily connect this
 
 ## 🚀 Quick start
 
-1.  **[Register](https://firebase.google.com/) for Firebase and create a project**  
+1.  **<a href="https://firebase.google.com/" target="_new">Register</a> for Firebase and create a project**  
     Once the project is created. You need to set up the following components of Firebase
 
     1. Authentication - enable Email/Password and Google
     1. Cloud Firestore - Set proper permissions for writing to the database
-    1. Storage
+    1. Storage  
        To view the profile pictures in Storage publically, you will need to modify your Rules to the following:
 
         ```javascript
