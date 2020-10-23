@@ -19,10 +19,6 @@ function NavDrawer({ isNavOpen, pathname, resetState }) {
                     {uid && <Link to="/account">My Account</Link>}
                     {!uid && <PathHistoryLink previousUrl={pathname} />}
                     {!uid && <PathHistoryLink previousUrl={pathname} to="/register" text="Create an Account" />}
-                    <Link to="/">Menu Item 1{/* <DispensaryLocator iconHeight={[30]} iconWidth={[30]} /> */}</Link>
-                    {/* <Link to="/strains/">
-						<StrainFinder />
-					</Link> */}
                     {uid && <SignOutButton />}
                 </NavWrapper>
             )}

@@ -18,7 +18,7 @@ function ForgotPasswordForm() {
     const { errors, register, handleSubmit } = useForm()
     const [appError, setAppError] = useState(null)
     const { onForgotPassword, isAuthenticationLoading, authenticationError } = useFirebaseAuthentication({
-        firebesConfig: FIREBASE.CONFIG,
+        firebaseConfig: FIREBASE.CONFIG,
     })
     useEffect(() => {
         setAppError(authenticationError)
