@@ -5,7 +5,7 @@ module.exports = {
         description: `Use this starter to begin your next new project using Firebase.  Authentication, Firestore and Object Storage out of the box.`,
         siteUrl: 'https://www.pondstreetsoftware.com', // No trailing slash allowed!
         image: '/images/placeholder.png', // Path to your image you placed in the 'static' folder
-        twitterUsername: '@pondstreetsoftware',
+        twitterUsername: '@willcode4food',
     },
     plugins: [
         {

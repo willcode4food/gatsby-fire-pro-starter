@@ -55,7 +55,7 @@ Out of the box, with some basic configuration setup, you can easily connect this
 
     ```shell
     # create a new Gatsby site using the default starter
-    gatsby new my-fire-pro-starter https://github.com/gatsbyjs/gatsby-fire-pro-starter
+    gatsby new my-fire-pro-starter https://github.com/willcode4food/gatsby-fire-pro-starter
     ```
 
 1.  **Update Environment Configuration**
