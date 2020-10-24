@@ -13,7 +13,7 @@
 
 Out of the box, with some basic configuration setup, you can easily connect this starter with a Firebase/Firestore back end. Included are a login page, registration page, and a user account page. This starter provides a robust user registration and security strategy for creating personalized web applicatons for many use cases.
 
-<h2>Features</h2>
+## 🤼‍♂️ Features
 
 -   Login and Registration using Email and Google OAuth
 -   Account Profile
