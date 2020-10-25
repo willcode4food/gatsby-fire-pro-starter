@@ -11,9 +11,9 @@
   Gatsby + Firebase/Firestore Professional Starter
 </h1>
 
-Out of the box, with some basic configuration setup, you can easily connect this starter with a Firebase/Firestore back end. Included are a login page, registration page, and a user account page. This starter provides a robust user registration and security strategy for creating personalized web applicatons for many use cases.
+Out of the box, with some basic configuration setup, you can easily connect this starter with a Firebase/Firestore back end. Included are a login page, registration page, and a user account page. This starter provides a robust user registration and security strategy for creating personalized web applicatons for many use cases. 🤼‍♂️ 
 
-## 🤼‍♂️ Features
+## Features
 
 -   Login and Registration using Email and Google OAuth
 -   Account Profile
@@ -21,10 +21,10 @@ Out of the box, with some basic configuration setup, you can easily connect this
     -   Default Avatar customized per user
     -   Expandable account profile records stored in Firestore
 -   Responsive design
--   Forgot Password for Email Logins
+-   Password Recovery for Email Logins
 -   Supports connecting to multiple projects based on environments (dev, prod)
 -   Dark Theme
--   Snapshot Tests (WIP)
+-   Snapshot Tests
 -   Role Based Authorization
 
 ## 🚀 Quick start
