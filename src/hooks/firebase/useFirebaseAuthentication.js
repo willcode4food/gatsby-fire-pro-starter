@@ -84,7 +84,9 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
     const doSignInWithGoogle = async () => {
         const googleProvider = new auth.GoogleAuthProvider()
         try {
-            await auth().signInWithRedirect(googleProvider)
+            const tmp = await auth().signInWithRedirect(googleProvider)
+            console.log("doSignInWithGoogle -> tmp", tmp)
+            
             return true
         } catch (error) {
             throw Error(error)
@@ -101,19 +103,6 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
     }
 
     // Event Handlers
-    const onGoogleLogin = async (event) => {
-        try {
-            event.preventDefault()
-            setIsAuthenticationLoading(true)
-            setLoginFlagStorage()
-            await doSignInWithGoogle()
-        } catch (error) {
-            const { message } = error
-            setIsAuthenticationLoading(false)
-            setAuthenticationError({ message })
-        }
-    }
-
     const onEmailLogin = async (data) => {
         const { email, password } = data
         setIsAuthenticationLoading(true)
@@ -181,6 +170,17 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
         }
     }
 
+    const onGoogleLogin = async () => {
+        try {
+            setIsAuthenticationLoading(true)
+            setLoginFlagStorage()
+            await doSignInWithGoogle()
+        } catch (error) {
+            const { message } = error
+            setIsAuthenticationLoading(false)
+            setAuthenticationError({ message })
+        }
+    }
     const onGoogleRegistration = async (data) => {
         setAuthenticationError(null)
 
@@ -197,9 +197,6 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
         }
     }
 
-    if (!onAuthenticationSuccess) {
-        onAuthenticationSuccess = () => (window ? (window.location.href = '/') : true)
-    }
     const onSignOut = async () => {
         try {
             await auth().signOut()
@@ -209,6 +206,12 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
         }
     }
     const { db, auth } = useFirebaseApp({ firebaseConfig })
+
+    useEffect(()=>{
+        if (!onAuthenticationSuccess) {
+            onAuthenticationSuccess = () => (window ? (window.location.href = '/') : true)
+        }
+    },[onAuthenticationSuccess])
 
     ///handles redirect from third party authentication
     useEffect(() => {
@@ -234,7 +237,6 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
                         const lastName = name.length > 1 ? name[1] : ''
                         const userObject = {
                             id: uid,
-
                             firstName,
                             email,
                             lastName,
