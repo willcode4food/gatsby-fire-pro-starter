@@ -50,11 +50,11 @@ const SPACERS = {
 
 const BREAKPOINTS = [
     ['XS', 320],
-    ['S', 720],
-    ['M', 1024],
-    ['L', 1536],
-    ['XL', 1800],
-    ['XXL', 2000],
+    ['S', 576],
+    ['M', 768],
+    ['L', 992],
+    ['XL', 1200],
+    ['XXL', 1900],
 ]
 const BREAKPOINTS_VALUES = BREAKPOINTS.reduce(
     (acc, bp) => ({

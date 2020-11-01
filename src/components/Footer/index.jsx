@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { COLORS } from 'utils/styleHelpers'
 import SocialLinks from 'components/SocialLinks'
 import Logo from 'components/Header/Logo'
-import { useBreakpoint } from 'gatsby-plugin-breakpoints'
+import useBreakpointDetector from 'hooks/useBreakpointDetector'
 
 import {
     CopyrightText,
@@ -19,8 +19,7 @@ import {
 } from './styles'
 
 const Footer = () => {
-    const breakpoints = useBreakpoint()
-    console.log('Footer -> breakpoints', breakpoints)
+    const { isSmall, isLarge } = useBreakpointDetector()
 
     return (
         <FooterWrapper>
@@ -31,17 +30,13 @@ const Footer = () => {
                             <Logo color={COLORS.PRIMARY} textColor={COLORS.PRIMARY} />
                         </FooterLogoWrapper>
                     </FooterContentBoxLogo>
-                    <FooterSocialLinksWrapper>
-                        {/* TODO: Medium up Breakpoint */}
-                        {!breakpoints.S && (breakpoints.M || breakpoints.L) && <SocialLinks />}
-                    </FooterSocialLinksWrapper>
+                    <FooterSocialLinksWrapper>{isLarge && <SocialLinks />}</FooterSocialLinksWrapper>
                     <FooterContentBoxTermsAndPolicy>
                         <Link to="/tos"> Terms of Use</Link> | <Link to="/privacy-policy">Privacy Policy</Link>
                     </FooterContentBoxTermsAndPolicy>
                     <div>
                         <FooterContentCopyrightWrapper>
-                            {/* TODO: Small down */}
-                            {!breakpoints.XS && breakpoints.S && (
+                            {isSmall && (
                                 <FooterSocialLinksMobileWrapper>
                                     <SocialLinks />
                                 </FooterSocialLinksMobileWrapper>
