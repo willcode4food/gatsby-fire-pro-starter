@@ -20,7 +20,7 @@ import {
 
 const Header = ({ resetDrawer, location, isShowingAccountLink = false, toggleNav }) => {
     const { uid, sessionID } = useContext(SessionContext)
-    const { isSmall, isLarge } = useBreakpointDetector()
+    const { isLarge } = useBreakpointDetector()
     return (
         <StickyNav id="headerBar">
             <div>
