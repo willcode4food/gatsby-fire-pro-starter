@@ -3,7 +3,8 @@ import { Link } from 'gatsby'
 import { COLORS } from 'utils/styleHelpers'
 import SocialLinks from 'components/SocialLinks'
 import Logo from 'components/Header/Logo'
-import { Breakpoint } from 'react-socks'
+import { useBreakpoint } from 'gatsby-plugin-breakpoints'
+
 import {
     CopyrightText,
     FooterContentWrapper,
@@ -18,6 +19,9 @@ import {
 } from './styles'
 
 const Footer = () => {
+    const breakpoints = useBreakpoint()
+    console.log('Footer -> breakpoints', breakpoints)
+
     return (
         <FooterWrapper>
             <FooterWrapperBox>
@@ -28,20 +32,20 @@ const Footer = () => {
                         </FooterLogoWrapper>
                     </FooterContentBoxLogo>
                     <FooterSocialLinksWrapper>
-                        <Breakpoint M up>
-                            <SocialLinks />
-                        </Breakpoint>
+                        {/* TODO: Medium up Breakpoint */}
+                        {!breakpoints.S && (breakpoints.M || breakpoints.L) && <SocialLinks />}
                     </FooterSocialLinksWrapper>
                     <FooterContentBoxTermsAndPolicy>
                         <Link to="/tos"> Terms of Use</Link> | <Link to="/privacy-policy">Privacy Policy</Link>
                     </FooterContentBoxTermsAndPolicy>
                     <div>
                         <FooterContentCopyrightWrapper>
-                            <Breakpoint S down>
+                            {/* TODO: Small down */}
+                            {!breakpoints.XS && breakpoints.S && (
                                 <FooterSocialLinksMobileWrapper>
                                     <SocialLinks />
                                 </FooterSocialLinksMobileWrapper>
-                            </Breakpoint>
+                            )}
                             <div>
                                 <CopyrightText>Copyright 2020 All Rights Researved</CopyrightText>
                             </div>
