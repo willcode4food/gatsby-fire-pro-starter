@@ -1,12 +1,24 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-
+import { BreakpointProvider } from 'gatsby-plugin-breakpoints'
+import { getMediaQueryForBreakpointPlugin } from 'utils/styleHelpers'
 import Header from './'
+
+const mediaQueries = {
+    ...getMediaQueryForBreakpointPlugin(),
+    portrait: `(orientation: portrait)`,
+}
 
 describe('Header', () => {
     describe('when it is added', () => {
         it('renders', () => {
-            const tree = renderer.create(<Header />).toJSON()
+            const tree = renderer
+                .create(
+                    <BreakpointProvider queries={mediaQueries}>
+                        <Header />
+                    </BreakpointProvider>
+                )
+                .toJSON()
             expect(tree).toMatchInlineSnapshot(`
                 .emotion-27 {
                   background: #fff;
@@ -265,7 +277,7 @@ describe('Header', () => {
                               className="emotion-12"
                               height="100%"
                               viewBox="0 0 320 45.28847776143346"
-                              width="100%"
+                              width="200px"
                             >
                               <defs
                                 id="SvgjsDefs1404"

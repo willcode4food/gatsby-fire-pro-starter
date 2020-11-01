@@ -1,8 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
 import { Helmet } from 'react-helmet'
 import Adapter from 'enzyme-adapter-react-16'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery } from 'gatsby'
 import { configure, mount } from 'enzyme'
 import SEO from './'
 const gatsbyConfig = require('../../../gatsby-config.js')
@@ -65,7 +64,7 @@ describe('SEO', () => {
                       "name": "twitter:card",
                     },
                     Object {
-                      "content": "@pondstreetsoftware",
+                      "content": "@willcode4food",
                       "name": "twitter:creator",
                     },
                     Object {
