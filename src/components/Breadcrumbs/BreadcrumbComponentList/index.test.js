@@ -1,10 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import serializer from 'jest-emotion'
 
 import BreadcrumbComponentList from './'
-
-expect.addSnapshotSerializer(serializer)
 
 const location = {
     pathname: '/login',

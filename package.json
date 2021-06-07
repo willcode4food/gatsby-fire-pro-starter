@@ -6,8 +6,8 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@devhammed/use-cookie": "^1.1.0",
-    "@emotion/core": "^10.0.35",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.20.0",
     "firebase-admin": "^9.1.1",
@@ -27,6 +27,7 @@
     "gray-percentage": "^2.0.0",
     "jest-emotion": "^10.0.32",
     "prop-types": "^15.7.2",
+    "random-username-generator": "^1.0.4",
     "react": "^16.12.0",
     "react-avatar-editor": "11.0.9",
     "react-dom": "^16.12.0",
@@ -42,7 +43,11 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "@emotion/eslint-plugin": "^11.2.0",
+    "@emotion/jest": "^11.3.0",
+    "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^13.1.9",
     "babel-jest": "^26.5.2",
     "babel-preset-gatsby": "^0.5.14",
     "enzyme": "^3.11.0",
