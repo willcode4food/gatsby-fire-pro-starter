@@ -9,7 +9,6 @@ describe('NavDrawer', () => {
             const tree = renderer.create(<NavDrawer />).toJSON()
             expect(tree).toMatchInlineSnapshot(`
                 .emotion-0 {
-                  background-color: white;
                   box-sizing: border-box;
                   color: #fff;
                   height: calc(100vh - 70px);
