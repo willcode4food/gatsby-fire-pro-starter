@@ -6,7 +6,7 @@ function Hero() {
         <HeroWrapper>
             <WelcomeMessageWrapper>
                 <WelcomeMessageTitle>Welcome</WelcomeMessageTitle>
-                <WelcomeMessageSubTitle>We're going to change the world!</WelcomeMessageSubTitle>
+                <WelcomeMessageSubTitle>{`We're going to change the world!`}</WelcomeMessageSubTitle>
             </WelcomeMessageWrapper>
         </HeroWrapper>
     )
