@@ -71,7 +71,7 @@ describe('Hero', () => {
                     <h3
                       className="emotion-2 emotion-3"
                     >
-                      To Ninoz Fantasy Sports!
+                      We're going to change the world!
                     </h3>
                   </div>
                 </div>
