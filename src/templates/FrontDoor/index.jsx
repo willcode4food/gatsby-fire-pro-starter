@@ -32,11 +32,7 @@ function FrontDoor() {
                             We&apos;re about to show the world they are ready for us!
                         </ContentValuePropContent>
                         <ContentValuePropBox>
-                            <PrimaryButtonLink
-                                color={COLORS.PRIMARY_BUTTON}
-                                textcolor={COLORS.PRIMARY}
-                                to="/dispensaries"
-                            >
+                            <PrimaryButtonLink color={COLORS.PRIMARY_BUTTON} textcolor={COLORS.PRIMARY} to="/register">
                                 Blastoff!
                             </PrimaryButtonLink>
                         </ContentValuePropBox>
@@ -47,11 +43,7 @@ function FrontDoor() {
                         <ContentValuePropHeader>Do you like being awesome?</ContentValuePropHeader>
                         <ContentValuePropContent>Let&apos;s be awesome together</ContentValuePropContent>
                         <ContentValuePropBox>
-                            <PrimaryButtonLink
-                                color={COLORS.PRIMARY_BUTTON}
-                                textcolor={COLORS.PRIMARY}
-                                to="/dispensaries"
-                            >
+                            <PrimaryButtonLink color={COLORS.PRIMARY_BUTTON} textcolor={COLORS.PRIMARY} to="/register">
                                 Step into Awesomeness
                             </PrimaryButtonLink>
                         </ContentValuePropBox>
