@@ -9,6 +9,7 @@ describe('NavDrawer', () => {
             const tree = renderer.create(<NavDrawer />).toJSON()
             expect(tree).toMatchInlineSnapshot(`
                 .emotion-0 {
+                  background-color: white;
                   box-sizing: border-box;
                   color: #fff;
                   height: calc(100vh - 70px);
@@ -31,6 +32,10 @@ describe('NavDrawer', () => {
                     left: -33%;
                     width: 30%;
                   }
+                }
+
+                .dark .emotion-0 {
+                  background-color: #1e2427;
                 }
 
                 <div
