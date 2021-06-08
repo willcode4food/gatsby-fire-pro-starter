@@ -11,9 +11,10 @@
   Gatsby + Firebase/Firestore Professional Starter
 </h1>
 
-Out of the box, with some basic configuration setup, you can easily connect this starter with a Firebase/Firestore back end. Included are a login page, registration page, and a user account page. This starter provides a robust user registration and security strategy for creating personalized web applicatons for many use cases. 🤼‍♂️ 
+Out of the box, with some basic configuration setup, you can easily connect this starter with a Firebase/Firestore back end. Included are a login page, registration page, and a user account page. This starter provides a robust user registration and security strategy for creating personalized web applicatons for many use cases. 🤼‍♂️
 
-## Demo 
+## Demo
+
 https://zealous-tereshkova-ed6818.netlify.app/
 
 ## Features
@@ -62,16 +63,16 @@ https://zealous-tereshkova-ed6818.netlify.app/
     ```
 
 1.  **Update Environment Configuration**
-    open the `.env.development` and `.env.production`
+    set the following environment variables
 
     ```shell
-            GATSBY_ENV=development
-            GATSBY_PROJECTID=<Firebase Project ID>
-            GATSBY_APIKEY=<Web API Key>
-            GATSBY_AUTHDOMAIN=<Firebase Project ID>.firebaseapp.com
-            GATSBY_DATABASEURL=https://<Firebase Project ID>.firebaseio.com
-            GATSBY_STORAGEBUCKET=<Firebase Project ID>.appspot.com
-            GATSBY_STORAGEBUCKET_URL=https://firebasestorage
+            ENV=development
+            PROJECTID=<Firebase Project ID>
+            APIKEY=<Web API Key>
+            AUTHDOMAIN=<Firebase Project ID>.firebaseapp.com
+            DATABASEURL=https://<Firebase Project ID>.firebaseio.com
+            STORAGEBUCKET=<Firebase Project ID>.appspot.com
+            STORAGEBUCKET_URL=https://firebasestorage
                  .googleapiscom/v0/b/<Firebase Project ID>.appspot.com/o
     ```
 

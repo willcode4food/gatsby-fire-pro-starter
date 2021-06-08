@@ -34,6 +34,10 @@ describe('NavDrawer', () => {
                   }
                 }
 
+                .dark .emotion-0 {
+                  background-color: #1e2427;
+                }
+
                 <div
                   className="emotion-0 emotion-1"
                 />

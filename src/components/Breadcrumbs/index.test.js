@@ -1,10 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import serializer from 'jest-emotion'
 
 import Breadcrumbs from './'
-
-expect.addSnapshotSerializer(serializer)
 
 describe('Breadcrumbs', () => {
     describe('it is added', () => {
