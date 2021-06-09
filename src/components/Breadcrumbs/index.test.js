@@ -1,15 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import serializer from 'jest-emotion'
 
 import Breadcrumbs from './'
-
-expect.addSnapshotSerializer(serializer)
 
 describe('Breadcrumbs', () => {
     describe('it is added', () => {
         it('renders', () => {
-            const tree = renderer.create(<Breadcrumbs location={location} />).toJSON()
+            const tree = renderer.create(<Breadcrumbs location={mockLocation} />).toJSON()
             expect(tree).toMatchInlineSnapshot(`
                 .emotion-4 {
                   list-style-type: none;
@@ -69,3 +66,17 @@ describe('Breadcrumbs', () => {
         })
     })
 })
+
+const mockLocation = {
+    pathname: '/login',
+    search: '',
+    hash: '',
+    href: 'http://localhost:8000/login',
+    origin: 'http://localhost:8000',
+    protocol: 'http:',
+    host: 'localhost:8000',
+    hostname: 'localhost',
+    port: '8000',
+    state: null,
+    key: 'initial',
+}

@@ -1,7 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
+import { createSerializer } from '@emotion/jest'
 import SubmitButton from './'
+
+expect.addSnapshotSerializer(createSerializer())
 
 describe('SubmitButton', () => {
     describe('when it is added', () => {

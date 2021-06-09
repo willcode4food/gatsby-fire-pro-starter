@@ -1,10 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import serializer from 'jest-emotion'
 
 import Avatar from './index.jsx'
-
-expect.addSnapshotSerializer(serializer)
 
 describe('Avatar', () => {
     describe('when it is on a page', () => {
