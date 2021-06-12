@@ -18,12 +18,22 @@ export const primaryButtonStyles = ({
     padding-right: ${SPACERS.L};
     padding-left: ${SPACERS.L};
     width: 100%;
+    &:disabled {
+        background: ${COLORS.TERNARY_DARK};
+        border-color: ${COLORS.TERNARY_DARK};
+        color: ${COLORS.TOGGLE};
+    }
     &:hover {
-        ${color};
+        background: ${color};
     }
     .dark & {
         color: ${textColorDark || textColor};
         background: ${color};
         border: 1px solid ${color};
+        &:disabled {
+            background: ${COLORS.TERNARY_DARK};
+            color: ${COLORS.PRIMARY_DARK};
+            border-color: ${COLORS.TERNARY_DARK};
+        }
     }
 `

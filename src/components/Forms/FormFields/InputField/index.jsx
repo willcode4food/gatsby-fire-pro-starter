@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { InputFieldStyle } from './styles'
 
-function InputField({ input, register, ...rest }) {
-    return <InputFieldStyle ref={register} {...input} {...rest} />
+function InputField({ input, ...rest }) {
+    return <InputFieldStyle {...input} {...rest} />
 }
 
 InputField.propTypes = {

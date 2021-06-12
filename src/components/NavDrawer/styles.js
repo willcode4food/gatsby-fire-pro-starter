@@ -23,6 +23,9 @@ export const Drawer = styled.div`
         left: ${({ open }) => (open ? `0` : `-33%`)};
         width: 30%;
     }
+    .dark & {
+        background-color: ${COLORS.PRIMARY_DARK};
+    }
 `
 export const NavWrapper = styled.nav`
     align-items: center;
