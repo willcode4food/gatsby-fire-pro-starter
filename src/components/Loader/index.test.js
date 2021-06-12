@@ -96,6 +96,7 @@ describe('Loader', () => {
 
 <div
   className="emotion-0 emotion-1"
+  data-testid="loader"
 >
   <div
     className="emotion-2 emotion-3"
