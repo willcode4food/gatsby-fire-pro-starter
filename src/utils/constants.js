@@ -5,12 +5,12 @@ const FIREBASE = {
         BASE_URL: process.env.GATSBY_STORAGEBUCKET_URL,
     },
     CONFIG: {
-        apiKey: process.env.GATSBY_APIKEY,
-        authDomain: process.env.GATSBY_AUTHDOMAIN,
-        databaseURL: process.env.GATSBY_DATABASEURL,
-        projectId: process.env.GATSBY_PROJECTID,
-        storageBucket: process.env.GATSBY_STORAGEBUCKET,
-        messagingSenderId: process.env.GATSBY_MESSAGINGSENDERID,
+        apiKey: process.env.APIKEY,
+        authDomain: process.env.AUTHDOMAIN,
+        databaseURL: process.env.DATABASEURL,
+        projectId: process.env.PROJECTID,
+        storageBucket: process.env.STORAGEBUCKET,
+        messagingSenderId: process.env.MESSAGINGSENDERID,
     },
 }
 

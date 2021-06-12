@@ -1,37 +1,36 @@
-import React, { useState } from 'react'
-
-import { useForm } from 'react-hook-form'
-import { navigate } from 'gatsby'
-import { InputField, EmailSubmitButton } from 'components/Forms/FormFields'
-import {
-    ButtonLabelWrapper,
-    ButtonLabelBox,
-    ButtonLabelIconBox,
-    ErrorMessage,
-    ErrorIcon,
-    FormHeader,
-    FormButton,
-    GoogleLoginIcon,
-    StyledLink,
-} from 'components/Forms/FormStyles'
+import { EmailSubmitButton, InputField } from 'components/Forms/FormFields'
 import {
     FormBox,
     FormFlex,
     FormFlexInner,
+    FormFlexInnerBox,
     FormWrapper,
     FormWrapperBox,
-    FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-import { FIREBASE } from 'utils/constants'
-import { getAvatarThemeIndex } from 'utils/userHelpers'
-import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
+import {
+    ButtonLabelBox,
+    ButtonLabelIconBox,
+    ButtonLabelWrapper,
+    ErrorIcon,
+    ErrorMessage,
+    FormButton,
+    FormHeader,
+    GoogleLoginIcon,
+    StyledLink,
+} from 'components/Forms/FormStyles'
 import Loader from 'components/Loader'
+import { navigateToPathHistory } from 'components/PathHistory'
+import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { FIREBASE } from 'utils/constants'
+import { defaultUserRegFields } from 'utils/userHelpers'
 
 function RegisterForm() {
     const { errors, register, handleSubmit, watch } = useForm()
     const [hasGoogleRegistrationError, setHasGoogleRegistrationError] = useState(false)
     function onAuthenticationSuccess() {
-        navigate('/account')
+        navigateToPathHistory('/account')
     }
 
     const {
@@ -43,10 +42,7 @@ function RegisterForm() {
         onAuthenticationSuccess,
         firebaseConfig: FIREBASE.CONFIG,
     })
-    function getDefaultAvatarIndex() {
-        const index = document.getElementsByName('defaultAvatarThemeIndex')[0]
-        return parseInt(index.value)
-    }
+
     const handleGoogleSubmit = async (event) => {
         event.preventDefault()
         const username = document.getElementsByName('username')[0]
@@ -54,22 +50,20 @@ function RegisterForm() {
             setHasGoogleRegistrationError(true)
             return
         }
-        const defaultAvatarThemeIndex = getDefaultAvatarIndex()
         await onGoogleRegistration({
             username: username.value,
-            defaultAvatarThemeIndex,
             loginProvider: 'google',
+            ...defaultUserRegFields,
         })
         return
     }
     const onSubmit = async (data) => {
-        const defaultAvatarThemeIndex = getDefaultAvatarIndex()
         // eslint-disable-next-line no-unused-vars
         const { confirmPassword, ...restOfFormData } = data
         onEmailRegistration({
             ...restOfFormData,
             loginProvider: 'email',
-            defaultAvatarThemeIndex,
+            ...defaultUserRegFields,
         })
     }
     return (
@@ -218,12 +212,6 @@ function RegisterForm() {
                                         register={register({ validate: (value) => value === watch('password') })}
                                         type="password"
                                         aria-label="Confirm Password"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        ref={register}
-                                        name="defaultAvatarThemeIndex"
-                                        defaultValue={getAvatarThemeIndex()}
                                     />
                                 </FormBox>
                                 {errors.confirmPassword && errors.confirmPassword.type === 'validate' && (

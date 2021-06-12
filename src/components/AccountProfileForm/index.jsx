@@ -1,37 +1,33 @@
-import React, { useState, useRef, useContext, useEffect } from 'react'
-import SessionContext from 'context/SessionContext'
-import { useForm } from 'react-hook-form'
-import AvatarEditor from 'react-avatar-editor'
-import { InputField, SliderField, StandardSubmitButton, StateSelectField, FileField } from 'components/Forms/FormFields'
-import Loader from 'components/Loader'
-import ProfileAvatar from 'components/ProfileAvatar'
+import { FileField, InputField, SliderField, StandardSubmitButton, StateSelectField } from 'components/Forms/FormFields'
 import {
     FormBox,
     FormBoxCenter,
     FormFlex,
     FormFlexInner,
+    FormFlexInnerBox,
     FormWrapper,
     FormWrapperBox,
-    FormFlexInnerBox,
 } from 'components/Forms/FormLayout'
-
-import {
-    AvatarEditorBox,
-    ImageEditorControlsWrapper,
-    ImageEditorControlsBox,
-    ImageEditorControlsCenterBox,
-} from './styles'
-
+import { ErrorIcon, ErrorMessage, FormHeader } from 'components/Forms/FormStyles'
+import ProfileAvatar from 'components/ProfileAvatar'
 import RotateLeftIcon from 'components/RotateLeftIcon'
 import RotateRightIcon from 'components/RotateRightIcon'
-import { ErrorMessage, FormHeader, ErrorIcon } from 'components/Forms/FormStyles'
-import { FIREBASE, LOGIN_PROVIDER, PROFILE_IMAGE_SIZE, ACCEPTED_IMAGE_FORMATS } from 'utils/constants'
-import useFirestoreDocument from 'hooks/firebase/useFirestoreDocument'
+import SessionContext from 'context/SessionContext'
 import useFirebaseApp from 'hooks/firebase/useFirebaseApp'
-import { getInitials } from 'utils/userHelpers'
+import PropTypes from 'prop-types'
+import React, { useContext, useRef, useState } from 'react'
+import AvatarEditor from 'react-avatar-editor'
+import { useForm } from 'react-hook-form'
+import { ACCEPTED_IMAGE_FORMATS, FIREBASE, PROFILE_IMAGE_SIZE } from 'utils/constants'
+import {
+    AvatarEditorBox,
+    ImageEditorControlsBox,
+    ImageEditorControlsCenterBox,
+    ImageEditorControlsWrapper,
+} from './styles'
 
-function AccountProfileForm() {
-    const { register, handleSubmit, errors, watch } = useForm()
+function AccountProfileForm({ saveData = () => {} }) {
+    const { register, handleSubmit, errors } = useForm()
     const [isEditingAvatar, setIsEditingAvatar] = useState(false)
     const [profileImageBuffer, setProfileImageBuffer] = useState(null)
     const [scale, setScale] = useState(1)
@@ -40,34 +36,53 @@ function AccountProfileForm() {
     const editor = useRef(null)
     const { authUser } = useContext(SessionContext)
     const { storage } = useFirebaseApp({ firebaseConfig: FIREBASE.CONFIG })
-    const { document, isFirestoreLoading, updateDocument, firestoreError } = useFirestoreDocument({
-        firebaseConfig: FIREBASE.CONFIG,
-        collection: 'users',
-        docId: authUser.uid,
-    })
-    useEffect(() => {
-        if (document && (!document.username || document.username === '')) {
-            setAccountProfileFormError({ message: 'Please give yourself a unique username' })
-        }
-    }, [document])
-    useEffect(() => {
-        setAccountProfileFormError(firestoreError)
-    }, [firestoreError])
 
-    function isLoginProviderEmail() {
-        return document && document.loginProvider === LOGIN_PROVIDER.EMAIL
-    }
+    // function resetForm(data) {
+    //     reset(
+    //         {
+    //             ...data,
+    //         },
+    //         {
+    //             errors: true, // errors will not be reset
+    //             dirtyFields: true, // dirtyFields will not be reset
+    //             isDirty: true, // dirty will not be reset
+    //             isSubmitted: false,
+    //             touched: false,
+    //             isValid: false,
+    //             submitCount: false,
+    //         }
+    //     )
+    // }
+
+    // function isLoginProviderEmail() {
+    //     return queryData && queryData?.returnSingleUser?.loginProvider === LOGIN_PROVIDER.EMAIL
+    // }
+
     const onScale = (event) => {
         setScale(parseFloat(event.target.value))
     }
 
     const onSubmit = async (data) => {
         // eslint-disable-next-line no-unused-vars
-        const { confirmPassword, ...userData } = data
+        const { password, confirmPassword, ...userData } = data
+
+        if (!userData.username) {
+            setAccountProfileFormError({ message: 'Please give yourself a unique username' })
+            return
+        }
+
         const imageUrlFromSave = await handleEditedImage()
+        console.log('🚀 ~ file: index.jsx ~ line 76 ~ onSubmit ~ imageUrlFromSave', imageUrlFromSave)
         setAccountProfileFormError(null)
-        await updateDocument({ ...userData, profileImageName: imageUrlFromSave })
+        try {
+            saveData(data)
+        } catch (e) {
+            const { message } = e
+            setAccountProfileFormError(message)
+            console.log(message)
+        }
     }
+
     const onFileChanged = (event) => {
         setAccountProfileFormError(null)
         const profileImageName = event.target.files[0].name
@@ -85,7 +100,6 @@ function AccountProfileForm() {
     const onRotateLeft = () => {
         setRotate(rotate - 90)
     }
-
     const onRotateRight = () => {
         setRotate(rotate + 90)
     }
@@ -114,13 +128,11 @@ function AccountProfileForm() {
             setIsEditingAvatar(false)
             return profileImageBuffer ? `${uid}.png` : null
         }
-        return
+        return ''
     }
     return (
         <>
-            {isFirestoreLoading || !document || typeof document === undefined ? (
-                <Loader />
-            ) : (
+            {
                 <FormWrapper>
                     <FormWrapperBox>
                         <FormHeader>Account</FormHeader>
@@ -129,7 +141,7 @@ function AccountProfileForm() {
                                 {accountProfileFormError && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>{accountProfileFormError.message}</ErrorMessage>
+                                        <ErrorMessage role="alert">{accountProfileFormError.message}</ErrorMessage>
                                     </FormBox>
                                 )}
                                 {isEditingAvatar && (
@@ -178,18 +190,9 @@ function AccountProfileForm() {
                                     {!isEditingAvatar && (
                                         <ProfileAvatar
                                             key={authUser.uid}
-                                            imageFileName={document && document.profileImageName}
-                                            defaultAvatarThemeIndex={
-                                                document &&
-                                                document.defaultAvatarThemeIndex &&
-                                                document.defaultAvatarThemeIndex
-                                            }
-                                            displayText={getInitials({
-                                                username: document && document.username,
-                                                firstName: document && document.firstName,
-                                                lastName: document && document.lastName,
-                                            })}
-                                            // imageFileURL={profileImageUrl}
+                                            imageFileName={null}
+                                            defaultAvatarThemeIndex={0}
+                                            displayText={null}
                                         />
                                     )}
                                 </FormBox>
@@ -200,26 +203,32 @@ function AccountProfileForm() {
                                         </FormBoxCenter>
                                     )}
                                 </FormBox>
+                                {/* <AuthIdentifierLabel>{queryData?.returnSingleUser?.email}</AuthIdentifierLabel> */}
                                 <FormBox>
                                     <InputField
-                                        register={register({ required: true, minLength: 2 })}
+                                        register={register({
+                                            required: true,
+                                            minLength: 2,
+                                        })}
                                         name="username"
                                         placeholder="Username"
                                         type="text"
                                         aria-label="Username"
-                                        defaultValue={document && document.username}
+                                        defaultValue={null}
                                     />
                                 </FormBox>
-                                {errors.username && errors.username.type === 'required' && (
+                                {errors?.username?.type === 'required' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>Please enter a valid username</ErrorMessage>
+                                        <ErrorMessage role="alert">Please enter a valid username</ErrorMessage>
                                     </FormBox>
                                 )}
-                                {errors.username && errors.username.type === 'minLength' && (
+                                {errors?.username?.type === 'minLength' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>Usernames must be at least 2 characters long</ErrorMessage>
+                                        <ErrorMessage role="alert">
+                                            Usernames must be at least 2 characters long
+                                        </ErrorMessage>
                                     </FormBox>
                                 )}
                                 <FormBox>
@@ -229,19 +238,21 @@ function AccountProfileForm() {
                                         register={register({ required: true, minLength: 2 })}
                                         type="text"
                                         aria-label="First Name"
-                                        defaultValue={document && document.firstName}
+                                        defaultValue={null}
                                     />
                                 </FormBox>
-                                {errors.firstName && errors.firstName.type === 'required' && (
+                                {errors?.firstName && errors?.firstName?.type === 'required' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>First Name is required</ErrorMessage>
+                                        <ErrorMessage role="alert">First Name is required</ErrorMessage>
                                     </FormBox>
                                 )}
-                                {errors.firstName && errors.firstName.type === 'minLength' && (
+                                {errors?.firstName && errors?.firstName?.type === 'minLength' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>First name must be at least 2 characters</ErrorMessage>
+                                        <ErrorMessage role="alert">
+                                            First name must be at least 2 characters
+                                        </ErrorMessage>
                                     </FormBox>
                                 )}
                                 <FormBox>
@@ -251,19 +262,21 @@ function AccountProfileForm() {
                                         register={register({ required: true, minLength: 2 })}
                                         type="text"
                                         aria-label="Last Name"
-                                        defaultValue={document && document.lastName}
+                                        defaultValue={null}
                                     />
                                 </FormBox>
-                                {errors.lastName && errors.lastName.type === 'required' && (
+                                {errors?.lastName && errors?.lastName?.type === 'required' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>Last Name is required</ErrorMessage>
+                                        <ErrorMessage role="alert">Last Name is required</ErrorMessage>
                                     </FormBox>
                                 )}
-                                {errors.lastName && errors.lastName.type === 'minLength' && (
+                                {errors?.lastName && errors?.lastName?.type === 'minLength' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>Last name must be at least 2 characters</ErrorMessage>
+                                        <ErrorMessage role="alert">
+                                            Last name must be at least 2 characters
+                                        </ErrorMessage>
                                     </FormBox>
                                 )}
                                 <FormBox>
@@ -273,74 +286,81 @@ function AccountProfileForm() {
                                         register={register({ minLength: 2 })}
                                         type="text"
                                         aria-label="City"
-                                        defaultValue={document && document.city}
+                                        defaultValue={null}
                                     />
                                 </FormBox>
-                                {errors.lastName && errors.lastName.type === 'minLength' && (
+                                {errors?.city && errors?.city?.type === 'minLength' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>City must be at least 2 characters</ErrorMessage>
+                                        <ErrorMessage role="alert">City must be at least 2 characters</ErrorMessage>
                                     </FormBox>
                                 )}
                                 <FormBox>
                                     <StateSelectField
+                                        data-testid="state"
                                         name="state"
                                         aria-label="state"
-                                        register={register}
-                                        defaultValue={document && document.state}
+                                        register={register({ required: true })}
+                                        defaultValue={null}
                                     />
                                 </FormBox>
-                                {errors.lastName && errors.lastName.type === 'minLength' && (
+                                {errors?.state && errors?.state?.type === 'required' && (
                                     <FormBox>
                                         <ErrorIcon />
-                                        <ErrorMessage>City must be at least 2 characters</ErrorMessage>
+                                        <ErrorMessage role="alert">State is required</ErrorMessage>
                                     </FormBox>
                                 )}
-
-                                {document && isLoginProviderEmail() && (
+                                <FormBox>
+                                    <InputField
+                                        register={register({ required: true, minLength: 5 })}
+                                        name="zip"
+                                        placeholder="zip"
+                                        type="text"
+                                        aria-label="Zip"
+                                        defaultValue={null}
+                                    />
+                                </FormBox>
+                                {errors?.zip && errors?.zip?.type === 'minLength' && (
                                     <FormBox>
-                                        <InputField
-                                            register={register}
-                                            name="password"
-                                            placeholder="Password"
-                                            type="password"
-                                            aria-label="Password"
-                                        />
+                                        <ErrorIcon />
+                                        <ErrorMessage role="alert">Zip must be at least 2 characters</ErrorMessage>
                                     </FormBox>
                                 )}
-                                {document && isLoginProviderEmail() && (
+                                {errors?.zip && errors?.zip?.type === 'required' && (
                                     <FormBox>
-                                        <InputField
-                                            name="confirmPassword"
-                                            placeholder="Confirm Password"
-                                            register={register({ validate: (value) => value === watch('password') })}
-                                            type="password"
-                                            aria-label="Confirm Password"
-                                        />
+                                        <ErrorIcon />
+                                        <ErrorMessage role="alert">Zip is required</ErrorMessage>
                                     </FormBox>
                                 )}
-                                {isLoginProviderEmail() &&
-                                    errors.confirmPassword &&
-                                    errors.confirmPassword.type === 'validate' && (
-                                        <FormBox>
-                                            <ErrorIcon />
-                                            <ErrorMessage>Password and confirmation do not match</ErrorMessage>
-                                        </FormBox>
-                                    )}
                                 <FormBox>
                                     <FormFlexInner>
                                         <FormFlexInnerBox>
-                                            <StandardSubmitButton text="Save Profile" />
+                                            <StandardSubmitButton
+                                                role="button"
+                                                aria-label="Save Profile"
+                                                text="Save Profile"
+                                            />
                                         </FormFlexInnerBox>
                                     </FormFlexInner>
                                 </FormBox>
+                                {/* {isLoginProviderEmail() && (
+                                    <FormBox>
+                                        <StyledLink to="/account-security" name="securityLink" role="link" state={null}>
+                                            Update Email and Password
+                                        </StyledLink>
+                                    </FormBox>
+                                )} */}
                             </FormFlex>
                         </form>
                     </FormWrapperBox>
                 </FormWrapper>
-            )}
+            }
         </>
     )
+}
+
+AccountProfileForm.propTypes = {
+    saveData: PropTypes.func,
 }
 
 export default AccountProfileForm
