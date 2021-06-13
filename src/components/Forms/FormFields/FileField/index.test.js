@@ -35,13 +35,13 @@ describe('FileField', () => {
   width: 100%;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-2+label {
     width: 50%;
   }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .emotion-2+label {
     width: 50%;
   }

@@ -29,8 +29,8 @@ describe('Footer', () => {
   -ms-flex-direction: column;
   flex-direction: column;
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
   justify-content: flex-start;
   background: #263238;
   -webkit-transition: background 0.5s;
@@ -41,14 +41,14 @@ describe('Footer', () => {
   background: #1e2427;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-0 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
     -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
     justify-content: flex-start;
   }
 }
@@ -60,7 +60,7 @@ describe('Footer', () => {
   margin-bottom: 10px;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-2 {
     width: 15%;
   }
@@ -68,8 +68,8 @@ describe('Footer', () => {
 
 .emotion-4 {
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
   justify-content: flex-start;
   display: -webkit-box;
   display: -webkit-flex;
@@ -90,7 +90,7 @@ describe('Footer', () => {
   margin-top: 20px;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-6 {
     margin-top: 20px;
   }
@@ -129,12 +129,11 @@ describe('Footer', () => {
   flex-direction: column;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 10px;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-19 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -221,7 +220,7 @@ describe('Footer', () => {
         >
           <div>
             <p
-              className="emotion-21 emotion-91"
+              className="emotion-21 emotion-22"
             >
               Copyright 2020 All Rights Researved
             </p>

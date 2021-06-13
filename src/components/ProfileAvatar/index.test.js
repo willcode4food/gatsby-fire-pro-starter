@@ -18,8 +18,8 @@ describe('ProfileAvatar', () => {
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   margin: 0;
   margin-top: 10px;

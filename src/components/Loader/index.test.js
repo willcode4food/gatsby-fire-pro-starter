@@ -11,6 +11,7 @@ describe('Loader', () => {
 @keyframes animation-0 {
   50% {
     -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
     -ms-transform: scale(0.75);
     transform: scale(0.75);
     opacity: 0.2;
@@ -18,6 +19,7 @@ describe('Loader', () => {
 
   100% {
     -webkit-transform: scale(1);
+    -moz-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
     opacity: 1;
@@ -27,6 +29,7 @@ describe('Loader', () => {
 @keyframes animation-0 {
   50% {
     -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
     -ms-transform: scale(0.75);
     transform: scale(0.75);
     opacity: 0.2;
@@ -34,6 +37,7 @@ describe('Loader', () => {
 
   100% {
     -webkit-transform: scale(1);
+    -moz-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
     opacity: 1;
@@ -59,8 +63,8 @@ describe('Loader', () => {
   -ms-flex-direction: column;
   flex-direction: column;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
@@ -96,6 +100,7 @@ describe('Loader', () => {
 
 <div
   className="emotion-0 emotion-1"
+  data-testid="loader"
 >
   <div
     className="emotion-2 emotion-3"
@@ -103,19 +108,19 @@ describe('Loader', () => {
     <div
       className="emotion-4 emotion-5"
     >
-      <div
+      <span
         className="emotion-6"
       >
-        <div
+        <span
           className="emotion-7"
         />
-        <div
+        <span
           className="emotion-8"
         />
-        <div
+        <span
           className="emotion-7"
         />
-      </div>
+      </span>
     </div>
   </div>
 </div>

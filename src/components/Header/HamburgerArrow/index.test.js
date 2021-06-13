@@ -19,11 +19,8 @@ describe('HamburgerArrow', () => {
   overflow: visible;
   padding: 1px;
   text-transform: none;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: opacity,filter;
   transition-property: opacity,filter;
-  -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
 
@@ -38,12 +35,8 @@ describe('HamburgerArrow', () => {
   border-radius: 2px;
   height: 2px;
   position: absolute;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   width: 20px;
   display: block;
@@ -62,12 +55,8 @@ describe('HamburgerArrow', () => {
   border-radius: 2px;
   height: 2px;
   position: absolute;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   width: 20px;
   content: '';
@@ -86,12 +75,8 @@ describe('HamburgerArrow', () => {
   border-radius: 2px;
   height: 2px;
   position: absolute;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   width: 20px;
   content: '';

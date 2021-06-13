@@ -20,6 +20,7 @@ describe('CheckBoxField', () => {
 .emotion-0 {
   -webkit-appearence: button;
   -moz-appearence: button;
+  -ms-appearence: button;
   appearence: button;
   border: 1px solid;
   border-radius: 1px;

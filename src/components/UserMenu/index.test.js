@@ -12,7 +12,7 @@ describe('UserMenu', () => {
   display: none;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-0 {
     display: -webkit-box;
     display: -webkit-flex;

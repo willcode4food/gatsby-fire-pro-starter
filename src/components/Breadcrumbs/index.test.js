@@ -24,13 +24,13 @@ describe('Breadcrumbs', () => {
   text-decoration: none;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-4 {
     font-size: 0.875rem;
   }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .emotion-4 {
     font-size: 0.875rem;
   }

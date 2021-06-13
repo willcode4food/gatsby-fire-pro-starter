@@ -28,7 +28,7 @@ describe('Header', () => {
   top: 0;
   -webkit-transition: background 0.5s;
   transition: background 0.5s;
-  box-shadow: 0px 4px 2px -2px rgba(0,0,0,0.12);
+  box-shadow: 0px 4px 2px -2px rgba(0, 0, 0, 0.12);
   z-index: 3;
 }
 
@@ -45,7 +45,7 @@ describe('Header', () => {
   z-index: 3;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-2 {
     padding: 15px;
   }
@@ -63,8 +63,8 @@ describe('Header', () => {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
@@ -87,11 +87,8 @@ describe('Header', () => {
   overflow: visible;
   padding: 1px;
   text-transform: none;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: opacity,filter;
   transition-property: opacity,filter;
-  -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
 
@@ -106,12 +103,8 @@ describe('Header', () => {
   border-radius: 2px;
   height: 2px;
   position: absolute;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   width: 20px;
   display: block;
@@ -130,12 +123,8 @@ describe('Header', () => {
   border-radius: 2px;
   height: 2px;
   position: absolute;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   width: 20px;
   content: '';
@@ -154,12 +143,8 @@ describe('Header', () => {
   border-radius: 2px;
   height: 2px;
   position: absolute;
-  -webkit-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   width: 20px;
   content: '';
@@ -188,8 +173,8 @@ describe('Header', () => {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
   justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -208,6 +193,7 @@ describe('Header', () => {
   padding: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -223,14 +209,15 @@ describe('Header', () => {
   display: inline-flex;
   height: 30px;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   margin-right: -11px;
   opacity: 0.75;
   overflow: hidden;
   position: relative;
   -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
   -ms-transform: scale(0.75);
   transform: scale(0.75);
   -webkit-transition: opacity 0.3s ease;

@@ -41,6 +41,7 @@ describe('SwitchField', () => {
 
 .emotion-2:checked+span:before {
   -webkit-transform: translateX(19px);
+  -moz-transform: translateX(19px);
   -ms-transform: translateX(19px);
   transform: translateX(19px);
 }

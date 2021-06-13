@@ -20,13 +20,14 @@ describe('Hero', () => {
   background-color: #c60028;
   background-image: url(/images/front-door-bg.jpg);
   background-repeat: no-repeat;
+  -webkit-background-size: cover;
   background-size: cover;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   padding: 50px 15px;
   position: relative;
@@ -34,7 +35,7 @@ describe('Hero', () => {
   min-height: 450px;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .emotion-0 {
     padding: 50px 30px;
   }
