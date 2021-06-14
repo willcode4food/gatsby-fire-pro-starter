@@ -1,3 +1,7 @@
+require('dotenv').config({
+    path: `.env.${process.env.NODE_ENV}`,
+})
+
 const { getMediaQueryForBreakpointPlugin } = require('./src/utils/styleHelpers')
 
 const mediaQueries = {
