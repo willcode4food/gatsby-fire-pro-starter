@@ -9,7 +9,7 @@ configure({ adapter: new Adapter() })
 describe('SelectField', () => {
     describe('it is added', () => {
         it('renders', () => {
-            const tree = render(<SelectField />)
+            const tree = render(<SelectField register={{ register: jest.fn() }} />)
             expect(tree).toMatchInlineSnapshot(`
 Object {
   "asFragment": [Function],

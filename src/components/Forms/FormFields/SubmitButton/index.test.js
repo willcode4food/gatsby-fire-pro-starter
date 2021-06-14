@@ -5,7 +5,9 @@ import SubmitButton from './'
 describe('SubmitButton', () => {
     describe('when it is added', () => {
         it('renders', () => {
-            const tree = renderer.create(<SubmitButton>{`Submit`}</SubmitButton>).toJSON()
+            const tree = renderer
+                .create(<SubmitButton register={{ register: jest.fn() }}>{`Submit`}</SubmitButton>)
+                .toJSON()
             expect(tree).toMatchInlineSnapshot(`
 .emotion-0 {
   display: none;

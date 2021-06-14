@@ -6,7 +6,7 @@ import StateSelectField from './'
 describe('StateSelectField', () => {
     describe('when it is added', () => {
         it('renders', () => {
-            const tree = renderer.create(<StateSelectField />).toJSON()
+            const tree = renderer.create(<StateSelectField register={{ register: jest.fn() }} />).toJSON()
             expect(tree).toMatchInlineSnapshot(`
 .emotion-0 {
   padding-left: 10px;

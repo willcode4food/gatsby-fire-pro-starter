@@ -7,7 +7,15 @@ import InputField from './'
 describe('InputField', () => {
     it('renders correctly', () => {
         const tree = renderer
-            .create(<InputField name="firestName" placeholder="Last Name" type="text" aria-label="Last Name" />)
+            .create(
+                <InputField
+                    register={{ register: jest.fn() }}
+                    name="LastName"
+                    placeholder="Last Name"
+                    type="text"
+                    aria-label="Last Name"
+                />
+            )
             .toJSON()
 
         expect(tree).toMatchInlineSnapshot(`
@@ -54,7 +62,6 @@ describe('InputField', () => {
 <input
   aria-label="Last Name"
   className="emotion-0 emotion-1"
-  name="firestName"
   placeholder="Last Name"
   type="text"
 />
