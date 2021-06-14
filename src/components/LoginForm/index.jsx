@@ -35,7 +35,6 @@ function LoginForm() {
     } = useForm()
 
     const [authError, setAuthError] = useState(null)
-    console.log('🚀 ~ file: index.jsx ~ line 32 ~ LoginForm ~ errors', errors)
     function onAuthenticationSuccess() {
         navigateToPathHistory('/account')
     }
@@ -80,7 +79,7 @@ function LoginForm() {
                                 )}
                                 <FormBox>
                                     <InputField
-                                        {...register('email', { required: true })}
+                                        register={{ register, required: true }}
                                         name="email"
                                         placeholder="Email Address"
                                         type="text"
@@ -95,7 +94,7 @@ function LoginForm() {
                                 )}
                                 <FormBox>
                                     <InputField
-                                        {...register('email', { required: true })}
+                                        register={{ register, required: true }}
                                         name="password"
                                         placeholder="Password"
                                         type="password"

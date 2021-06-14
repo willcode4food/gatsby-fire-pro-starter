@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import states from 'utils/states'
 import SelectField from '../SelectField'
 
-export default function StateSelectField({ defaultValue, input, register, name, ...restProps }) {
+export default function StateSelectField({ defaultValue, input, register: registerProp, name, ...restProps }) {
     return (
         <SelectField
             name={name}
-            register={register}
+            register={registerProp}
             {...input}
             defaultValue={defaultValue}
             tabIndex={-1}
@@ -30,6 +30,6 @@ export default function StateSelectField({ defaultValue, input, register, name, 
 StateSelectField.propTypes = {
     defaultValue: PropTypes.any,
     input: PropTypes.any,
-    register: PropTypes.func,
+    registerProp: PropTypes.func,
     name: PropTypes.string,
 }
