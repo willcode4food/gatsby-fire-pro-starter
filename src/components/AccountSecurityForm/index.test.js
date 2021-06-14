@@ -13,6 +13,7 @@ jest.mock('hooks/firebase/useFirebaseAuthentication', () => {
 describe('AccountSecurityForm', () => {
     it('should render the basic fields', () => {
         render(<AccountSecurityForm />)
+        screen.debug()
 
         expect(screen.getByRole('heading', { name: 'Email and Password' })).toBeInTheDocument()
         expect(screen.getByRole('textbox', { name: /email/i })).toBeInTheDocument()

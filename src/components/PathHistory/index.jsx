@@ -31,7 +31,6 @@ export function navigateToPathHistory(defaultNavigateUrl = '/') {
         if (typeof window.localStorage !== 'undefined') {
             const pathHistory = window.localStorage.getItem(PATH_HISTORY_STORAGE)
             if (pathHistory) {
-                console.log('🚀 ~ file: index.jsx ~ line 34 ~ navigateToPathHistory ~ pathHistory', pathHistory)
                 window.localStorage.removeItem(PATH_HISTORY_STORAGE)
                 navigate(pathHistory)
                 return

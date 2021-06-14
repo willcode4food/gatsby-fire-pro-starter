@@ -27,7 +27,11 @@ import {
 } from './styles'
 
 function AccountProfileForm({ saveData = () => {} }) {
-    const { register, handleSubmit, errors } = useForm()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
     const [isEditingAvatar, setIsEditingAvatar] = useState(false)
     const [profileImageBuffer, setProfileImageBuffer] = useState(null)
     const [scale, setScale] = useState(1)

@@ -13,7 +13,6 @@ const FIREBASE = {
         messagingSenderId: process.env.GATSBY_MESSAGINGSENDERID,
     },
 }
-console.log('🚀 ~ file: constants.js ~ line 16 ~ FIREBASE', FIREBASE)
 
 const ACCEPTED_IMAGE_FORMATS = ['.jpg', '.png', '.jpeg', '.gif']
 const AVATAR_IMAGE_SIZE = 80
