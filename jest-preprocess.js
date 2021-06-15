@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const babelOptions = {
-    presets: ['babel-preset-gatsby', '@emotion/babel-preset-css-prop'],
+    presets: ['@babel/preset-env', '@emotion/babel-preset-css-prop'],
     plugins: ['@emotion/babel-plugin'],
 }
 
