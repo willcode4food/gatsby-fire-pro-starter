@@ -18,7 +18,6 @@ describe('Hero', () => {
   display: -ms-flexbox;
   display: flex;
   background-color: #c60028;
-  background-image: url(/images/front-door-bg.jpg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
