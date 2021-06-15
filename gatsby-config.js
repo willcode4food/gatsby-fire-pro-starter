@@ -2,6 +2,7 @@ require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 
+console.log('🚀 ~ file: gatsby-config.js ~ line 6 ~ process.env.NODE_ENV', process.env.NODE_ENV)
 const { getMediaQueryForBreakpointPlugin } = require('./src/utils/styleHelpers')
 
 const mediaQueries = {
@@ -36,7 +37,17 @@ module.exports = {
         },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-emotion`,
-        `gatsby-transformer-sharp`,
+        {
+            resolve: `gatsby-plugin-emotion`,
+            options: {
+                // Accepts the following options, all of which are defined by `@emotion/babel-plugin` plugin.
+                // The values for each key in this example are the defaults the plugin uses.
+                sourceMap: process.env.NODE_ENV !== 'production',
+                autoLabel: 'dev-only',
+                labelFormat: `[local]`,
+                cssPropOptimization: true,
+            },
+        },
         `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-plugin-manifest`,
