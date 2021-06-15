@@ -28,9 +28,13 @@ import { FIREBASE, LOGIN_PROVIDER } from 'utils/constants'
 import { defaultUserRegFields } from 'utils/userHelpers'
 
 function LoginForm() {
-    const { errors, register, handleSubmit } = useForm()
-    const [authError, setAuthError] = useState(null)
+    const {
+        formState: { errors },
+        register,
+        handleSubmit,
+    } = useForm()
 
+    const [authError, setAuthError] = useState(null)
     function onAuthenticationSuccess() {
         navigateToPathHistory('/account')
     }
@@ -75,7 +79,7 @@ function LoginForm() {
                                 )}
                                 <FormBox>
                                     <InputField
-                                        register={register({ required: true })}
+                                        register={{ register, required: true }}
                                         name="email"
                                         placeholder="Email Address"
                                         type="text"
@@ -90,7 +94,7 @@ function LoginForm() {
                                 )}
                                 <FormBox>
                                     <InputField
-                                        register={register({ required: true })}
+                                        register={{ register, required: true }}
                                         name="password"
                                         placeholder="Password"
                                         type="password"

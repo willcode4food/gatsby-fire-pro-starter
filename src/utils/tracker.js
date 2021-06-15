@@ -20,17 +20,20 @@ export async function eventDispatch(eventData) {
     if (process.env.NODE_ENV === 'development') {
         return
     }
-    try {
-        let currentUser = await firebase.auth().currentUser
-        const token = await currentUser.getIdToken(true)
-        const config = {
-            headers: { Authorization: `Bearer ${token}` },
-        }
-        const { 'gtm.uniqueEventId': uniqueEventId, ...rest } = eventData
-        axios.post(apiEventsURL, { ...rest }, config)
-        return true
-    } catch (error) {
-        console.log(error.message)
-        return false
-    }
+    //TODO: implement modern tracking
+    // try {
+    //     let currentUser = await firebase.auth().currentUser
+    //     const token = await currentUser.getIdToken(true)
+    //     const config = {
+    //         headers: { Authorization: `Bearer ${token}` },
+    //     }
+    //     // eslint-disable-next-line no-unused-vars
+    //     const { 'gtm.uniqueEventId': uniqueEventId, ...rest } = eventData
+    //     axios.post(apiEventsURL, { ...rest }, config)
+    //     return true
+    // } catch (error) {
+    //     console.log(error.message)
+    //     return false
+    // }
+    return
 }

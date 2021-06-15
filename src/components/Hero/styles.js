@@ -5,7 +5,6 @@ export const HeroWrapper = styled.div`
     align-items: center;
     display: flex;
     background-color: ${COLORS.SECONDARY};
-    background-image: url(/images/front-door-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     flex-direction: column;

@@ -27,7 +27,11 @@ import {
 } from './styles'
 
 function AccountProfileForm({ saveData = () => {} }) {
-    const { register, handleSubmit, errors } = useForm()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
     const [isEditingAvatar, setIsEditingAvatar] = useState(false)
     const [profileImageBuffer, setProfileImageBuffer] = useState(null)
     const [scale, setScale] = useState(1)
@@ -72,7 +76,6 @@ function AccountProfileForm({ saveData = () => {} }) {
         }
 
         const imageUrlFromSave = await handleEditedImage()
-        console.log('🚀 ~ file: index.jsx ~ line 76 ~ onSubmit ~ imageUrlFromSave', imageUrlFromSave)
         setAccountProfileFormError(null)
         try {
             saveData(data)
@@ -192,7 +195,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                             key={authUser.uid}
                                             imageFileName={null}
                                             defaultAvatarThemeIndex={0}
-                                            displayText={null}
+                                            displayText={''}
                                         />
                                     )}
                                 </FormBox>
@@ -206,10 +209,11 @@ function AccountProfileForm({ saveData = () => {} }) {
                                 {/* <AuthIdentifierLabel>{queryData?.returnSingleUser?.email}</AuthIdentifierLabel> */}
                                 <FormBox>
                                     <InputField
-                                        register={register({
+                                        register={{
+                                            register,
                                             required: true,
                                             minLength: 2,
-                                        })}
+                                        }}
                                         name="username"
                                         placeholder="Username"
                                         type="text"
@@ -235,7 +239,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                     <InputField
                                         name="firstName"
                                         placeholder="First Name"
-                                        register={register({ required: true, minLength: 2 })}
+                                        register={{ register, required: true, minLength: 2 }}
                                         type="text"
                                         aria-label="First Name"
                                         defaultValue={null}
@@ -259,7 +263,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                     <InputField
                                         name="lastName"
                                         placeholder="Last Name"
-                                        register={register({ required: true, minLength: 2 })}
+                                        register={{ register, required: true, minLength: 2 }}
                                         type="text"
                                         aria-label="Last Name"
                                         defaultValue={null}
@@ -283,7 +287,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                     <InputField
                                         name="city"
                                         placeholder="City"
-                                        register={register({ minLength: 2 })}
+                                        register={{ register, minLength: 2 }}
                                         type="text"
                                         aria-label="City"
                                         defaultValue={null}
@@ -300,7 +304,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         data-testid="state"
                                         name="state"
                                         aria-label="state"
-                                        register={register({ required: true })}
+                                        register={{ register, required: true }}
                                         defaultValue={null}
                                     />
                                 </FormBox>
@@ -312,7 +316,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                 )}
                                 <FormBox>
                                     <InputField
-                                        register={register({ required: true, minLength: 5 })}
+                                        register={{ register, required: true, minLength: 5 }}
                                         name="zip"
                                         placeholder="zip"
                                         type="text"

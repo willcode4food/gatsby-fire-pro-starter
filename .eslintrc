@@ -19,12 +19,6 @@
     },
     "plugins": ["react", "@emotion"],
     "rules": {
-        "@emotion/pkg-renaming": "error",
-        "@emotion/jsx-import": "error"
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
+        "@emotion/pkg-renaming": "error"
     }
 }

@@ -23,7 +23,11 @@ import { FIREBASE } from 'utils/constants'
 import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
 
 function ForgotPasswordForm() {
-    const { errors, register, handleSubmit } = useForm()
+    const {
+        formState: { errors },
+        register,
+        handleSubmit,
+    } = useForm()
     const [appError, setAppError] = useState(null)
     const { onForgotPassword, isAuthenticationLoading, authenticationError } = useFirebaseAuthentication({
         firebaseConfig: FIREBASE.CONFIG,
@@ -45,7 +49,7 @@ function ForgotPasswordForm() {
                                     <InputField
                                         name="email"
                                         placeholder="Email Address"
-                                        register={register({ required: true })}
+                                        register={{ register, required: true }}
                                         type="text"
                                         aria-label="Email Address"
                                     />

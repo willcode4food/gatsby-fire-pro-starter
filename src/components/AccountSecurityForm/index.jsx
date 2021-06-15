@@ -20,7 +20,13 @@ import { FIREBASE } from 'utils/constants'
 import { passwordFormatRegex, emailFormatRegex } from 'utils/securityHelpers'
 
 function AccountSecurityForm() {
-    const { register, handleSubmit, errors, watch, reset } = useForm()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        watch,
+        reset,
+    } = useForm()
     const { authUser } = useContext(SessionContext)
     const [accountSecurityError, setAccountSecurityError] = useState(null)
     const { onAuthIdentifierUpdate, isAuthenticationLoading, authenticationError } = useFirebaseAuthentication({
@@ -59,7 +65,8 @@ function AccountSecurityForm() {
                                 <FormBox>
                                     <FormLabel htmlFor="email">Email Address</FormLabel>
                                     <InputField
-                                        register={register({
+                                        register={{
+                                            register,
                                             required: true,
                                             pattern: emailFormatRegex,
                                             validate: (value) => {
@@ -68,7 +75,7 @@ function AccountSecurityForm() {
                                                 }
                                                 return true
                                             },
-                                        })}
+                                        }}
                                         name="email"
                                         placeholder="New Email"
                                         type="text"
@@ -94,7 +101,7 @@ function AccountSecurityForm() {
                                     <InputField
                                         id="existingPassword"
                                         name="existingPassword"
-                                        register={register({ required: true })}
+                                        register={{ register, required: true }}
                                         placeholder="Existing Password"
                                         type="password"
                                         aria-label="Existing Password"
@@ -105,7 +112,8 @@ function AccountSecurityForm() {
                                     <FormLabel htmlFor="newPassword">New Password</FormLabel>
                                     <InputField
                                         name="newPassword"
-                                        register={register({
+                                        register={{
+                                            register,
                                             pattern: passwordFormatRegex,
                                             validate: (value) => {
                                                 if (value !== '') {
@@ -113,7 +121,7 @@ function AccountSecurityForm() {
                                                 }
                                                 return true
                                             },
-                                        })}
+                                        }}
                                         placeholder="New Password"
                                         type="password"
                                         aria-label="New Password"
@@ -146,9 +154,10 @@ function AccountSecurityForm() {
                                     <InputField
                                         name="confirmPassword"
                                         placeholder="Confirm Password"
-                                        register={register({
+                                        register={{
+                                            register,
                                             validate: (value) => value === watch('newPassword'),
-                                        })}
+                                        }}
                                         type="password"
                                         aria-label="Confirm Password"
                                         onFocus={() => setAccountSecurityError(null)}
