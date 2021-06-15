@@ -2,7 +2,6 @@ require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 
-console.log('🚀 ~ file: gatsby-config.js ~ line 6 ~ process.env.NODE_ENV', process.env.NODE_ENV)
 const { getMediaQueryForBreakpointPlugin } = require('./src/utils/styleHelpers')
 
 const mediaQueries = {
