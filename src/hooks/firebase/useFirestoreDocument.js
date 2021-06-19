@@ -38,7 +38,6 @@ function useFirestoreDocument(data = { collection: null, docId: null, firebaseCo
             try {
                 setIsFirestoreLoading(true)
                 const docReference = await db.collection(collectionName).doc(documentId)
-
                 await db.runTransaction(async function (transaction) {
                     const record = await transaction.get(docReference)
                     if (!record.exists) {
@@ -51,12 +50,18 @@ function useFirestoreDocument(data = { collection: null, docId: null, firebaseCo
                         }
                         return prev
                     }, {})
+                    console.log(
+                        '🚀 ~ file: useFirestoreDocument.js ~ line 53 ~ filteredData ~ filteredData',
+                        filteredData
+                    )
+
                     await transaction.update(docReference, { ...filteredData })
                     setDocument(data)
                 })
                 setIsFirestoreLoading(false)
             } catch (e) {
                 setFirestoreError(e.message)
+                setIsFirestoreLoading(false)
             }
         }
     }

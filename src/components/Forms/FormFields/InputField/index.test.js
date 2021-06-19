@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react'
 import renderer from 'react-test-renderer'
-
 import InputField from './'
 
 describe('InputField', () => {
@@ -53,6 +52,7 @@ describe('InputField', () => {
 
 .dark .emotion-0 {
   background: #263238;
+  color: #FFF;
 }
 
 .emotion-0:disabled {

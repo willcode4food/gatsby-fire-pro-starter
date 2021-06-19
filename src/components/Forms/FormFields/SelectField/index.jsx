@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { SelectFieldStyle } from './styles'
 
 function SelectField({ input, register: registerProp, name, ...rest }) {
@@ -9,7 +9,10 @@ function SelectField({ input, register: registerProp, name, ...rest }) {
 
 SelectField.propTypes = {
     input: PropTypes.any,
-    registerProp: PropTypes.func,
+    register: PropTypes.shape({
+        register: PropTypes.func,
+    }),
+    name: PropTypes.string,
 }
 
 export default SelectField

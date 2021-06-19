@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { InputFieldStyle } from './styles'
 
 function InputField({ register: registerProp, name, ...props }) {
@@ -10,7 +10,10 @@ function InputField({ register: registerProp, name, ...props }) {
 InputField.propTypes = {
     input: PropTypes.any,
     meta: PropTypes.any,
-    registerProp: PropTypes.func,
+    register: PropTypes.shape({
+        register: PropTypes.func,
+    }),
+    name: PropTypes.string,
 }
 
 export default InputField
