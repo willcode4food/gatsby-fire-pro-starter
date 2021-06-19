@@ -1,3 +1,4 @@
+import { PrimaryButton } from 'components/Buttons'
 import { FileField, InputField, SliderField, StandardSubmitButton, StateSelectField } from 'components/Forms/FormFields'
 import {
     FormBox,
@@ -20,8 +21,10 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { useForm } from 'react-hook-form'
 import { ACCEPTED_IMAGE_FORMATS, FIREBASE, PROFILE_IMAGE_SIZE } from 'utils/constants'
+import { getInitials } from 'utils/userHelpers'
 import {
     AvatarEditorBox,
+    CancelEditBox,
     ImageEditorControlsBox,
     ImageEditorControlsCenterBox,
     ImageEditorControlsWrapper,
@@ -81,17 +84,18 @@ function AccountProfileForm() {
     const onSubmit = async (data) => {
         // eslint-disable-next-line no-unused-vars
         const { password, confirmPassword, dateCreated, exists, ...userData } = data
+        const email = document?.email || authUser.email
 
         if (!userData.username) {
             setAccountProfileFormError({ message: 'Please give yourself a unique username' })
             return
         }
 
-        // const imageUrlFromSave = await handleEditedImage()
+        const imageUrlFromSave = await handleEditedImage()
         setAccountProfileFormError(null)
         try {
             // eslint-disable-next-line no-unused-vars
-            updateDocument(userData)
+            updateDocument({ id: authUser.uid.toString(), ...userData, profileImageName: imageUrlFromSave, email })
         } catch (e) {
             const { message } = e
             setAccountProfileFormError(message)
@@ -119,33 +123,33 @@ function AccountProfileForm() {
     const onRotateRight = () => {
         setRotate(rotate + 90)
     }
-    // async function handleEditedImage() {
-    //     const { uid } = authUser
-    //     let imagePath = ''
+    async function handleEditedImage() {
+        const { uid } = authUser
+        let imagePath = ''
 
-    //     if (profileImageBuffer) {
-    //         // send photo to Google Cloud Storage
-    //         try {
-    //             const imgObj = editor.current.getImageScaledToCanvas()
-    //             const imgBlob = await new Promise((resolve) => {
-    //                 imgObj.toBlob((blob) => resolve(blob), 'image/png', 0.95)
-    //             })
+        if (profileImageBuffer) {
+            // send photo to Google Cloud Storage
+            try {
+                const imgObj = editor.current.getImageScaledToCanvas()
+                const imgBlob = await new Promise((resolve) => {
+                    imgObj.toBlob((blob) => resolve(blob), 'image/png', 0.95)
+                })
 
-    //             const storageRef = storage.ref()
-    //             imagePath = `${FIREBASE.STORAGE.PROFILE_IMG_FOLDER}/${uid}.png`
-    //             const profileImageRef = storageRef.child(imagePath)
-    //             await profileImageRef.put(imgBlob)
-    //             // setProfileImageUrl(`${FIREBASE.STORAGE.BASE_URL}/${imagePath}`)
-    //         } catch (error) {
-    //             // eslint-disable-next-line
-    //             setAccountProfileFormError(error)
-    //             setIsEditingAvatar(false)
-    //         }
-    //         setIsEditingAvatar(false)
-    //         return profileImageBuffer ? `${uid}.png` : null
-    //     }
-    //     return ''
-    // }
+                const storageRef = storage.ref()
+                imagePath = `${FIREBASE.STORAGE.PROFILE_IMG_FOLDER}/${uid}.png`
+                const profileImageRef = storageRef.child(imagePath)
+                await profileImageRef.put(imgBlob)
+                // setProfileImageUrl(`${FIREBASE.STORAGE.BASE_URL}/${imagePath}`)
+            } catch (error) {
+                // eslint-disable-next-line
+                setAccountProfileFormError(error)
+                setIsEditingAvatar(false)
+            }
+            setIsEditingAvatar(false)
+            return profileImageBuffer ? `${uid}.png` : null
+        }
+        return ''
+    }
     return (
         <>
             {isFirestoreLoading ? (
@@ -202,15 +206,29 @@ function AccountProfileForm() {
                                                 </ImageEditorControlsBox>
                                             </ImageEditorControlsWrapper>
                                         </FormBox>
+                                        <CancelEditBox>
+                                            <PrimaryButton
+                                                onClick={() => {
+                                                    setIsEditingAvatar(false)
+                                                    setProfileImageBuffer(null)
+                                                }}
+                                            >
+                                                Cancel
+                                            </PrimaryButton>
+                                        </CancelEditBox>
                                     </>
                                 )}
                                 <FormBox>
                                     {!isEditingAvatar && (
                                         <ProfileAvatar
                                             key={authUser.uid}
-                                            imageFileName={null}
-                                            defaultAvatarThemeIndex={0}
-                                            displayText={''}
+                                            imageFileName={document?.profileImageName}
+                                            defaultAvatarThemeIndex={document?.defaultAvatarThemeIndex}
+                                            displayText={getInitials({
+                                                username: document?.username,
+                                                firstName: document?.firstName,
+                                                lastName: document?.lastName,
+                                            })}
                                         />
                                     )}
                                 </FormBox>

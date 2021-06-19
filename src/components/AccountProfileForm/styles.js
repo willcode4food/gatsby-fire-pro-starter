@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { SPACERS, COLORS } from 'utils/styleHelpers'
+import { COLORS, SPACERS } from 'utils/styleHelpers'
 
 export const ImageEditorControlsWrapper = styled.div`
     display: flex;
@@ -24,4 +24,11 @@ export const AuthIdentifierLabel = styled.div`
     align-self: center;
     padding-top: ${SPACERS.S};
     padding-bottom: ${SPACERS.M};
+`
+export const CancelEditBox = styled.div`
+    align-self: center;
+    box-sizing: border-box;
+    width: 25%;
+    margin: ${SPACERS.S};
+    text-align: center;
 `

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import Avatar from 'components/Avatar'
-import { PROFILE_IMAGE_SIZE, DEFAULT_AVATAR_SIZE } from 'utils/constants'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
+import { DEFAULT_AVATAR_SIZE, PROFILE_IMAGE_SIZE } from 'utils/constants'
 import { getStorageImagePublicUrl } from 'utils/firebaseHelpers'
-import { DefaultAvatarWrapper, DefaultAvatarCircle, DefaultAvatarInitials, DefaultAvatarBox } from './styles'
+import { DefaultAvatarBox, DefaultAvatarCircle, DefaultAvatarInitials, DefaultAvatarWrapper } from './styles'
 // See https://codepen.io/AllThingsSmitty/pen/dWmmQp
 function ProfileAvatar({
     alt = 'Member Avater',
@@ -30,7 +30,6 @@ function ProfileAvatar({
                 <DefaultAvatarWrapper>
                     <Avatar
                         size={[profileImageSize, profileImageSize]}
-                        //
                         src={`${getStorageImagePublicUrl(imageUrl)}&bust=${imageHash}`}
                         alt={alt}
                     />
