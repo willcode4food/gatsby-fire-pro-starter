@@ -9,7 +9,7 @@ import {
     FormWrapper,
     FormWrapperBox,
 } from 'components/Forms/FormLayout'
-import { ErrorIcon, ErrorMessage, FormHeader } from 'components/Forms/FormStyles'
+import { ErrorIcon, ErrorMessage, FormHeader, StyledLink } from 'components/Forms/FormStyles'
 import Loader from 'components/Loader'
 import ProfileAvatar from 'components/ProfileAvatar'
 import RotateLeftIcon from 'components/RotateLeftIcon'
@@ -20,9 +20,10 @@ import useFirestoreDocument from 'hooks/firebase/useFirestoreDocument'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { useForm } from 'react-hook-form'
-import { ACCEPTED_IMAGE_FORMATS, FIREBASE, PROFILE_IMAGE_SIZE } from 'utils/constants'
+import { ACCEPTED_IMAGE_FORMATS, FIREBASE, LOGIN_PROVIDER, PROFILE_IMAGE_SIZE } from 'utils/constants'
 import { getInitials } from 'utils/userHelpers'
 import {
+    AuthIdentifierLabel,
     AvatarEditorBox,
     CancelEditBox,
     ImageEditorControlsBox,
@@ -68,9 +69,9 @@ function AccountProfileForm() {
         )
     }
 
-    // function isLoginProviderEmail() {
-    //     return queryData && queryData?.returnSingleUser?.loginProvider === LOGIN_PROVIDER.EMAIL
-    // }
+    function isLoginProviderEmail() {
+        return document?.loginProvider === LOGIN_PROVIDER.EMAIL
+    }
 
     useEffect(() => {
         if (document) {
@@ -239,7 +240,7 @@ function AccountProfileForm() {
                                         </FormBoxCenter>
                                     )}
                                 </FormBox>
-                                {/* <AuthIdentifierLabel>{queryData?.returnSingleUser?.email}</AuthIdentifierLabel> */}
+                                <AuthIdentifierLabel>{document?.email}</AuthIdentifierLabel>
                                 <FormBox>
                                     <InputField
                                         register={{
@@ -380,13 +381,30 @@ function AccountProfileForm() {
                                         </FormFlexInnerBox>
                                     </FormFlexInner>
                                 </FormBox>
-                                {/* {isLoginProviderEmail() && (
+                                {isLoginProviderEmail() && (
                                     <FormBox>
-                                        <StyledLink to="/account-security" name="securityLink" role="link" state={null}>
+                                        <StyledLink
+                                            to="/account-security"
+                                            name="securityLink"
+                                            role="link"
+                                            state={{
+                                                userData: {
+                                                    id: document?.id,
+                                                    email: document?.email,
+                                                    firstName: document?.firstName,
+                                                    lastName: document?.lastName,
+                                                    profileImageName: document?.profileImageName,
+                                                    username: document?.username,
+                                                    city: document?.city,
+                                                    state: document?.state,
+                                                    zip: document?.zip,
+                                                },
+                                            }}
+                                        >
                                             Update Email and Password
                                         </StyledLink>
                                     </FormBox>
-                                )} */}
+                                )}
                             </FormFlex>
                         </form>
                     </FormWrapperBox>
