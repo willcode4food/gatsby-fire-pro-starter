@@ -35,8 +35,9 @@ export const SelectFieldStyle = styled.select`
         5px 5px,
         1px 1.5em;
     background-repeat: no-repeat;
+    transition: background 0.5s, color 0.5s;
     .dark & {
-        color:  ${COLORS.PRIMARY};
+        color: ${COLORS.PRIMARY};
     }
 }
 `

@@ -1,7 +1,7 @@
-import React from 'react'
 import { render } from '@testing-library/react'
-import Adapter from 'enzyme-adapter-react-16'
 import { configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import React from 'react'
 import SelectField from './'
 
 configure({ adapter: new Adapter() })
@@ -40,6 +40,8 @@ Object {
   -webkit-background-size: 5px 5px,5px 5px,1px 1.5em;
   background-size: 5px 5px,5px 5px,1px 1.5em;
   background-repeat: no-repeat;
+  -webkit-transition: background 0.5s,color 0.5s;
+  transition: background 0.5s,color 0.5s;
 }
 
 .dark .emotion-0 {
@@ -80,6 +82,8 @@ Object {
   -webkit-background-size: 5px 5px,5px 5px,1px 1.5em;
   background-size: 5px 5px,5px 5px,1px 1.5em;
   background-repeat: no-repeat;
+  -webkit-transition: background 0.5s,color 0.5s;
+  transition: background 0.5s,color 0.5s;
 }
 
 .dark .emotion-0 {

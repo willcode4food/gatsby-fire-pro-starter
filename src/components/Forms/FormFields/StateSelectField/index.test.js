@@ -1,6 +1,5 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-
 import StateSelectField from './'
 
 describe('StateSelectField', () => {
@@ -35,6 +34,8 @@ describe('StateSelectField', () => {
   -webkit-background-size: 5px 5px,5px 5px,1px 1.5em;
   background-size: 5px 5px,5px 5px,1px 1.5em;
   background-repeat: no-repeat;
+  -webkit-transition: background 0.5s,color 0.5s;
+  transition: background 0.5s,color 0.5s;
 }
 
 .dark .emotion-0 {

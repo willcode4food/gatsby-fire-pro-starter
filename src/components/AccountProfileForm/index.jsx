@@ -1,3 +1,4 @@
+import { PrimaryButton } from 'components/Buttons'
 import { FileField, InputField, SliderField, StandardSubmitButton, StateSelectField } from 'components/Forms/FormFields'
 import {
     FormBox,
@@ -8,29 +9,34 @@ import {
     FormWrapper,
     FormWrapperBox,
 } from 'components/Forms/FormLayout'
-import { ErrorIcon, ErrorMessage, FormHeader } from 'components/Forms/FormStyles'
+import { ErrorIcon, ErrorMessage, FormHeader, StyledLink } from 'components/Forms/FormStyles'
+import Loader from 'components/Loader'
 import ProfileAvatar from 'components/ProfileAvatar'
 import RotateLeftIcon from 'components/RotateLeftIcon'
 import RotateRightIcon from 'components/RotateRightIcon'
 import SessionContext from 'context/SessionContext'
 import useFirebaseApp from 'hooks/firebase/useFirebaseApp'
-import PropTypes from 'prop-types'
-import React, { useContext, useRef, useState } from 'react'
+import useFirestoreDocument from 'hooks/firebase/useFirestoreDocument'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { useForm } from 'react-hook-form'
-import { ACCEPTED_IMAGE_FORMATS, FIREBASE, PROFILE_IMAGE_SIZE } from 'utils/constants'
+import { ACCEPTED_IMAGE_FORMATS, FIREBASE, LOGIN_PROVIDER, PROFILE_IMAGE_SIZE } from 'utils/constants'
+import { getInitials } from 'utils/userHelpers'
 import {
+    AuthIdentifierLabel,
     AvatarEditorBox,
+    CancelEditBox,
     ImageEditorControlsBox,
     ImageEditorControlsCenterBox,
     ImageEditorControlsWrapper,
 } from './styles'
 
-function AccountProfileForm({ saveData = () => {} }) {
+function AccountProfileForm() {
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm()
     const [isEditingAvatar, setIsEditingAvatar] = useState(false)
     const [profileImageBuffer, setProfileImageBuffer] = useState(null)
@@ -40,35 +46,46 @@ function AccountProfileForm({ saveData = () => {} }) {
     const editor = useRef(null)
     const { authUser } = useContext(SessionContext)
     const { storage } = useFirebaseApp({ firebaseConfig: FIREBASE.CONFIG })
+    const { document, updateDocument, isFirestoreLoading, firestoreError } = useFirestoreDocument({
+        collection: 'users',
+        docId: authUser.uid,
+        firebaseConfig: FIREBASE.CONFIG,
+    })
+    console.log('🚀 ~ file: index.jsx ~ line 46 ~ AccountProfileForm ~ firestoreError', firestoreError)
+    function resetForm({ document }) {
+        reset(
+            {
+                ...document,
+            },
+            {
+                errors: true, // errors will not be reset
+                dirtyFields: true, // dirtyFields will not be reset
+                isDirty: true, // dirty will not be reset
+                isSubmitted: false,
+                touched: false,
+                isValid: false,
+                submitCount: false,
+            }
+        )
+    }
 
-    // function resetForm(data) {
-    //     reset(
-    //         {
-    //             ...data,
-    //         },
-    //         {
-    //             errors: true, // errors will not be reset
-    //             dirtyFields: true, // dirtyFields will not be reset
-    //             isDirty: true, // dirty will not be reset
-    //             isSubmitted: false,
-    //             touched: false,
-    //             isValid: false,
-    //             submitCount: false,
-    //         }
-    //     )
-    // }
+    function isLoginProviderEmail() {
+        return document?.loginProvider === LOGIN_PROVIDER.EMAIL
+    }
 
-    // function isLoginProviderEmail() {
-    //     return queryData && queryData?.returnSingleUser?.loginProvider === LOGIN_PROVIDER.EMAIL
-    // }
-
+    useEffect(() => {
+        if (document) {
+            resetForm({ document })
+        }
+    }, [document])
     const onScale = (event) => {
         setScale(parseFloat(event.target.value))
     }
 
     const onSubmit = async (data) => {
         // eslint-disable-next-line no-unused-vars
-        const { password, confirmPassword, ...userData } = data
+        const { password, confirmPassword, dateCreated, exists, ...userData } = data
+        const email = document?.email || authUser.email
 
         if (!userData.username) {
             setAccountProfileFormError({ message: 'Please give yourself a unique username' })
@@ -78,7 +95,8 @@ function AccountProfileForm({ saveData = () => {} }) {
         const imageUrlFromSave = await handleEditedImage()
         setAccountProfileFormError(null)
         try {
-            saveData(data)
+            // eslint-disable-next-line no-unused-vars
+            updateDocument({ id: authUser.uid.toString(), ...userData, profileImageName: imageUrlFromSave, email })
         } catch (e) {
             const { message } = e
             setAccountProfileFormError(message)
@@ -135,7 +153,9 @@ function AccountProfileForm({ saveData = () => {} }) {
     }
     return (
         <>
-            {
+            {isFirestoreLoading ? (
+                <Loader />
+            ) : (
                 <FormWrapper>
                     <FormWrapperBox>
                         <FormHeader>Account</FormHeader>
@@ -187,15 +207,29 @@ function AccountProfileForm({ saveData = () => {} }) {
                                                 </ImageEditorControlsBox>
                                             </ImageEditorControlsWrapper>
                                         </FormBox>
+                                        <CancelEditBox>
+                                            <PrimaryButton
+                                                onClick={() => {
+                                                    setIsEditingAvatar(false)
+                                                    setProfileImageBuffer(null)
+                                                }}
+                                            >
+                                                Cancel
+                                            </PrimaryButton>
+                                        </CancelEditBox>
                                     </>
                                 )}
                                 <FormBox>
                                     {!isEditingAvatar && (
                                         <ProfileAvatar
                                             key={authUser.uid}
-                                            imageFileName={null}
-                                            defaultAvatarThemeIndex={0}
-                                            displayText={''}
+                                            imageFileName={document?.profileImageName}
+                                            defaultAvatarThemeIndex={document?.defaultAvatarThemeIndex}
+                                            displayText={getInitials({
+                                                username: document?.username,
+                                                firstName: document?.firstName,
+                                                lastName: document?.lastName,
+                                            })}
                                         />
                                     )}
                                 </FormBox>
@@ -206,7 +240,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         </FormBoxCenter>
                                     )}
                                 </FormBox>
-                                {/* <AuthIdentifierLabel>{queryData?.returnSingleUser?.email}</AuthIdentifierLabel> */}
+                                <AuthIdentifierLabel>{document?.email}</AuthIdentifierLabel>
                                 <FormBox>
                                     <InputField
                                         register={{
@@ -218,7 +252,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         placeholder="Username"
                                         type="text"
                                         aria-label="Username"
-                                        defaultValue={null}
+                                        defaultValue={document?.username}
                                     />
                                 </FormBox>
                                 {errors?.username?.type === 'required' && (
@@ -242,7 +276,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         register={{ register, required: true, minLength: 2 }}
                                         type="text"
                                         aria-label="First Name"
-                                        defaultValue={null}
+                                        defaultValue={document?.firstName}
                                     />
                                 </FormBox>
                                 {errors?.firstName && errors?.firstName?.type === 'required' && (
@@ -266,7 +300,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         register={{ register, required: true, minLength: 2 }}
                                         type="text"
                                         aria-label="Last Name"
-                                        defaultValue={null}
+                                        defaultValue={document?.lastName}
                                     />
                                 </FormBox>
                                 {errors?.lastName && errors?.lastName?.type === 'required' && (
@@ -290,7 +324,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         register={{ register, minLength: 2 }}
                                         type="text"
                                         aria-label="City"
-                                        defaultValue={null}
+                                        defaultValue={document?.city}
                                     />
                                 </FormBox>
                                 {errors?.city && errors?.city?.type === 'minLength' && (
@@ -305,7 +339,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         name="state"
                                         aria-label="state"
                                         register={{ register, required: true }}
-                                        defaultValue={null}
+                                        defaultValue={document?.state}
                                     />
                                 </FormBox>
                                 {errors?.state && errors?.state?.type === 'required' && (
@@ -321,7 +355,7 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         placeholder="zip"
                                         type="text"
                                         aria-label="Zip"
-                                        defaultValue={null}
+                                        defaultValue={document?.zip}
                                     />
                                 </FormBox>
                                 {errors?.zip && errors?.zip?.type === 'minLength' && (
@@ -347,24 +381,37 @@ function AccountProfileForm({ saveData = () => {} }) {
                                         </FormFlexInnerBox>
                                     </FormFlexInner>
                                 </FormBox>
-                                {/* {isLoginProviderEmail() && (
+                                {isLoginProviderEmail() && (
                                     <FormBox>
-                                        <StyledLink to="/account-security" name="securityLink" role="link" state={null}>
+                                        <StyledLink
+                                            to="/account-security"
+                                            name="securityLink"
+                                            role="link"
+                                            state={{
+                                                userData: {
+                                                    id: document?.id,
+                                                    email: document?.email,
+                                                    firstName: document?.firstName,
+                                                    lastName: document?.lastName,
+                                                    profileImageName: document?.profileImageName,
+                                                    username: document?.username,
+                                                    city: document?.city,
+                                                    state: document?.state,
+                                                    zip: document?.zip,
+                                                },
+                                            }}
+                                        >
                                             Update Email and Password
                                         </StyledLink>
                                     </FormBox>
-                                )} */}
+                                )}
                             </FormFlex>
                         </form>
                     </FormWrapperBox>
                 </FormWrapper>
-            }
+            )}
         </>
     )
-}
-
-AccountProfileForm.propTypes = {
-    saveData: PropTypes.func,
 }
 
 export default AccountProfileForm

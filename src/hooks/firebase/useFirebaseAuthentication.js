@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import useFirebaseApp from 'hooks/firebase/useFirebaseApp'
 import useFirestoreDocument from 'hooks/firebase/useFirestoreDocument'
+import { useEffect, useState } from 'react'
 
 function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseConfig }) {
     const [isAuthenticationLoading, setIsAuthenticationLoading] = useState(false)
@@ -84,9 +84,7 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
     const doSignInWithGoogle = async () => {
         const googleProvider = new auth.GoogleAuthProvider()
         try {
-            const tmp = await auth().signInWithRedirect(googleProvider)
-            console.log("doSignInWithGoogle -> tmp", tmp)
-            
+            await auth().signInWithRedirect(googleProvider)
             return true
         } catch (error) {
             throw Error(error)
@@ -170,8 +168,11 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
         }
     }
 
-    const onGoogleLogin = async () => {
+    const onGoogleLogin = async (data = null) => {
         try {
+            if (data) {
+                setUserProfileStorage({ ...data })
+            }
             setIsAuthenticationLoading(true)
             setLoginFlagStorage()
             await doSignInWithGoogle()
@@ -207,11 +208,41 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
     }
     const { db, auth } = useFirebaseApp({ firebaseConfig })
 
-    useEffect(()=>{
+    const doAuthIdentifierUpdate = async (email, existingPassword, newPassword) => {
+        const user = auth().currentUser
+        try {
+            await auth().signInWithEmailAndPassword(user.email, existingPassword)
+            if (email !== user.email) {
+                await user.updateEmail(email)
+            }
+
+            if (newPassword) {
+                await user.updatePassword(newPassword)
+                await auth().signInWithEmailAndPassword(user.email, newPassword)
+            }
+        } catch (error) {
+            const { message } = error
+            setAuthenticationError({ message })
+        }
+    }
+
+    const onAuthIdentifierUpdate = async (email, existingPassword, newPassword = null) => {
+        try {
+            setIsAuthenticationLoading(true)
+            await doAuthIdentifierUpdate(email, existingPassword, newPassword)
+            setIsAuthenticationLoading(false)
+        } catch (error) {
+            const { message } = error
+            setIsAuthenticationLoading(false)
+            setAuthenticationError({ message })
+        }
+    }
+
+    useEffect(() => {
         if (!onAuthenticationSuccess) {
             onAuthenticationSuccess = () => (window ? (window.location.href = '/') : true)
         }
-    },[onAuthenticationSuccess])
+    }, [onAuthenticationSuccess])
 
     ///handles redirect from third party authentication
     useEffect(() => {
@@ -265,6 +296,7 @@ function useFirebaseAuthentication({ onAuthenticationSuccess = null, firebaseCon
 
     return {
         isAuthenticationLoading,
+        onAuthIdentifierUpdate,
         onGoogleLogin,
         onGoogleRegistration,
         onEmailLogin,

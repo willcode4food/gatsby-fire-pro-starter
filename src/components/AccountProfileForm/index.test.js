@@ -1,15 +1,21 @@
 /* eslint-disable jest/no-commented-out-tests */
-import React from 'react'
+import '@testing-library/jest-dom'
 import { act, cleanup, render, screen } from '@testing-library/react'
 import fireEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom'
 import SessionContext from 'context/SessionContext'
-import { uid, email } from 'utils/testMocks'
+import React from 'react'
+import { email, uid } from 'utils/testMocks'
 import AccountProfileForm from './'
 
 jest.mock('hooks/firebase/useFirebaseApp', () => {
     return jest.fn(() => {
         return { storage: () => {} }
+    })
+})
+
+jest.mock('hooks/firebase/useFirestoreDocument', () => {
+    return jest.fn(() => {
+        return { isFirestoreLoading: false }
     })
 })
 
@@ -47,7 +53,7 @@ describe('AccountProfileForm', () => {
 
         await act(async () => {
             await new Promise((resolve) => setTimeout(resolve, 0))
-            fireEvent.clear(screen.getByRole('textbox', { name: /username/i }))
+            fireEvent.clear(screen.getByRole('textbox', { name: /Username/i }))
             fireEvent.clear(screen.getByRole('textbox', { name: /First Name/i }))
             fireEvent.clear(screen.getByRole('textbox', { name: /Last Name/i }))
             fireEvent.clear(screen.getByRole('textbox', { name: /City/i }))
