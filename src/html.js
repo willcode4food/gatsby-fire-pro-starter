@@ -62,7 +62,6 @@ export default function HTML(props) {
 									darkQuery.addListener(function(e) {
 									window.__setPreferredTheme(e.matches ? 'dark' : 'light')
 									});
-                                    console.log('yo')
 									setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
 								})();
             `,
