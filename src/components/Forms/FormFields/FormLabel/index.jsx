@@ -1,17 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 import PropTypes from 'prop-types'
-import { css } from '@emotion/react'
+import { Label } from './styles'
 function FormLabel({ children, isHidden = true, ...restProps }) {
     return (
-        <label
-            {...restProps}
-            css={css`
-                display: ${isHidden ? 'none' : 'inline'};
-            `}
-        >
+        <Label isHidden={isHidden} {...restProps}>
             {children}
-        </label>
+        </Label>
     )
 }
 

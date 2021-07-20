@@ -1,5 +1,5 @@
 import React from 'react'
-import { BreadcrumbItem, BreadcrumbLink, BreadcrumbItemPadding } from '../styles'
+import { BreadcrumbItem, BreadcrumbItemPadding, BreadcrumbLink } from '../styles'
 
 export function BreadcrumbComponentList({ location }) {
     const { pathname } = location
