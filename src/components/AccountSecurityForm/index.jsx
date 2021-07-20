@@ -1,11 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import Loader from 'components/Loader'
-import { StandardSubmitButton } from 'components/Forms/FormFields'
-import { ErrorIcon, ErrorMessage, FormHeader } from 'components/Forms/FormStyles'
-import SessionContext from 'context/SessionContext'
-import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
-import { useForm } from 'react-hook-form'
+import { FormLabel, InputField, StandardSubmitButton } from 'components/Forms/FormFields'
 import {
     FormBox,
     FormFlex,
@@ -14,10 +7,15 @@ import {
     FormWrapper,
     FormWrapperBox,
 } from 'components/Forms/FormLayout'
-import { StyledLink } from 'components/Forms/FormStyles'
-import { InputField, FormLabel } from 'components/Forms/FormFields'
+import { ErrorIcon, ErrorMessage, FormHeader, StyledLink } from 'components/Forms/FormStyles'
+import Loader from 'components/Loader'
+import SessionContext from 'context/SessionContext'
+import useFirebaseAuthentication from 'hooks/firebase/useFirebaseAuthentication'
+import PropTypes from 'prop-types'
+import React, { useContext, useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { FIREBASE } from 'utils/constants'
-import { passwordFormatRegex, emailFormatRegex } from 'utils/securityHelpers'
+import { emailFormatRegex, passwordFormatRegex } from 'utils/securityHelpers'
 
 function AccountSecurityForm() {
     const {

@@ -1,6 +1,6 @@
-import React from 'react'
+import { css, Global } from '@emotion/react'
 import PropTypes from 'prop-types'
-import { Global, css } from '@emotion/react'
+import React from 'react'
 import { COLORS, FONT_FAMILY } from 'utils/styleHelpers'
 
 export default function HTML(props) {
@@ -62,7 +62,7 @@ export default function HTML(props) {
 									darkQuery.addListener(function(e) {
 									window.__setPreferredTheme(e.matches ? 'dark' : 'light')
 									});
-
+                                    console.log('yo')
 									setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
 								})();
             `,

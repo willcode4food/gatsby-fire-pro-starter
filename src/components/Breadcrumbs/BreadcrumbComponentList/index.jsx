@@ -1,11 +1,14 @@
 import React from 'react'
-import { BreadcrumbItem, BreadcrumbLink, BreadcrumbItemPadding } from '../styles'
+import { BreadcrumbItem, BreadcrumbItemPadding, BreadcrumbLink } from '../styles'
 
 export function BreadcrumbComponentList({ location }) {
     const { pathname } = location
     const crumbs = pathname.split('/').filter((path) => path !== '')
 
     return crumbs.map((crumb, crumbIndex) => {
+        console.log('🚀 ~ file: index.tsx ~ line 42 ~ {crumbs.map ~ crumbIndex', crumbIndex)
+        console.log('🚀 ~ file: index.tsx ~ line 40 ~ {crumbs.map ~ crumbs', crumbs)
+        console.log('🚀 ~ file: index.tsx ~ line 45 ~ {crumbs.map ~ crumbs[crumbIndex + 1])', crumbs[crumbIndex + 1])
         const crumbUrl = `/${crumbs.slice(0, crumbIndex + 1).join('/')}`
         // eslint-disable-next-line no-restricted-globals
         return crumbIndex !== crumbs.length - 1 && isNaN(crumbs[crumbIndex + 1]) ? (

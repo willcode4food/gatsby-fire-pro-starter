@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbNav } from './styles'
+import React, { useEffect, useRef } from 'react'
 import BreadcrumbComponentList from './BreadcrumbComponentList'
 import BreadcrumbSchemaOrg from './BreadcrumbSchemaOrg'
+import { BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbNav } from './styles'
 const Breadcrumbs = ({ location }) => {
+    console.log('🚀 ~ file: index.jsx ~ line 7 ~ Breadcrumbs ~ location', location)
     const navRef = useRef({ clientHeight: 0 })
 
     useEffect(() => {
